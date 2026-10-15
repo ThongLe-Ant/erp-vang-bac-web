@@ -95,12 +95,7 @@
 
 html {
   scroll-behavior: smooth;
-  overscroll-behavior-y: none;
   background-color: #0a1633;
-}
-
-body {
-  overscroll-behavior-y: none;
 }
 
 .tnum {
