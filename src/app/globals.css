@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --vb-bg: #ffffff;
+  --vb-surface: #f7f9fc;
+  --vb-surface-alt: #fafbfd;
+  --vb-card: #ffffff;
+  --vb-fg: #0b1220;
+  --vb-body: #1f2937;
+  --vb-muted: #4b5565;
+  --vb-subtle: #5b6475;
+  --vb-border: #e3e7ee;
+  --vb-border-strong: #d6dce6;
+  --vb-gold: #8a6516;
+  --vb-gold-hover: #6f5112;
+  --vb-gold-soft: #fbf5e6;
+  --vb-gold-border: #e6d7b0;
+  --vb-navy: #0f1b2d;
+  --vb-navy-hover: #1c2b44;
+}
+
+:root[data-vangbac-theme="dark"] {
+  --vb-bg: #08090b;
+  --vb-surface: #0e1014;
+  --vb-surface-alt: #111317;
+  --vb-card: #111317;
+  --vb-fg: #f5f7fa;
+  --vb-body: #e6e9ef;
+  --vb-muted: #a3aab8;
+  --vb-subtle: #8b93a3;
+  --vb-border: #1f232a;
+  --vb-border-strong: #262b33;
+  --vb-gold: #e3c77a;
+  --vb-gold-hover: #d9b24e;
+  --vb-gold-soft: #262015;
+  --vb-gold-border: #4a3a14;
+  --vb-navy: #141f30;
+  --vb-navy-hover: #1e2d44;
+  background-color: #08090b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-vangbac-theme="light"]) {
+    --vb-bg: #08090b;
+    --vb-surface: #0e1014;
+    --vb-surface-alt: #111317;
+    --vb-card: #111317;
+    --vb-fg: #f5f7fa;
+    --vb-body: #e6e9ef;
+    --vb-muted: #a3aab8;
+    --vb-subtle: #8b93a3;
+    --vb-border: #1f232a;
+    --vb-border-strong: #262b33;
+    --vb-gold: #e3c77a;
+    --vb-gold-hover: #d9b24e;
+    --vb-gold-soft: #262015;
+    --vb-gold-border: #4a3a14;
+    --vb-navy: #141f30;
+    --vb-navy-hover: #1e2d44;
+    background-color: #08090b;
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-vb-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-vb-mono), ui-monospace, SFMono-Regular, monospace;
+  --color-vb-bg: var(--vb-bg);
+  --color-vb-surface: var(--vb-surface);
+  --color-vb-surface-alt: var(--vb-surface-alt);
+  --color-vb-card: var(--vb-card);
+  --color-vb-fg: var(--vb-fg);
+  --color-vb-body: var(--vb-body);
+  --color-vb-muted: var(--vb-muted);
+  --color-vb-subtle: var(--vb-subtle);
+  --color-vb-border: var(--vb-border);
+  --color-vb-border-strong: var(--vb-border-strong);
+  --color-vb-gold: var(--vb-gold);
+  --color-vb-gold-hover: var(--vb-gold-hover);
+  --color-vb-gold-soft: var(--vb-gold-soft);
+  --color-vb-gold-border: var(--vb-gold-border);
+  --color-vb-navy: var(--vb-navy);
+  --color-vb-navy-hover: var(--vb-navy-hover);
+}
+
+@custom-variant sysdark {
+  &:where(:root[data-vangbac-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-vangbac-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+  background-color: #0a1633;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}

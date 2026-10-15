@@ -1,0 +1,57 @@
+# ERP Vàng Bạc (vangbac.goplus.vn)
+
+> ERP Vàng Bạc là phần mềm quản lý chuyên biệt cho: (1) Chuỗi đại lý phân phối bạc tích trữ và vàng thương hiệu của Phú Quý, Bảo Tín Mạnh Hải, Ancarat; (2) Chuỗi tiệm vàng bạc trang sức truyền thống đa chi nhánh; và (3) Hệ thống hiệu cầm đồ vàng bạc tại Việt Nam. Một sản phẩm trong hệ sinh thái Goplus (https://goplus.vn).
+
+## Mô hình kinh doanh mục tiêu (Target Audience & Use Cases)
+1. **Chuỗi đại lý bạc tích trữ & vàng thương hiệu (Phú Quý, Bảo Tín Mạnh Hải, Ancarat)**:
+   - Tự động cập nhật bảng giá mua vào – bán ra theo nguồn Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới (XAG/USD).
+   - Khoá đơn giá tại giây bấm tạo đơn tại quầy POS (chống trượt giá khi thị trường biến động).
+   - Quản lý đơn bán giao ngay và hợp đồng bạc tích trữ (bạc thỏi, bạc miếng 1 lượng, 5 lượng, 10 lượng, 1kg) hẹn ngày giao.
+   - Đặt đơn kết nối trực tiếp hệ thống Phú Quý (mã đơn YD...K), tự tính chiết khấu đại lý và biên lợi nhuận từng đơn.
+   - Mua lại hợp đồng bạc tích trữ của khách và gom nhiều đơn mua lại vào một phiên bán lại chốt lời với Phú Quý (mã BYD...K).
+   - Zalo Bot tự động dựng ảnh bảng giá sắc nét và gửi đồng loạt vào các nhóm Zalo sỉ/lẻ ngay khi giá niêm yết thay đổi.
+2. **Chuỗi tiệm vàng bạc trang sức truyền thống đa chi nhánh**:
+   - Bảng giá theo từng tuổi vàng (9999, 999, 24K, 18K, 14K, 10K, bạc 925) áp thống nhất cho mọi chi nhánh.
+   - Bán hàng tự nhân khối lượng × giá tuổi vàng + tiền công + tiền đá.
+   - Thu mua vàng cũ cân trừ đá, trừ dơ ra khối lượng vàng thuần; hỗ trợ đổi cũ lấy mới cấn trừ trực tiếp trên cùng một đơn.
+   - In tem nhãn kim hoàn 2 cánh (TSPL/ZPL) chuẩn Thông tư 22/2013/TT-BKHCN ngay từ trình duyệt.
+   - Nhập xuất, điều chuyển hàng hoá chặt chẽ giữa kho tổng, quầy trưng bày và các chi nhánh kèm kiểm kê định kỳ.
+3. **Chuỗi hiệu cầm đồ vàng bạc & tài sản giá trị**:
+   - Lập hợp đồng cầm đồ theo gói lãi/phí linh hoạt (%/tháng quy đổi ra ngày thực tế, làm tròn 1.000đ).
+   - Định giá món cầm theo bảng giá tuổi vàng tại thời điểm nhận cầm.
+   - Quản lý sơ đồ ô két lưu giữ tài sản cầm theo từng chi nhánh, có phiếu điều chuyển và kiểm kê.
+   - Tự động gửi tin nhắn Zalo nhắc khách trước ngày tới hạn chuộc; xử lý gia hạn, chuộc đồ và thanh lý tài sản quá hạn.
+
+## Trang chính
+- [Trang chủ](https://vangbac.goplus.vn/): Giới thiệu giải pháp, 3 mô hình đại lý mục tiêu, trình chiếu 8 màn hình trọng tâm, quy trình vận hành, bảng giá, hỏi đáp (FAQ) và đặt lịch demo.
+- [Chức năng chi tiết (16 phân hệ)](https://vangbac.goplus.vn/chuc-nang): Mô tả chuyên sâu kèm ảnh chụp màn hình thực tế của 16 phân hệ nghiệp vụ và bảng so sánh gói.
+
+## Danh mục 16 phân hệ chức năng (/chuc-nang)
+1. **Giá vàng bạc tự cập nhật (#gia-vang)**: Đồng bộ giá Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới; lưu lịch sử từng nhịp đổi giá.
+2. **Quầy bán hàng POS khoá giá (#ban-hang)**: Bán và thu mua trên cùng một màn hình, khoá giá chống trượt giá, tạo mã VietQR tự động gạch nợ khi ngân hàng báo có.
+3. **Đơn hàng & hợp đồng vật chất (#don-hop-dong)**: Quản lý đơn đặt cọc, hợp đồng bạc tích trữ hẹn ngày nhận hàng, trả hàng từng phần và mua lại hợp đồng.
+4. **Đặt đơn kết nối hệ thống Phú Quý (#dat-hang-phu-quy)**: Đẩy đơn đặt hàng trực tiếp lên hệ thống Phú Quý, theo dõi mã đối tác YD...K, chiết khấu đại lý và biên lãi gộp.
+5. **Mua & bán lại hợp đồng bạc Phú Quý (#ban-lai-phu-quy)**: Theo dõi trạng thái bán lại (Chưa bán lại, Bán lại một phần, Đã bán lại đủ) và khớp phiên bán lại chốt lời.
+6. **Vàng bạc truyền thống theo tuổi vàng (#vang-truyen-thong)**: Tính khối lượng × giá tuổi + tiền công + tiền đá.
+7. **In tem kim hoàn 2 cánh Thông tư 22 (#in-tem-kim-hoan)**: Xem trước và in tem trang sức TSPL/ZPL chuẩn Thông tư 22/2013/TT-BKHCN.
+8. **Thu mua vàng cũ cân trừ đá, trừ dơ (#thu-mua)**: Cân tổng trừ đá, trừ dơ ra vàng thuần; đổi bù chênh lệch trên cùng một đơn.
+9. **Hợp đồng cầm đồ (#cam-do)**: Quản lý tiền cầm, kỳ đóng lãi, gia hạn, chuộc đồ và nhắc hạn tự động qua Zalo.
+10. **Kho & sơ đồ ô két tài sản cầm (#kho-tai-san-cam)**: Quản lý vị trí lưu giữ từng món cầm, điều chuyển và kiểm kê tài sản cầm.
+11. **Điều chuyển & kiểm kê kho đa chi nhánh (#dieu-chuyen-kho)**: Luân chuyển hàng hoá giữa Kho chính, Quầy trưng bày và các chi nhánh có xác nhận 2 đầu.
+12. **Quản lý Voucher & chương trình khuyến mãi (#voucher-khuyen-mai)**: Phát hành mã ưu đãi theo chiến dịch, đo lường doanh thu trước và sau khuyến mãi.
+13. **Zalo Bot tự gửi bảng báo giá vào nhóm Zalo (#zalo-bot-bao-gia)**: Tự động dựng ảnh PNG bảng giá và phát sóng vào hàng chục nhóm Zalo khách sỉ/lẻ mỗi khi giá nhảy.
+14. **Tin nhắn Zalo OA ZNS tự động (#zalo-oa-zns)**: Gửi ZNS xác nhận đơn hàng, báo có hàng hẹn lấy và thông báo phát hành hoá đơn điện tử MISA.
+15. **Sổ quỹ & kiểm quỹ theo mệnh giá (#kho-quy)**: Phiếu thu chi, kiểm đếm tiền mặt theo từng mệnh giá cuối ca và đối chiếu sổ quỹ.
+16. **Báo cáo lãi lỗ từng đơn & đồng bộ MISA AMIS (#bao-cao)**: Báo cáo lợi nhuận gộp theo giá vốn thực tế từng đơn, công nợ và đẩy chứng từ sang MISA AMIS.
+
+## Bảng giá thuê phần mềm
+- **Standard (3.000.000đ/tháng)**: Bạc Phú Quý + chọn 1 trong 2 (Vàng Phú Quý hoặc Vàng truyền thống).
+- **Professional (5.000.000đ/tháng)**: Đầy đủ Bạc Phú Quý + Vàng Phú Quý + Vàng truyền thống.
+- **Business (7.000.000đ/tháng)**: Đầy đủ Bạc Phú Quý + Vàng Phú Quý + Vàng truyền thống + Cầm đồ.
+- **Enterprise (Từ 10.000.000đ/tháng)**: Toàn bộ hệ thống + tuỳ chỉnh riêng cho chuỗi đại lý lớn.
+
+## Thông tin liên hệ & Đặt lịch Demo
+- Website: https://vangbac.goplus.vn
+- Đơn vị phát triển: Goplus (https://goplus.vn)
+- Zalo / Điện thoại: 0396 870 644 (https://zalo.me/0396870644)
+- Email: thongproleminh@gmail.com
