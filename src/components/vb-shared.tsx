@@ -44,7 +44,6 @@ export const CONTACT = {
 }
 
 export const GOPLUS_URL = "https://goplus.vn"
-export const GOEAT_URL = "https://goeat.vn"
 
 export const HEADING_STYLE = {
   fontSize: "clamp(1.65rem, 2.6vw, 2.25rem)",
@@ -584,7 +583,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "9:15 nguồn tăng bạc miếng thêm 10.000đ/lượng → cả 5 chi nhánh hiện giá mới; đơn chốt lúc 9:10 vẫn tính giá cũ.",
-    src: "/images/screens/gia-bac-thi-truong.jpg",
+    src: "/images/screens/gia-bac-thi-truong.jpg?v=3",
     alt: "Biểu đồ giá bán, giá mua của tiệm so với giá bạc thế giới",
   },
   {
@@ -607,7 +606,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Khách mua 2 lượng bạc miếng, quét QR trả 2.360.000đ → ngân hàng báo có, đơn tự chuyển sang đã thanh toán.",
-    src: "/images/screens/quay-phu-quy.jpg",
+    src: "/images/screens/quay-phu-quy.jpg?v=3",
     alt: "Quầy bán bạc và vàng Phú Quý: thẻ sản phẩm có giá mua, giá bán theo bảng giá; giỏ hàng chuyển qua lại Bán hàng, Thu mua",
   },
   {
@@ -639,7 +638,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Khách đặt hợp đồng 10 lượng bạc hẹn giao tuần sau, nay giá tăng muốn bán lại ngay → bấm Mua lại hợp đồng để tất toán và tính chênh lệch tự động.",
-    src: "/images/screens/don-ban-thu-tien.jpg",
+    src: "/images/screens/don-ban-thu-tien.jpg?v=3",
     alt: "Danh sách đơn bán hàng và hợp đồng vật chất: tiền cọc, phần chưa thanh toán và tổng tiền từng đơn",
   },
   {
@@ -671,7 +670,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Khách chốt đơn SO-AU-261014-0002 → tạo đơn đặt Phú Quý YD2610140918K ngay trên phần mềm, hiện rõ chiết khấu 5.633.000đ và biên lời +2,45%.",
-    src: "/images/screens/dat-hang-phu-quy.jpg?v=2",
+    src: "/images/screens/dat-hang-phu-quy.jpg?v=3",
     alt: "Danh sách đơn đặt hàng kết nối hệ thống Phú Quý: mã đơn Phú Quý, chiết khấu đại lý và biên lời từng đơn",
   },
   {
@@ -703,7 +702,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Trong ca sáng thu mua 5 đơn bạc thỏi từ khách → bấm Tạo bán lại, hệ thống khớp phiên và trả về mã BYD2610140912K kèm giá trị chốt.",
-    src: "/images/screens/mua-ban-lai-phu-quy.jpg?v=2",
+    src: "/images/screens/mua-ban-lai-phu-quy.jpg?v=3",
     alt: "Màn hình quản lý bán lại Phú Quý: trạng thái đã bán lại đủ, bán lại một phần và mã đơn bán lại BYD",
   },
   {
@@ -729,7 +728,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Nhẫn 18K nặng 1,25 chỉ, giá tuổi 18K 6.200.000đ/chỉ, tiền công 300.000đ → khách trả 8.050.000đ.",
-    src: "/images/screens/ban-vang-tuoi.jpg",
+    src: "/images/screens/ban-vang-tuoi.jpg?v=3",
     alt: "Quầy vàng truyền thống: mỗi món ghi khối lượng × giá tuổi vàng, cộng tiền công, tiền đá",
   },
   {
@@ -762,7 +761,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Chọn Kiềng cưới 9999 chạm rồng phượng 5 chỉ, công 1.200.000đ → bấm Gửi máy in, tem 2 cánh ra ngay trong 1 giây.",
-    src: "/images/screens/in-tem-kim-hoan.jpg?v=2",
+    src: "/images/screens/in-tem-kim-hoan.jpg?v=3",
     alt: "Màn hình in tem kim hoàn TSPL/ZPL với khung xem trước tem trang sức 2 cánh",
   },
   {
@@ -785,7 +784,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Khách bán nhẫn 18K cân 2,35 chỉ, đá 0,12 chỉ → tính 2,23 chỉ × giá thu 18K; đổi lấy dây mới thì chỉ trả phần chênh.",
-    src: "/images/screens/thu-mua-can.jpg",
+    src: "/images/screens/thu-mua-can.jpg?v=3",
     alt: "Giỏ thu mua ba món: dây chuyền 18K cân 3,25 chỉ, trừ đá 0,18 chỉ, trừ dơ 0,04 chỉ, ra tiền trả khách",
   },
   {
@@ -794,7 +793,7 @@ export const FEATURE_MODULES = [
     name: "Cầm đồ",
     when: "Có khách",
     scope: "Cầm đồ",
-    brief: "Tính lãi phí theo ngày, nhắc hạn chuộc qua Zalo.",
+    brief: "Tính lãi phí, nhắc hạn chuộc qua Zalo.",
     title: "Hợp đồng cầm đồ: đúng lãi phí, tự nhắc hạn chuộc",
     text: "Nhận tài sản, giao tiền cầm theo gói lãi phí và hạn mức cầm của tiệm. Đóng lãi, gia hạn, chuộc đều tính theo số ngày thực tế, làm tròn lên 1.000đ.",
     points: [
@@ -808,7 +807,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Cầm 15.000.000đ, gói 1,5%/tháng, chuộc sau 20 ngày → lãi phí 150.000đ; còn 3 ngày tới hạn khách đã nhận tin Zalo nhắc.",
-    src: "/images/screens/hop-dong-cam.jpg",
+    src: "/images/screens/hop-dong-cam.jpg?v=3",
     alt: "Danh sách hợp đồng cầm đồ: tiền cầm, hạn chuộc, hợp đồng đang cầm và quá hạn",
   },
   {
@@ -828,7 +827,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Kiểm kê cuối tuần đếm được 311/312 món → phiếu kiểm kê chỉ ra món còn lại đang trên đường chuyển sang chi nhánh 2.",
-    src: "/images/screens/o-luu-tai-san.jpg",
+    src: "/images/screens/o-luu-tai-san.jpg?v=3",
     alt: "Sơ đồ ô lưu tài sản cầm theo khu, ngăn: mỗi ô ghi số món đang giữ trên sức chứa",
   },
   {
@@ -859,7 +858,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Kho chính Trụ sở lập phiếu PDC-261014-0002 chuyển 4 mã bạc thỏi sang Chi nhánh 2 → thủ kho Chi nhánh 2 xác nhận nhận đủ mới cộng tồn.",
-    src: "/images/screens/dieu-chuyen-kiem-ke-kho.jpg?v=2",
+    src: "/images/screens/dieu-chuyen-kiem-ke-kho.jpg?v=3",
     alt: "Danh sách phiếu điều chuyển kho giữa Kho chính Trụ sở, Quầy trưng bày và Kho Chi nhánh 2",
   },
   {
@@ -890,7 +889,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Đợt Tuần lễ Vàng & Bạc Tháng 10 phát hành 12 mã, 6 mã đã dùng giúp kéo doanh thu đơn hàng từ 412,5 triệu lên 586,8 triệu đồng.",
-    src: "/images/screens/voucher-khuyen-mai.jpg?v=2",
+    src: "/images/screens/voucher-khuyen-mai.jpg?v=3",
     alt: "Màn hình quản lý kho voucher và đợt phát hành khuyến mãi kèm thống kê doanh thu",
   },
   {
@@ -921,7 +920,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "14:35 bạc thỏi 999 tăng 18.000đ/lượng → trong 3 giây cả 6 nhóm Zalo (hơn 3.000 thành viên) nhận ngay ảnh bảng giá mới kèm số hotline chốt đơn.",
-    src: "/images/screens/zalo-bot-bao-gia.jpg?v=2",
+    src: "/images/screens/zalo-bot-bao-gia.jpg?v=3",
     alt: "Bảng điều khiển Zalo Bot tự động sinh ảnh bảng giá vàng bạc và gửi vào các nhóm Zalo",
   },
   {
@@ -951,8 +950,8 @@ export const FEATURE_MODULES = [
       },
     ],
     example:
-      "Khách Lê Thị Cẩm Tú vừa chốt hợp đồng HD2610140005 → điện thoại khách nhận ngay tin Zalo OA xác nhận đơn và lịch hẹn giao ngày 19/10/2026.",
-    src: "/images/screens/zalo-oa-zns.jpg?v=2",
+      "Khách hàng vừa chốt hợp đồng HD2610140005 → điện thoại khách nhận ngay tin Zalo OA xác nhận đơn và lịch hẹn giao ngày 19/10/2026.",
+    src: "/images/screens/zalo-oa-zns.jpg?v=3",
     alt: "Nhật ký gửi tin nhắn Zalo OA (ZNS) tự động: xác nhận đơn hàng, mời khách nhận hàng và thông báo hoá đơn MISA",
   },
   {
@@ -971,7 +970,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Cuối ngày kiểm quỹ chi nhánh 1 thiếu 200.000đ → sổ quỹ chỉ ra một phiếu chi đã lập nhưng chưa ai duyệt.",
-    src: "/images/screens/kiem-quy-menh-gia.jpg",
+    src: "/images/screens/kiem-quy-menh-gia.jpg?v=3",
     alt: "Phiếu kiểm kê tiền mặt: đếm theo từng mệnh giá, so với sổ quỹ, chênh lệch 0",
   },
   {
@@ -990,7 +989,7 @@ export const FEATURE_MODULES = [
     ],
     example:
       "Cuối tháng kế toán mở MISA đã thấy đủ chứng từ bán hàng của 5 chi nhánh, mã nào lệch thì danh sách đối soát chỉ ra.",
-    src: "/images/screens/lai-lo-tung-don.jpg",
+    src: "/images/screens/lai-lo-tung-don.jpg?v=3",
     alt: "Báo cáo lãi lỗ theo từng đơn: doanh thu, giá vốn, lãi và tỉ lệ lãi",
   },
 ] as const
@@ -1179,8 +1178,8 @@ export function VbFooter() {
           <Link href={FEATURES_HREF} className="hover:text-white">
             Chức năng
           </Link>
-          <a href={GOEAT_URL} className="hover:text-white">
-            GoEat , suất ăn công nghiệp
+          <a href={GOPLUS_URL} className="hover:text-white">
+            Hệ sinh thái Goplus
           </a>
         </div>
       </div>

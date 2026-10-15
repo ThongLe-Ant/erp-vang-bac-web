@@ -53,7 +53,7 @@ import {
 
 const SLIDE_MS = 6000
 
-/* Ảnh chụp trên DB dữ liệu mẫu (tiệm "An Phúc" bịa), không chụp từ app đang
+/* Ảnh chụp trên DB dữ liệu giả lập ("Cửa hàng Demo"), không chụp từ app đang
  * nối DB thật của khách. */
 const SLIDES = [
   {
@@ -63,7 +63,7 @@ const SLIDES = [
     title: "Bán theo giá vàng bạc thời gian thực, khoá giá chống trượt",
     text: "Mở giỏ hàng là giữ nguyên đơn giá tại giây bấm — đổi bảng giá giữa chừng đơn vẫn không trượt.",
     url: "vangbac.goplus.vn/vi/pos",
-    src: "/images/screens/quay-phu-quy.jpg",
+    src: "/images/screens/quay-phu-quy.jpg?v=3",
     alt: "Quầy POS bán hàng theo giá vàng bạc thời gian thực kèm đồng hồ khoá giá chống trượt giá",
     fit: "object-contain object-center",
   },
@@ -74,7 +74,7 @@ const SLIDES = [
     title: "Đặt đơn nối thẳng hệ thống Phú Quý, tính ngay biên lãi",
     text: "Tự lấy mã đơn YD...K, chiết khấu đại lý và đối chiếu lãi gộp trên từng đơn bán.",
     url: "vangbac.goplus.vn/vi/purchase-orders",
-    src: "/images/screens/dat-hang-phu-quy.jpg?v=2",
+    src: "/images/screens/dat-hang-phu-quy.jpg?v=3",
     alt: "Danh sách đơn đặt hàng kết nối trực tiếp hệ thống Phú Quý kèm chiết khấu và biên lợi nhuận",
     fit: "object-contain object-center",
   },
@@ -85,7 +85,7 @@ const SLIDES = [
     title: "Mua lại hợp đồng bạc & khớp phiên bán lại Phú Quý",
     text: "Thu mua lại hợp đồng bạc vật chất, theo dõi trạng thái bán lại và gom đơn vào phiên chốt lời.",
     url: "vangbac.goplus.vn/vi/resell-phu-quy",
-    src: "/images/screens/mua-ban-lai-phu-quy.jpg?v=2",
+    src: "/images/screens/mua-ban-lai-phu-quy.jpg?v=3",
     alt: "Quản lý đơn mua lại hợp đồng bạc Phú Quý và trạng thái bán lại BYD...K",
     fit: "object-contain object-center",
   },
@@ -96,7 +96,7 @@ const SLIDES = [
     title: "Mua bán vàng bạc truyền thống, in tem kim hoàn & thu mua",
     text: "Tính khối lượng × giá tuổi + công + đá, cân trừ đá trừ dơ và in tem 2 cánh chuẩn Thông tư 22.",
     url: "vangbac.goplus.vn/vi/gold/pos",
-    src: "/images/screens/ban-vang-tuoi.jpg",
+    src: "/images/screens/ban-vang-tuoi.jpg?v=3",
     alt: "Quầy vàng truyền thống tính khối lượng nhân giá tuổi cộng tiền công và tiền đá",
     fit: "object-contain object-center",
   },
@@ -107,7 +107,7 @@ const SLIDES = [
     title: "Hợp đồng cầm đồ, nhắc hạn chuộc & quản lý két tài sản",
     text: "Theo dõi tiền cầm, kỳ đóng lãi, hạn chuộc, định giá món cầm và vị trí két lưu giữ theo chi nhánh.",
     url: "vangbac.goplus.vn/vi/pawn",
-    src: "/images/screens/hop-dong-cam.jpg",
+    src: "/images/screens/hop-dong-cam.jpg?v=3",
     alt: "Danh sách hợp đồng cầm đồ với tiền cầm, lãi suất và hạn chuộc",
     fit: "object-contain object-center",
   },
@@ -118,7 +118,7 @@ const SLIDES = [
     title: "Bot tự gửi bảng giá vào nhóm Zalo & tin ZNS cho khách",
     text: "Giá nhảy là Bot tự vẽ bảng giá gửi vào các nhóm Zalo sỉ/lẻ; khách chốt đơn nhận ngay tin Zalo OA.",
     url: "vangbac.goplus.vn/vi/zalo-bot",
-    src: "/images/screens/zalo-bot-bao-gia.jpg?v=2",
+    src: "/images/screens/zalo-bot-bao-gia.jpg?v=3",
     alt: "Zalo Bot tự động gửi ảnh bảng giá vàng bạc vào các nhóm Zalo",
     fit: "object-contain object-center",
   },
