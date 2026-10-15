@@ -663,7 +663,7 @@ export function VbLandingPage() {
                 </h2>
               </div>
 
-              <div className="relative isolate mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
+              <div className="relative isolate mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
                 <SoftGlow className="inset-x-1/4 -inset-y-10" />
                 {PLANS.map((p) => {
                   const dark = p.tone === "dark"
@@ -671,7 +671,7 @@ export function VbLandingPage() {
                   return (
                     <div
                       key={p.id}
-                      className={`relative flex flex-col rounded-xl border p-7 ${
+                      className={`relative flex flex-col rounded-xl border p-6 lg:px-5 ${
                         dark
                           ? "sysdark:border-[#4A3A14] sysdark:bg-[#141F30] border-[#0F1B2D] bg-[#0F1B2D] text-white"
                           : featured
@@ -680,7 +680,7 @@ export function VbLandingPage() {
                       }`}
                     >
                       {featured && (
-                        <span className="sysdark:bg-[#9C7218] absolute -top-3 left-7 rounded-full bg-[#8A6516] px-3 py-1 text-[11px] font-semibold text-white">
+                        <span className="sysdark:bg-[#9C7218] absolute -top-3 left-6 rounded-full bg-[#8A6516] px-3 py-1 text-[11px] font-semibold text-white lg:left-5">
                           Đầy đủ vàng &amp; bạc
                         </span>
                       )}
@@ -694,13 +694,22 @@ export function VbLandingPage() {
                         {p.name}
                       </h3>
 
-                      <div className="mt-4 flex items-baseline gap-1">
-                        <span className="tnum text-3xl font-bold tracking-tight">
-                          {p.price}
+                      <div className="mt-4 flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
+                        <span className="tnum text-2xl font-bold tracking-tight lg:text-[22px]">
+                          {p.price.startsWith("Từ ") ? (
+                            <>
+                              <span className="mr-1 text-sm font-semibold tracking-normal">
+                                Từ
+                              </span>
+                              {p.price.slice(3)}
+                            </>
+                          ) : (
+                            p.price
+                          )}
                         </span>
                         {p.unit && (
                           <span
-                            className={`text-sm ${dark ? "sysdark:text-[#D9C189] text-[#E8D49A]" : "sysdark:text-[#8B93A3] text-[#5B6475]"}`}
+                            className={`shrink-0 text-sm whitespace-nowrap ${dark ? "sysdark:text-[#D9C189] text-[#E8D49A]" : "sysdark:text-[#8B93A3] text-[#5B6475]"}`}
                           >
                             {p.unit}
                           </span>
