@@ -1,36 +1,30 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
-import {
-  ArrowLeft,
-  Check,
-  Globe,
-  Mail,
-  MessageCircle,
-  Phone,
-  Printer,
-  ShieldCheck,
-} from "lucide-react"
+import { Check, Minus, Printer } from "lucide-react"
 
 import {
   CONTACT,
   DEALER_MODELS,
+  Eyebrow,
   FEATURE_MODULES,
+  GuideRails,
+  HEADING_STYLE,
   PLANS,
+  PLAN_MATRIX,
+  RailMarks,
   VbFooter,
   VbHeader,
-  VbWordmark,
 } from "./vb-shared"
 
 export function VbBrochurePage() {
   return (
-    <div className="sysdark:bg-[#08090B] sysdark:text-[#F5F7FA] min-h-dvh bg-[#F4F6FA] text-[#0B1220] antialiased print:bg-white print:text-[#0B1220]">
+    <div className="sysdark:bg-[#08090B] sysdark:text-[#F5F7FA] sysdark:selection:bg-[#9C7218] min-h-dvh bg-white text-[#0B1220] antialiased selection:bg-[#8A6516] selection:text-white print:bg-white print:text-[#0B1220]">
       <style>{`
         @media print {
           @page {
             size: A4 portrait;
-            margin: 10mm;
+            margin: 12mm;
           }
           body {
             background: #ffffff !important;
@@ -44,12 +38,6 @@ export function VbBrochurePage() {
           a[aria-label="Nhắn Zalo đặt lịch demo ERP Vàng Bạc"] {
             display: none !important;
           }
-          .vb-print-sheet {
-            box-shadow: none !important;
-            border: 1px solid #d6dce6 !important;
-            margin: 0 !important;
-            max-width: 100% !important;
-          }
           .vb-print-break {
             break-before: page;
             page-break-before: always;
@@ -62,110 +50,84 @@ export function VbBrochurePage() {
         <div aria-hidden="true" className="h-[76px]" />
       </div>
 
-      {/* Thanh công cụ phía trên tờ Brochure (ẩn khi in PDF) */}
-      <div className="vb-no-print sysdark:border-[#1F232A] sysdark:bg-[#0E1014] border-b border-[#D6DCE6] bg-white">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-3.5 sm:px-6">
-          <div className="flex items-center gap-3">
-            <Link
-              href="/cam-nang"
-              className="sysdark:text-[#E3C77A] inline-flex items-center gap-1.5 text-xs font-semibold text-[#8A6516] hover:underline"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              Quay lại Cẩm nang
-            </Link>
-            <span className="text-xs text-[#8B93A3]">|</span>
-            <span className="sysdark:text-[#A3AAB8] text-xs font-medium text-[#4B5565]">
-              Bản tóm tắt giải pháp B2B (Chuẩn in A4 / Lưu PDF gửi Zalo)
-            </span>
-          </div>
+      <div className="relative overflow-x-clip">
+        <GuideRails />
 
-          <div className="flex items-center gap-2.5">
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="inline-flex items-center gap-2 rounded-full bg-[#8A6516] px-4 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#6F5112]"
-            >
-              <Printer className="h-3.5 w-3.5" />
-              In / Lưu file PDF gửi khách
-            </button>
-            <a
-              href={CONTACT.zalo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#0068FF] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#0057D6]"
-            >
-              <MessageCircle className="h-3.5 w-3.5" />
-              Nhắn Zalo tư vấn
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Khung tài liệu Brochure */}
-      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:py-10 print:p-0">
-        <div className="vb-print-sheet sysdark:border-[#262B33] sysdark:bg-[#111317] overflow-hidden rounded-2xl border border-[#D6DCE6] bg-white shadow-xl print:rounded-none">
-          {/* Đầu trang Hồ sơ giải pháp */}
-          <div className="bg-[#241906] bg-[radial-gradient(ellipse_80%_90%_at_85%_0%,rgba(218,165,52,0.42),transparent_70%),linear-gradient(135deg,#241906_0%,#4A350C_52%,#261B07_100%)] p-6 text-white sm:p-8">
-            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-              <div>
-                <VbWordmark onDark />
-                <p className="mt-1 font-mono text-[11px] tracking-[0.08em] text-[#E8D49A] uppercase">
-                  Hồ sơ giải pháp quản trị toàn diện · Hệ sinh thái Goplus
+        {/* ---------- Đầu bản tóm tắt ---------- */}
+        <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-10 pb-10 lg:pt-14 lg:pb-12 print:pt-0 print:pb-6">
+          <RailMarks />
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+              <div className="max-w-2xl">
+                <Eyebrow>Tóm tắt giải pháp · vangbac.goplus.vn</Eyebrow>
+                <h1
+                  className="sysdark:text-[#F5F7FA] mt-2 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
+                  style={HEADING_STYLE}
+                >
+                  ERP Vàng Bạc — Quản lý đại lý bạc tích trữ, tiệm vàng truyền
+                  thống &amp; cầm đồ
+                </h1>
+                <p className="sysdark:text-[#A3AAB8] mt-2.5 text-sm leading-relaxed text-[#4B5565]">
+                  Tự cập nhật giá từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat. Quản lý
+                  bán hàng khoá giá chống trượt, thu mua trừ đá trừ dơ, in tem
+                  Thông tư 22, hợp đồng cầm đồ, tồn kho nhiều chi nhánh và đồng
+                  bộ MISA AMIS trên một hệ thống.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-[#E4E7EE]">
-                <span className="inline-flex items-center gap-1.5">
-                  <Globe className="h-3.5 w-3.5 text-[#E8D49A]" />
-                  vangbac.goplus.vn
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Phone className="h-3.5 w-3.5 text-[#E8D49A]" />
-                  Zalo / Hotline: {CONTACT.phoneLabel}
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Mail className="h-3.5 w-3.5 text-[#E8D49A]" />
-                  {CONTACT.email}
-                </span>
+
+              <div className="flex flex-col items-start gap-3 lg:items-end">
+                <div className="vb-no-print flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => window.print()}
+                    className="sysdark:border-[#343A44] sysdark:text-[#E6E9EF] sysdark:hover:border-[#C99A2E] inline-flex items-center gap-1.5 rounded-full border border-[#C9D0DC] px-4 py-2 text-xs font-semibold text-[#111827] transition-colors hover:border-[#8A6516]"
+                  >
+                    <Printer className="h-3.5 w-3.5" />
+                    In / Lưu PDF (A4)
+                  </button>
+                  <a
+                    href={CONTACT.zalo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sysdark:bg-[#C99A2E] sysdark:text-[#0B1220] inline-flex items-center rounded-full bg-[#0F1B2D] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#1C2B44]"
+                  >
+                    Nhắn Zalo đặt lịch demo
+                  </a>
+                </div>
+                <p className="tnum sysdark:text-[#8B93A3] font-mono text-xs text-[#5B6475]">
+                  Zalo / ĐT: {CONTACT.phoneLabel} · {CONTACT.email}
+                </p>
               </div>
             </div>
+          </div>
+        </section>
 
-            <h1 className="mt-5 text-xl leading-snug font-bold sm:text-2xl">
-              Phần mềm ERP chuyên biệt cho Đại lý Bạc tích trữ, Chuỗi Tiệm vàng
-              truyền thống &amp; Hiệu Cầm đồ
-            </h1>
-            <p className="mt-2 max-w-3xl text-xs leading-relaxed text-[#E4E7EE] sm:text-sm">
-              Đồng bộ bảng giá tự động từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat ·
-              Khoá giá chống trượt tại POS · Quản lý hợp đồng bạc hẹn giao, nối
-              đơn &amp; phiên bán lại Phú Quý · Bán vàng theo tuổi + công + đá,
-              thu mua trừ đá trừ dơ, in tem Thông tư 22 · Hợp đồng cầm đồ &amp;
-              ô két · Zalo OA (ZNS) &amp; Đồng bộ kế toán MISA AMIS.
-            </p>
+        {/* ---------- 01. Ba mô hình áp dụng (cùng lưới kẻ dọc với trang chủ) ---------- */}
+        <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-10 lg:pt-12 print:pt-6">
+          <RailMarks />
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <Eyebrow index="01">Mô hình áp dụng</Eyebrow>
           </div>
 
-          {/* Mục 1: 3 Mô hình kinh doanh mục tiêu */}
-          <div className="sysdark:border-[#1F232A] border-b border-[#E3E7EE] p-6 sm:p-8">
-            <p className="sysdark:text-[#E3C77A] font-mono text-xs font-semibold tracking-wider text-[#8A6516] uppercase">
-              01 · Ba mô hình triển khai trọng tâm
-            </p>
-            <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="sysdark:border-[#1F232A] mx-auto mt-4 max-w-6xl border-t border-[#E3E7EE]">
+            <div className="sysdark:divide-[#1F232A] grid grid-cols-1 divide-y divide-[#E3E7EE] lg:grid-cols-3 lg:divide-x lg:divide-y-0 print:grid-cols-3 print:divide-x print:divide-y-0">
               {DEALER_MODELS.map((m, idx) => (
-                <div
-                  key={m.id}
-                  className="sysdark:border-[#262B33] sysdark:bg-[#0E1014] rounded-xl border border-[#E3E7EE] bg-[#F7F9FC] p-4 print:bg-[#FAFBFD]"
-                >
-                  <p className="sysdark:text-[#E3C77A] font-mono text-[11px] font-semibold text-[#8A6516] uppercase">
-                    0{idx + 1} · {m.badge}
+                <div key={m.id} className="p-6 print:p-4">
+                  <p className="sysdark:text-[#7A8292] font-mono text-[11px] font-medium tracking-[0.08em] text-[#6B7485] uppercase">
+                    {String(idx + 1).padStart(2, "0")} · {m.badge}
                   </p>
-                  <h2 className="sysdark:text-[#F5F7FA] mt-1 text-sm font-bold text-[#0B1220]">
+                  <h2 className="sysdark:text-[#F5F7FA] mt-1.5 text-base font-bold text-[#0B1220]">
                     {m.title}
                   </h2>
-                  <p className="sysdark:text-[#A3AAB8] mt-1 text-xs leading-relaxed text-[#4B5565]">
+                  <p className="sysdark:text-[#A3AAB8] mt-1.5 text-xs leading-relaxed text-[#4B5565]">
                     {m.desc}
                   </p>
-                  <ul className="sysdark:border-[#1F232A] sysdark:text-[#E6E9EF] mt-3 space-y-1.5 border-t border-[#E3E7EE] pt-2.5 text-xs text-[#1F2937]">
+                  <ul className="sysdark:border-[#1F232A] sysdark:text-[#E6E9EF] mt-4 space-y-1.5 border-t border-[#E3E7EE] pt-3 text-xs text-[#1F2937]">
                     {m.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-1.5">
-                        <Check className="sysdark:text-[#E3C77A] mt-0.5 h-3.5 w-3.5 shrink-0 text-[#8A6516]" />
+                      <li key={h} className="flex items-start gap-2">
+                        <span className="sysdark:text-[#E3C77A] font-mono text-[#8A6516]">
+                          —
+                        </span>
                         <span>{h}</span>
                       </li>
                     ))}
@@ -174,131 +136,134 @@ export function VbBrochurePage() {
               ))}
             </div>
           </div>
+        </section>
 
-          {/* Mục 2: Ảnh giao diện trọng tâm */}
-          <div className="sysdark:border-[#1F232A] border-b border-[#E3E7EE] p-6 sm:p-8">
-            <p className="sysdark:text-[#E3C77A] font-mono text-xs font-semibold tracking-wider text-[#8A6516] uppercase">
-              02 · Giao diện vận hành thực tế tại quầy
-            </p>
-            <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="sysdark:border-[#262B33] overflow-hidden rounded-xl border border-[#D6DCE6]">
-                <Image
-                  src="/images/screens/quay-phu-quy.jpg?v=3"
-                  alt="Quầy POS bán hàng khoá giá chống trượt"
-                  width={1440}
-                  height={900}
-                  sizes="(min-width: 640px) 440px, 100vw"
-                  className="block aspect-[16/10] w-full bg-white object-contain"
-                />
-                <p className="sysdark:bg-[#0E1014] sysdark:text-[#C9CED8] bg-[#F7F9FC] px-3 py-2 text-xs font-medium text-[#374151]">
-                  <b>Quầy POS Bạc &amp; Vàng thương hiệu:</b> Khoá giá ngay giây
-                  tạo đơn, VietQR tự động gạch nợ ngân hàng.
-                </p>
-              </div>
-              <div className="sysdark:border-[#262B33] overflow-hidden rounded-xl border border-[#D6DCE6]">
-                <Image
-                  src="/images/screens/ban-vang-tuoi.jpg?v=3"
-                  alt="Quầy vàng truyền thống tính cân nhân giá tuổi cộng công và đá"
-                  width={1440}
-                  height={900}
-                  sizes="(min-width: 640px) 440px, 100vw"
-                  className="block aspect-[16/10] w-full bg-white object-contain"
-                />
-                <p className="sysdark:bg-[#0E1014] sysdark:text-[#C9CED8] bg-[#F7F9FC] px-3 py-2 text-xs font-medium text-[#374151]">
-                  <b>Quầy Kim hoàn truyền thống:</b> Tính Khối lượng × Giá tuổi
-                  vàng + Công + Đá, thu mua trừ đá/dơ, in tem TT22.
-                </p>
-              </div>
+        {/* ---------- 02. Danh mục 16 phân hệ nghiệp vụ ---------- */}
+        <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-10 lg:pt-12 print:pt-6">
+          <RailMarks />
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="flex items-baseline justify-between gap-4">
+              <Eyebrow index="02">Danh mục 16 phân hệ nghiệp vụ</Eyebrow>
+              <Link
+                href="/chuc-nang"
+                className="vb-no-print sysdark:text-[#E3C77A] text-xs font-semibold text-[#8A6516] hover:underline"
+              >
+                Xem ảnh màn hình từng phân hệ →
+              </Link>
             </div>
           </div>
 
-          {/* Mục 3: 16 Phân hệ nghiệp vụ khép kín */}
-          <div className="vb-print-break sysdark:border-[#1F232A] border-b border-[#E3E7EE] p-6 sm:p-8">
-            <p className="sysdark:text-[#E3C77A] font-mono text-xs font-semibold tracking-wider text-[#8A6516] uppercase">
-              03 · Danh mục 16 phân hệ nghiệp vụ trên cùng một hệ thống
-            </p>
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="sysdark:border-[#1F232A] mx-auto mt-4 max-w-6xl border-t border-[#E3E7EE]">
+            <div className="sysdark:divide-[#1F232A] grid grid-cols-1 divide-y divide-[#E3E7EE] md:grid-cols-2 md:[&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-[#E3E7EE] sysdark:md:[&>*:nth-child(odd)]:border-[#1F232A] print:grid-cols-2">
               {FEATURE_MODULES.map((m, i) => (
                 <div
                   key={m.id}
-                  className="sysdark:border-[#262B33] sysdark:bg-[#0E1014] rounded-lg border border-[#E3E7EE] bg-[#FAFBFD] p-3"
+                  className="flex items-start justify-between gap-4 px-6 py-3.5 print:px-4 print:py-2.5"
                 >
-                  <p className="sysdark:text-[#E3C77A] font-mono text-[11px] font-bold text-[#8A6516]">
-                    {String(i + 1).padStart(2, "0")} · {m.name}
-                  </p>
-                  <p className="sysdark:text-[#C9CED8] mt-1 text-xs leading-relaxed text-[#374151]">
-                    {m.brief}
-                  </p>
+                  <div className="min-w-0">
+                    <p className="sysdark:text-[#F5F7FA] text-sm font-semibold text-[#0B1220]">
+                      <span className="tnum sysdark:text-[#E3C77A] mr-2 font-mono text-xs text-[#8A6516]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {m.name}
+                    </p>
+                    <p className="sysdark:text-[#A3AAB8] mt-0.5 text-xs leading-relaxed text-[#4B5565]">
+                      {m.brief}
+                    </p>
+                  </div>
+                  <span className="sysdark:text-[#7A8292] shrink-0 font-mono text-[11px] text-[#6B7485]">
+                    {"scope" in m ? m.scope : m.when}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
+        </section>
 
-          {/* Mục 4: Bảng giá thuê bao & Cam kết triển khai */}
-          <div className="p-6 sm:p-8">
-            <p className="sysdark:text-[#E3C77A] font-mono text-xs font-semibold tracking-wider text-[#8A6516] uppercase">
-              04 · Bảng giá gói thuê bao &amp; Cam kết bảo mật dữ liệu
-            </p>
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {PLANS.map((p) => {
-                const featured = p.tone === "featured"
-                return (
-                  <div
-                    key={p.id}
-                    className={`flex flex-col rounded-xl border p-4 ${
-                      featured
-                        ? "sysdark:border-[#C99A2E] sysdark:bg-[#131009] border-[#8A6516] bg-[#FAF6EC]"
-                        : "sysdark:border-[#262B33] sysdark:bg-[#0E1014] border-[#D6DCE6] bg-white"
-                    }`}
-                  >
-                    <p className="sysdark:text-[#E3C77A] text-xs font-bold tracking-wide text-[#8A6516] uppercase">
-                      {p.name}
-                    </p>
-                    <p className="sysdark:text-[#F5F7FA] tnum mt-1 text-lg font-bold text-[#0B1220]">
-                      {p.price}
-                      <span className="text-xs font-normal text-[#5B6475]">
-                        {p.unit}
-                      </span>
-                    </p>
-                    <p className="sysdark:text-[#8B93A3] mt-1 text-xs text-[#4B5565]">
-                      {p.note}
-                    </p>
-                    <ul className="sysdark:border-[#1F232A] sysdark:text-[#E6E9EF] mt-3 space-y-1 border-t border-[#E3E7EE] pt-2.5 text-xs text-[#1F2937]">
-                      {p.items.map((item) => (
-                        <li key={item} className="flex items-start gap-1.5">
-                          <Check className="sysdark:text-[#E3C77A] mt-0.5 h-3.5 w-3.5 shrink-0 text-[#8A6516]" />
-                          <span>{item}</span>
-                        </li>
+        {/* ---------- 03. Bảng giá & phạm vi theo gói ---------- */}
+        <section className="vb-print-break sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] py-10 lg:py-12 print:py-6">
+          <RailMarks />
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <Eyebrow index="03">Bảng giá &amp; phạm vi theo gói</Eyebrow>
+
+            <div className="sysdark:border-[#1F232A] mt-4 overflow-x-auto rounded-lg border border-[#E3E7EE]">
+              <table className="w-full min-w-[600px] text-left text-sm">
+                <thead>
+                  <tr className="sysdark:bg-[#0E1014] bg-[#F7F9FC]">
+                    <th
+                      scope="col"
+                      className="sysdark:text-[#8B93A3] px-5 py-3.5 font-semibold text-[#5B6475]"
+                    >
+                      Phạm vi nghiệp vụ
+                    </th>
+                    {PLANS.map((p) => (
+                      <th
+                        key={p.id}
+                        scope="col"
+                        className="w-[18%] px-3 py-3.5 text-center"
+                      >
+                        <span className="sysdark:text-[#F5F7FA] block font-bold text-[#0B1220]">
+                          {p.name}
+                        </span>
+                        <span className="tnum sysdark:text-[#E3C77A] mt-0.5 block font-mono text-xs font-semibold text-[#8A6516]">
+                          {p.price}
+                          {p.unit}
+                        </span>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {PLAN_MATRIX.map((r) => (
+                    <tr
+                      key={r.label}
+                      className="sysdark:border-[#1F232A] border-t border-[#E3E7EE]"
+                    >
+                      <th
+                        scope="row"
+                        className="sysdark:text-[#E6E9EF] px-5 py-3 font-medium text-[#1F2937]"
+                      >
+                        {r.label}
+                      </th>
+                      {r.cells.map((c, i) => (
+                        <td
+                          key={PLANS[i].id}
+                          className="px-3 py-3 text-center"
+                        >
+                          {c === true ? (
+                            <Check
+                              aria-label="Có"
+                              className="sysdark:text-[#E3C77A] mx-auto h-4 w-4 text-[#8A6516]"
+                            />
+                          ) : c === false ? (
+                            <Minus
+                              aria-label="Không"
+                              className="sysdark:text-[#3A404A] mx-auto h-4 w-4 text-[#C4CBD6]"
+                            />
+                          ) : (
+                            <span className="sysdark:text-[#8B93A3] text-xs font-medium text-[#5B6475]">
+                              {c}
+                            </span>
+                          )}
+                        </td>
                       ))}
-                    </ul>
-                  </div>
-                )
-              })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div className="sysdark:border-[#4A3A14] sysdark:bg-[#141F30] mt-6 flex flex-col justify-between gap-4 rounded-xl border border-[#0F1B2D] bg-[#0F1B2D] p-5 text-white sm:flex-row sm:items-center">
-              <div className="space-y-1">
-                <p className="flex items-center gap-2 text-sm font-bold text-[#E8D49A]">
-                  <ShieldCheck className="h-4 w-4 shrink-0" />
-                  Mỗi chuỗi tiệm chạy trên ứng dụng &amp; cơ sở dữ liệu độc lập
-                </p>
-                <p className="text-xs text-[#C3CAD6]">
-                  Phân quyền chặt chẽ theo vai trò – chi nhánh · Ghi nhật ký mọi
-                  thao tác · Hỗ trợ cài đặt máy in tem &amp; đào tạo nhân sự tận
-                  nơi.
-                </p>
-              </div>
-              <div className="shrink-0 text-left sm:text-right">
-                <p className="text-xs text-[#E8D49A]">
-                  Liên hệ Đặt lịch Demo trực tiếp:
-                </p>
-                <p className="tnum text-base font-bold text-white">
-                  Zalo / ĐT: {CONTACT.phoneLabel}
-                </p>
-              </div>
+            <div className="sysdark:border-[#1F232A] sysdark:text-[#A3AAB8] mt-6 flex flex-col justify-between gap-2 border-t border-[#E3E7EE] pt-4 text-xs text-[#4B5565] sm:flex-row sm:items-center">
+              <span>
+                Mỗi chuỗi đại lý vận hành trên một ứng dụng và một cơ sở dữ liệu
+                riêng biệt. Cài đặt và đào tạo tận nơi khi triển khai.
+              </span>
+              <span className="tnum sysdark:text-[#F5F7FA] shrink-0 font-mono font-semibold text-[#0B1220]">
+                vangbac.goplus.vn · {CONTACT.phoneLabel}
+              </span>
             </div>
           </div>
-        </div>
+        </section>
       </div>
 
       <div className="vb-no-print">

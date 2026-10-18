@@ -1158,52 +1158,38 @@ export function BookDemoBand() {
 
 export function VbFooter() {
   return (
-    <>
-      <footer className="sysdark:border-t border-vb-border sysdark:bg-[#08090B] text-vb-subtle bg-[#1F1505] py-8 text-xs text-[#D9CEB8]">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <span>
-            © 2026 ERP Vàng Bạc, một sản phẩm của{" "}
-            <a
-              href={GOPLUS_URL}
-              className="font-semibold text-[#E3C77A] hover:text-white"
-            >
-              Goplus
-            </a>
-          </span>
-          <div className="flex flex-wrap items-center gap-4">
-            <a href={CONTACT.zalo} className="hover:text-white">
-              Nhắn Zalo
-            </a>
-            <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
-              {CONTACT.email}
-            </a>
-            <Link href={FEATURES_HREF} className="hover:text-white">
-              Chức năng
-            </Link>
-            <Link href="/cam-nang" className="hover:text-white">
-              Cẩm nang
-            </Link>
-            <Link href="/ho-so-giai-phap" className="hover:text-white">
-              Hồ sơ giải pháp (PDF)
-            </Link>
-            <a href={GOPLUS_URL} className="hover:text-white">
-              Hệ sinh thái Goplus
-            </a>
-          </div>
+    <footer className="sysdark:border-t border-vb-border sysdark:bg-[#08090B] text-vb-subtle bg-[#1F1505] py-8 text-xs text-[#D9CEB8]">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <span>
+          © 2026 ERP Vàng Bạc, một sản phẩm của{" "}
+          <a
+            href={GOPLUS_URL}
+            className="font-semibold text-[#E3C77A] hover:text-white"
+          >
+            Goplus
+          </a>
+        </span>
+        <div className="flex flex-wrap items-center gap-4">
+          <a href={CONTACT.zalo} className="hover:text-white">
+            Nhắn Zalo
+          </a>
+          <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
+            {CONTACT.email}
+          </a>
+          <Link href={FEATURES_HREF} className="hover:text-white">
+            Chức năng
+          </Link>
+          <Link href="/cam-nang" className="hover:text-white">
+            Cẩm nang
+          </Link>
+          <Link href="/ho-so-giai-phap" className="hover:text-white">
+            Tóm tắt giải pháp
+          </Link>
+          <a href={GOPLUS_URL} className="hover:text-white">
+            Hệ sinh thái Goplus
+          </a>
         </div>
-      </footer>
-
-      {/* Nút nổi đặt lịch Demo qua Zalo ở góc dưới bên phải */}
-      <a
-        href={CONTACT.zalo}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Nhắn Zalo đặt lịch demo ERP Vàng Bạc"
-        className="fixed right-4 bottom-4 z-40 inline-flex items-center gap-2 rounded-full bg-[#0068FF] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_10px_25px_-5px_rgba(0,104,255,0.55)] ring-1 ring-white/25 transition-transform hover:scale-[1.03] hover:bg-[#0057D6] sm:right-6 sm:bottom-6 sm:px-5 sm:py-3 sm:text-sm"
-      >
-        <MessageCircle className="h-4 w-4 shrink-0" />
-        <span>Nhắn Zalo xem Demo</span>
-      </a>
-    </>
+      </div>
+    </footer>
   )
 }
