@@ -114,12 +114,12 @@ const SLIDES = [
   {
     id: "zalo-bot",
     icon: MessageCircle,
-    tab: "Báo giá",
-    title: "Bot tự gửi bảng giá vào nhóm Zalo & tin ZNS cho khách",
-    text: "Giá nhảy là Bot tự vẽ bảng giá gửi vào các nhóm Zalo sỉ/lẻ; khách chốt đơn nhận ngay tin Zalo OA.",
-    url: "vangbac.goplus.vn/vi/zalo-bot",
+    tab: "Zalo & Báo giá",
+    title: "Tự động xuất ảnh bảng giá Zalo & gửi tin ZNS qua Zalo OA",
+    text: "Giá nhảy là hệ thống tự dựng ảnh bảng giá gửi nhóm sỉ/lẻ; khách chốt đơn nhận ngay tin Zalo OA chính thức.",
+    url: "vangbac.goplus.vn/vi/zalo-oa",
     src: "/images/screens/zalo-bot-bao-gia.jpg?v=3",
-    alt: "Zalo Bot tự động gửi ảnh bảng giá vàng bạc vào các nhóm Zalo",
+    alt: "Tự động xuất ảnh bảng giá vàng bạc cập nhật nhóm Zalo và gửi tin chăm sóc khách hàng qua Zalo OA",
     fit: "object-contain object-center",
   },
 ] as const
@@ -128,7 +128,7 @@ const HERO_POINTS = [
   "Khoá giá chống trượt ngay khi mở đơn tại quầy",
   "Hợp đồng bạc tích trữ, đặt đơn & bán lại Phú Quý",
   "Bán vàng theo tuổi + công + đá, in tem 2 cánh",
-  "Hợp đồng cầm đồ, Bot báo giá nhóm Zalo & Zalo OA",
+  "Hợp đồng cầm đồ, xuất bảng giá & tin nhắn Zalo OA (ZNS)",
 ] as const
 
 const TRUST_ITEMS = [
@@ -437,6 +437,17 @@ function ProductHero() {
 export function VbLandingPage() {
   const [plan, setPlan] = useState<string>("Professional")
   const [showPhone, setShowPhone] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const zaloMessage = `Chào Goplus, mình muốn đặt lịch demo ERP Vàng Bạc (quan tâm gói ${plan}).`
+
+  const handleCopyZalo = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(zaloMessage).catch(() => {})
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 4000)
+    }
+  }
 
   return (
     <div className="bg-vb-bg text-vb-fg selection:bg-vb-gold min-h-dvh antialiased selection:text-white">
@@ -882,11 +893,18 @@ export function VbLandingPage() {
                       href={CONTACT.zalo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={handleCopyZalo}
                       className="flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-[#0068FF] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0057D6]"
                     >
                       <MessageCircle className="h-5 w-5" />
-                      Nhắn Zalo ngay
+                      Nhắn Zalo ngay (Gói {plan})
                     </a>
+                    {copied && (
+                      <p className="sysdark:text-[#E3C77A] text-center text-xs font-medium text-[#8A6516]">
+                        Đã sao chép sẵn câu nhắn gói {plan} — bạn chỉ cần dán
+                        vào khung chat Zalo!
+                      </p>
+                    )}
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-[auto_1fr]">
                       {/* Số điện thoại chỉ hiện khi khách bấm, bấm lần nữa là gọi. */}
                       {showPhone ? (

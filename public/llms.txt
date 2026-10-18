@@ -9,7 +9,7 @@
    - Quản lý đơn bán giao ngay và hợp đồng bạc tích trữ (bạc thỏi, bạc miếng 1 lượng, 5 lượng, 10 lượng, 1kg) hẹn ngày giao.
    - Đặt đơn kết nối trực tiếp hệ thống Phú Quý (mã đơn YD...K), tự tính chiết khấu đại lý và biên lợi nhuận từng đơn.
    - Mua lại hợp đồng bạc tích trữ của khách và gom nhiều đơn mua lại vào một phiên bán lại chốt lời với Phú Quý (mã BYD...K).
-   - Zalo Bot tự động dựng ảnh bảng giá sắc nét và gửi đồng loạt vào các nhóm Zalo sỉ/lẻ ngay khi giá niêm yết thay đổi.
+   - Tự động gửi tin nhắn Zalo OA (ZNS) chính thức và tự động dựng ảnh bảng giá sắc nét cập nhật vào các nhóm Zalo sỉ/lẻ ngay khi giá niêm yết thay đổi.
 2. **Chuỗi tiệm vàng bạc trang sức truyền thống đa chi nhánh**:
    - Bảng giá theo từng tuổi vàng (9999, 999, 24K, 18K, 14K, 10K, bạc 925) áp thống nhất cho mọi chi nhánh.
    - Bán hàng tự nhân khối lượng × giá tuổi vàng + tiền công + tiền đá.
@@ -25,6 +25,12 @@
 ## Trang chính
 - [Trang chủ](https://vangbac.goplus.vn/): Giới thiệu giải pháp, 3 mô hình đại lý mục tiêu, trình chiếu 8 màn hình trọng tâm, quy trình vận hành, bảng giá, hỏi đáp (FAQ) và đặt lịch demo.
 - [Chức năng chi tiết (16 phân hệ)](https://vangbac.goplus.vn/chuc-nang): Mô tả chuyên sâu kèm ảnh chụp màn hình thực tế của 16 phân hệ nghiệp vụ và bảng so sánh gói.
+- [Cẩm nang vận hành tiệm vàng & đại lý bạc](https://vangbac.goplus.vn/cam-nang):
+  - [Quy trình vận hành đại lý bạc tích trữ Phú Quý, Bảo Tín Mạnh Hải, Ancarat](https://vangbac.goplus.vn/cam-nang/van-hanh-dai-ly-bac-tich-tru-phu-quy-btmh-ancarat)
+  - [Quy định in tem nhãn vàng bạc trang sức chuẩn Thông tư 22/2013/TT-BKHCN](https://vangbac.goplus.vn/cam-nang/quy-dinh-in-tem-nhan-vang-trang-suc-thong-tu-22)
+  - [Giải pháp đồng bộ phần mềm bán hàng tiệm vàng bạc với kế toán & hoá đơn điện tử MISA AMIS](https://vangbac.goplus.vn/cam-nang/ket-noi-hoa-don-dien-tu-misa-amis-cho-tiem-vang-bac)
+  - [Kinh nghiệm quản lý hiệu cầm đồ vàng bạc, sơ đồ ô két tài sản & kiểm soát tồn kho đa chi nhánh](https://vangbac.goplus.vn/cam-nang/quan-ly-cam-do-vang-bac-va-kiem-ke-kho-da-chi-nhanh)
+- [Hồ sơ giải pháp B2B (Brochure PDF)](https://vangbac.goplus.vn/ho-so-giai-phap): Tài liệu tóm tắt giải pháp 2 trang chuẩn A4 dành cho chủ chuỗi đại lý bạc, tiệm vàng và hiệu cầm đồ.
 
 ## Danh mục 16 phân hệ chức năng (/chuc-nang)
 1. **Giá vàng bạc tự cập nhật (#gia-vang)**: Đồng bộ giá Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới; lưu lịch sử từng nhịp đổi giá.
@@ -39,8 +45,8 @@
 10. **Kho & sơ đồ ô két tài sản cầm (#kho-tai-san-cam)**: Quản lý vị trí lưu giữ từng món cầm, điều chuyển và kiểm kê tài sản cầm.
 11. **Điều chuyển & kiểm kê kho đa chi nhánh (#dieu-chuyen-kho)**: Luân chuyển hàng hoá giữa Kho chính, Quầy trưng bày và các chi nhánh có xác nhận 2 đầu.
 12. **Quản lý Voucher & chương trình khuyến mãi (#voucher-khuyen-mai)**: Phát hành mã ưu đãi theo chiến dịch, đo lường doanh thu trước và sau khuyến mãi.
-13. **Zalo Bot tự gửi bảng báo giá vào nhóm Zalo (#zalo-bot-bao-gia)**: Tự động dựng ảnh PNG bảng giá và phát sóng vào hàng chục nhóm Zalo khách sỉ/lẻ mỗi khi giá nhảy.
-14. **Tin nhắn Zalo OA ZNS tự động (#zalo-oa-zns)**: Gửi ZNS xác nhận đơn hàng, báo có hàng hẹn lấy và thông báo phát hành hoá đơn điện tử MISA.
+13. **Tin nhắn Zalo OA ZNS tự động (#zalo-oa-zns)**: Gửi ZNS xác nhận đơn hàng, báo có hàng hẹn lấy và thông báo phát hành hoá đơn điện tử MISA.
+14. **Ảnh bảng giá Zalo tự động (#zalo-bot-bao-gia)**: Tự động dựng ảnh PNG bảng giá và cập nhật vào các nhóm Zalo khách sỉ/lẻ mỗi khi giá nhảy.
 15. **Sổ quỹ & kiểm quỹ theo mệnh giá (#kho-quy)**: Phiếu thu chi, kiểm đếm tiền mặt theo từng mệnh giá cuối ca và đối chiếu sổ quỹ.
 16. **Báo cáo lãi lỗ từng đơn & đồng bộ MISA AMIS (#bao-cao)**: Báo cáo lợi nhuận gộp theo giá vốn thực tế từng đơn, công nợ và đẩy chứng từ sang MISA AMIS.
 

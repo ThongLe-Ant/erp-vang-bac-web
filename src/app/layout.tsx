@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Be_Vietnam_Pro, JetBrains_Mono } from "next/font/google"
 import type { ReactNode } from "react"
 
+import { VbAnalytics } from "@/components/vb-analytics"
 import { SITE_URL } from "@/components/vb-seo"
 
 import "./globals.css"
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body className="font-sans">
         <main className="min-h-screen w-full">{children}</main>
+        <VbAnalytics />
       </body>
     </html>
   )

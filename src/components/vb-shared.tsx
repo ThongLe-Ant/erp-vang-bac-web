@@ -893,37 +893,6 @@ export const FEATURE_MODULES = [
     alt: "Màn hình quản lý kho voucher và đợt phát hành khuyến mãi kèm thống kê doanh thu",
   },
   {
-    id: "zalo-bot-bao-gia",
-    icon: MessageCircle,
-    name: "Bot báo giá nhóm Zalo",
-    when: "Tự động 24/7",
-    brief: "Tự sinh ảnh bảng giá sắc nét & bắn vào các nhóm Zalo.",
-    title: "Giá vừa đổi là Bot tự vẽ ảnh bảng giá và gửi vào mọi nhóm Zalo",
-    text: "Kết nối trực tiếp với nguồn giá của tiệm: mỗi khi giá mua bán thay đổi, hệ thống tự động dựng ảnh bảng giá sắc nét kèm hotline đặt hàng và bắn đồng loạt vào các nhóm Zalo sỉ/lẻ mà không cần nhân viên trực.",
-    points: [
-      {
-        t: "Tự động dựng ảnh bảng giá",
-        d: "Ảnh PNG chuẩn nhận diện thương hiệu, rõ giá mua, bán và biến động.",
-      },
-      {
-        t: "Chạy ngầm trên máy chủ",
-        d: "Quét giá định kỳ 25 giây/lần, không cần mở máy tính.",
-      },
-      {
-        t: "Chống spam thông minh",
-        d: "Chỉ phát tin khi giá niêm yết thực sự có thay đổi.",
-      },
-      {
-        t: "Broadcast nhiều nhóm cùng lúc",
-        d: "Gửi đồng thời vào hàng chục nhóm khách sỉ, khách VIP.",
-      },
-    ],
-    example:
-      "14:35 bạc thỏi 999 tăng 18.000đ/lượng → trong 3 giây cả 6 nhóm Zalo (hơn 3.000 thành viên) nhận ngay ảnh bảng giá mới kèm số hotline chốt đơn.",
-    src: "/images/screens/zalo-bot-bao-gia.jpg?v=3",
-    alt: "Bảng điều khiển Zalo Bot tự động sinh ảnh bảng giá vàng bạc và gửi vào các nhóm Zalo",
-  },
-  {
     id: "zalo-oa-zns",
     icon: Bell,
     name: "Tin nhắn Zalo OA (ZNS)",
@@ -953,6 +922,37 @@ export const FEATURE_MODULES = [
       "Khách hàng vừa chốt hợp đồng HD2610140005 → điện thoại khách nhận ngay tin Zalo OA xác nhận đơn và lịch hẹn giao ngày 19/10/2026.",
     src: "/images/screens/zalo-oa-zns.jpg?v=3",
     alt: "Nhật ký gửi tin nhắn Zalo OA (ZNS) tự động: xác nhận đơn hàng, mời khách nhận hàng và thông báo hoá đơn MISA",
+  },
+  {
+    id: "zalo-bot-bao-gia",
+    icon: MessageCircle,
+    name: "Ảnh bảng giá Zalo",
+    when: "Tự động 24/7",
+    brief: "Tự dựng ảnh bảng giá sắc nét & cập nhật nhóm Zalo.",
+    title: "Giá vừa đổi là hệ thống tự vẽ ảnh bảng giá gửi vào nhóm khách hàng",
+    text: "Kết nối trực tiếp với nguồn giá của tiệm: mỗi khi giá mua bán thay đổi, hệ thống tự động dựng ảnh bảng giá sắc nét kèm hotline đặt hàng và cập nhật đồng thời vào các nhóm Zalo sỉ/lẻ mà không cần nhân viên trực.",
+    points: [
+      {
+        t: "Tự động dựng ảnh bảng giá",
+        d: "Ảnh PNG chuẩn nhận diện thương hiệu, rõ giá mua, bán và biến động.",
+      },
+      {
+        t: "Vận hành tự động trên máy chủ",
+        d: "Cập nhật nhịp giá định kỳ 25 giây/lần, không cần mở máy tính.",
+      },
+      {
+        t: "Chỉ gửi khi giá thay đổi",
+        d: "Giữ thông tin nhóm gọn gàng, chỉ thông báo khi có nhịp giá mới.",
+      },
+      {
+        t: "Đồng bộ nhiều nhóm cùng lúc",
+        d: "Cập nhật nhanh cho các nhóm khách sỉ, khách thân thiết và nội bộ.",
+      },
+    ],
+    example:
+      "14:35 bạc thỏi 999 tăng 18.000đ/lượng → trong 3 giây cả 6 nhóm Zalo (hơn 3.000 thành viên) nhận ngay ảnh bảng giá mới kèm số hotline chốt đơn.",
+    src: "/images/screens/zalo-bot-bao-gia.jpg?v=3",
+    alt: "Màn hình cấu hình tự động xuất ảnh bảng giá vàng bạc và cập nhật vào các nhóm Zalo",
   },
   {
     id: "kho-quy",
@@ -1005,7 +1005,7 @@ export const FAQ = [
   },
   {
     q: "Phần mềm hỗ trợ chuỗi đại lý bán bạc tích trữ Phú Quý, Bảo Tín Mạnh Hải, Ancarat như thế nào?",
-    a: "Hệ thống tự động cập nhật bảng giá mua vào – bán ra từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới; khoá giá chống trượt giá ngay giây lên đơn; quản lý đơn bán giao ngay và hợp đồng bạc tích trữ hẹn ngày nhận hàng; kết nối đặt đơn trực tiếp lên hệ thống Phú Quý để theo dõi chiết khấu đại lý; quản lý đơn mua lại hợp đồng bạc của khách và gom nhiều đơn vào phiên bán lại chốt lời; đồng thời có Zalo Bot tự vẽ bảng giá gửi vào các nhóm Zalo sỉ/lẻ mỗi khi giá đổi.",
+    a: "Hệ thống tự động cập nhật bảng giá mua vào – bán ra từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới; khoá giá chống trượt giá ngay giây lên đơn; quản lý đơn bán giao ngay và hợp đồng bạc tích trữ hẹn ngày nhận hàng; kết nối đặt đơn trực tiếp lên hệ thống Phú Quý để theo dõi chiết khấu đại lý; quản lý đơn mua lại hợp đồng bạc của khách và gom nhiều đơn vào phiên bán lại chốt lời; đồng thời gửi tin nhắn Zalo OA (ZNS) xác nhận đơn và tự động dựng ảnh bảng giá cập nhật vào các nhóm Zalo sỉ/lẻ mỗi khi giá đổi.",
   },
   {
     q: "Chuỗi tiệm vừa bán bạc tích trữ thương hiệu, vừa bán vàng trang sức truyền thống có dùng chung được không?",
@@ -1037,6 +1037,7 @@ export const NAV_LINKS = [
   { href: "/#san-pham", label: "Sản phẩm" },
   { href: FEATURES_HREF, label: "Chức năng" },
   { href: "/#bang-gia", label: "Bảng giá" },
+  { href: "/cam-nang", label: "Cẩm nang" },
   { href: "/#hoi-dap", label: "Hỏi đáp" },
 ] as const
 
@@ -1157,32 +1158,52 @@ export function BookDemoBand() {
 
 export function VbFooter() {
   return (
-    <footer className="sysdark:border-t border-vb-border sysdark:bg-[#08090B] text-vb-subtle bg-[#1F1505] py-8 text-xs text-[#D9CEB8]">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <span>
-          © 2026 ERP Vàng Bạc, một sản phẩm của{" "}
-          <a
-            href={GOPLUS_URL}
-            className="font-semibold text-[#E3C77A] hover:text-white"
-          >
-            Goplus
-          </a>
-        </span>
-        <div className="flex flex-wrap items-center gap-4">
-          <a href={CONTACT.zalo} className="hover:text-white">
-            Nhắn Zalo
-          </a>
-          <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
-            {CONTACT.email}
-          </a>
-          <Link href={FEATURES_HREF} className="hover:text-white">
-            Chức năng
-          </Link>
-          <a href={GOPLUS_URL} className="hover:text-white">
-            Hệ sinh thái Goplus
-          </a>
+    <>
+      <footer className="sysdark:border-t border-vb-border sysdark:bg-[#08090B] text-vb-subtle bg-[#1F1505] py-8 text-xs text-[#D9CEB8]">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <span>
+            © 2026 ERP Vàng Bạc, một sản phẩm của{" "}
+            <a
+              href={GOPLUS_URL}
+              className="font-semibold text-[#E3C77A] hover:text-white"
+            >
+              Goplus
+            </a>
+          </span>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href={CONTACT.zalo} className="hover:text-white">
+              Nhắn Zalo
+            </a>
+            <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
+              {CONTACT.email}
+            </a>
+            <Link href={FEATURES_HREF} className="hover:text-white">
+              Chức năng
+            </Link>
+            <Link href="/cam-nang" className="hover:text-white">
+              Cẩm nang
+            </Link>
+            <Link href="/ho-so-giai-phap" className="hover:text-white">
+              Hồ sơ giải pháp (PDF)
+            </Link>
+            <a href={GOPLUS_URL} className="hover:text-white">
+              Hệ sinh thái Goplus
+            </a>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+
+      {/* Nút nổi đặt lịch Demo qua Zalo ở góc dưới bên phải */}
+      <a
+        href={CONTACT.zalo}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Nhắn Zalo đặt lịch demo ERP Vàng Bạc"
+        className="fixed right-4 bottom-4 z-40 inline-flex items-center gap-2 rounded-full bg-[#0068FF] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_10px_25px_-5px_rgba(0,104,255,0.55)] ring-1 ring-white/25 transition-transform hover:scale-[1.03] hover:bg-[#0057D6] sm:right-6 sm:bottom-6 sm:px-5 sm:py-3 sm:text-sm"
+      >
+        <MessageCircle className="h-4 w-4 shrink-0" />
+        <span>Nhắn Zalo xem Demo</span>
+      </a>
+    </>
   )
 }

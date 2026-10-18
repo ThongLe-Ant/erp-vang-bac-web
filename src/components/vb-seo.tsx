@@ -18,6 +18,8 @@ export const SITE_URL = (
 
 export const LANDING_PATH = "/"
 export const FEATURES_PATH = "/chuc-nang"
+export const GUIDES_PATH = "/cam-nang"
+export const BROCHURE_PATH = "/ho-so-giai-phap"
 
 const abs = (path: string) => `${SITE_URL}${path}`
 
@@ -39,7 +41,8 @@ const KEYWORDS = [
   "phần mềm cầm đồ vàng bạc",
   "phần mềm quản lý hiệu cầm đồ",
   "phần mềm in tem vàng Thông tư 22",
-  "bot báo giá vàng bạc Zalo",
+  "bảng giá vàng bạc tự động Zalo",
+  "Zalo OA ZNS tiệm vàng bạc",
   "thu mua vàng cũ trừ đá trừ dơ",
   "ERP Vàng Bạc",
   "Goplus",
@@ -150,7 +153,7 @@ const software = {
   url: abs(LANDING_PATH),
   image: `${SITE_URL}${OG_IMAGE.url}`,
   description:
-    "Phần mềm quản lý chuyên biệt cho chuỗi đại lý bạc tích trữ (Phú Quý, Bảo Tín Mạnh Hải, Ancarat), chuỗi tiệm vàng bạc trang sức truyền thống đa chi nhánh và hiệu cầm đồ: đồng bộ giá tự động theo nguồn, khoá giá chống trượt giá tại quầy, quản lý hợp đồng bạc vật chất hẹn giao, đặt đơn nối hệ thống Phú Quý, khớp phiên bán lại, bán vàng theo tuổi vàng có cân trừ đá trừ dơ, in tem kim hoàn Thông tư 22, điều chuyển kho liên chi nhánh, Bot báo giá nhóm Zalo, Zalo OA ZNS và đồng bộ MISA AMIS.",
+    "Phần mềm quản lý chuyên biệt cho chuỗi đại lý bạc tích trữ (Phú Quý, Bảo Tín Mạnh Hải, Ancarat), chuỗi tiệm vàng bạc trang sức truyền thống đa chi nhánh và hiệu cầm đồ: đồng bộ giá tự động theo nguồn, khoá giá chống trượt giá tại quầy, quản lý hợp đồng bạc vật chất hẹn giao, đặt đơn nối hệ thống Phú Quý, khớp phiên bán lại, bán vàng theo tuổi vàng có cân trừ đá trừ dơ, in tem kim hoàn Thông tư 22, điều chuyển kho liên chi nhánh, Zalo OA ZNS chính thức, tự động xuất ảnh bảng giá Zalo và đồng bộ MISA AMIS.",
   audience: {
     "@type": "BusinessAudience",
     audienceType:
@@ -268,6 +271,95 @@ export function featuresJsonLd() {
             description: m.text,
           })),
         },
+      },
+    ],
+  }
+}
+
+export function guidesIndexJsonLd(
+  guides: ReadonlyArray<{
+    slug: string
+    title: string
+    description: string
+  }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization,
+      software,
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}${GUIDES_PATH}#webpage`,
+        url: abs(GUIDES_PATH),
+        name: "Cẩm nang vận hành đại lý bạc tích trữ, tiệm vàng truyền thống & cầm đồ — ERP Vàng Bạc",
+        inLanguage: "vi",
+        about: { "@id": APP_ID },
+        publisher: { "@id": ORG_ID },
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: guides.map((g, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `${SITE_URL}${GUIDES_PATH}/${g.slug}`,
+            name: g.title,
+            description: g.description,
+          })),
+        },
+      },
+    ],
+  }
+}
+
+export function guideArticleJsonLd(article: {
+  slug: string
+  title: string
+  description: string
+  publishedAt: string
+  heroImage: string
+}) {
+  const url = abs(`${GUIDES_PATH}/${article.slug}`)
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization,
+      software,
+      {
+        "@type": "TechArticle",
+        "@id": `${url}#article`,
+        headline: article.title,
+        description: article.description,
+        datePublished: article.publishedAt,
+        dateModified: article.publishedAt,
+        inLanguage: "vi",
+        url,
+        image: `${SITE_URL}${article.heroImage.replace(/\?.*$/, "")}`,
+        author: { "@id": ORG_ID },
+        publisher: { "@id": ORG_ID },
+        about: { "@id": APP_ID },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "ERP Vàng Bạc",
+            item: abs(LANDING_PATH),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Cẩm nang",
+            item: abs(GUIDES_PATH),
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: url,
+          },
+        ],
       },
     ],
   }
