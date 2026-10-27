@@ -4,106 +4,100 @@ import React, { useCallback, useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
-  ArrowLeftRight,
   ArrowRight,
   Check,
-  RefreshCw,
-  Sparkles,
-  FileSpreadsheet,
+  Gem,
   HandCoins,
   History,
-  Landmark,
   Mail,
   Maximize2,
   MessageCircle,
   Phone,
+  RefreshCw,
   Scale,
   ShieldCheck,
   ShoppingCart,
   Smartphone,
-  TrendingUp,
   Users,
-  Vault,
   X,
 } from "lucide-react"
 
 import {
+  BOOK_DEMO_HREF,
+  BookDemoBand,
   CONTACT,
   CubeBackdrop,
   DEALER_MODELS,
-  Eyebrow,
   FAQ,
   FEATURES_HREF,
-  FEATURE_MODULES,
   GuideRails,
+  HEADING_STYLE,
+  PLANS,
   RailMarks,
   SoftGlow,
   VbFooter,
   VbHeader,
-  HEADING_STYLE,
-  PLANS,
-  BOOK_DEMO_HREF,
-  BookDemoBand,
 } from "./vb-shared"
 
 /* ============================================================================
- * Trang giới thiệu ERP Vàng Bạc bản gọn: sản phẩm (slider) → một ngày ở tiệm
- * → bảng giá → hỏi đáp → liên hệ đặt lịch demo. Chi tiết từng chức năng ở trang /chuc-nang.
+ * Trang giới thiệu ERP Vàng Bạc:
+ * - Hero nền khối lập phương 3D viền LED + màn hình thực tế cỡ lớn (940px)
+ * - 3 mô hình tiệm kèm mức giá tương ứng (khung kiến trúc liền mạch)
+ * - Bộ sưu tập 6 màn hình nghiệp vụ thực tế cỡ lớn (2 cột rõ nét, không đè nhãn)
+ * - Bảng giá 4 gói rõ ràng, Hỏi đáp & Đặt lịch demo.
  * ========================================================================== */
 
 const SLIDE_MS = 6000
 
-/* Ảnh chụp trên DB dữ liệu giả lập ("Cửa hàng Demo"), không chụp từ app đang
- * nối DB thật của khách. */
 const SLIDES = [
   {
     id: "pos-khoa-gia",
     icon: ShoppingCart,
     tab: "Bán quầy",
-    title: "Bán theo giá vàng bạc thời gian thực, khoá giá chống trượt",
-    text: "Mở giỏ hàng là giữ nguyên đơn giá tại giây bấm — đổi bảng giá giữa chừng đơn vẫn không trượt.",
+    title: "Bán theo giá vàng bạc thời gian thực, chống trượt giá đơn mua bán",
+    text: "Lên đơn là giữ nguyên đơn giá cho khách, dù bảng giá thay đổi giữa lúc thanh toán đơn vẫn không bị trượt giá.",
     url: "vangbac.goplus.vn/vi/pos",
     src: "/images/screens/quay-phu-quy.jpg?v=3",
-    alt: "Quầy POS bán hàng theo giá vàng bạc thời gian thực kèm đồng hồ khoá giá chống trượt giá",
-    fit: "object-contain object-center",
-  },
-  {
-    id: "dat-hang-phu-quy",
-    icon: RefreshCw,
-    tab: "Đặt đơn",
-    title: "Đặt đơn nối thẳng hệ thống Phú Quý, tính ngay biên lãi",
-    text: "Tự lấy mã đơn YD...K, chiết khấu đại lý và đối chiếu lãi gộp trên từng đơn bán.",
-    url: "vangbac.goplus.vn/vi/purchase-orders",
-    src: "/images/screens/dat-hang-phu-quy.jpg?v=3",
-    alt: "Danh sách đơn đặt hàng kết nối trực tiếp hệ thống Phú Quý kèm chiết khấu và biên lợi nhuận",
-    fit: "object-contain object-center",
-  },
-  {
-    id: "ban-lai-phu-quy",
-    icon: Scale,
-    tab: "Bán lại",
-    title: "Mua lại hợp đồng bạc & khớp phiên bán lại Phú Quý",
-    text: "Thu mua lại hợp đồng bạc vật chất, theo dõi trạng thái bán lại và gom đơn vào phiên chốt lời.",
-    url: "vangbac.goplus.vn/vi/resell-phu-quy",
-    src: "/images/screens/mua-ban-lai-phu-quy.jpg?v=3",
-    alt: "Quản lý đơn mua lại hợp đồng bạc Phú Quý và trạng thái bán lại BYD...K",
+    alt: "Quầy POS bán hàng theo giá vàng bạc thời gian thực và chống trượt giá đơn mua bán",
     fit: "object-contain object-center",
   },
   {
     id: "vang-truyen-thong",
-    icon: Sparkles,
-    tab: "Vàng tuổi",
-    title: "Mua bán vàng bạc truyền thống, in tem kim hoàn & thu mua",
-    text: "Tính khối lượng × giá tuổi + công + đá, cân trừ đá trừ dơ và in tem 2 cánh chuẩn Thông tư 22.",
+    icon: Gem,
+    tab: "Vàng tuổi & Đá quý",
+    title: "Bán trang sức theo tuổi vàng + tiền công + đá quý & in tem 2 cánh",
+    text: "Tính khối lượng × giá tuổi + công + đá, cân trừ đá trừ dơ và in tem kim hoàn chuẩn Thông tư 22.",
     url: "vangbac.goplus.vn/vi/gold/pos",
     src: "/images/screens/ban-vang-tuoi.jpg?v=3",
     alt: "Quầy vàng truyền thống tính khối lượng nhân giá tuổi cộng tiền công và tiền đá",
     fit: "object-contain object-center",
   },
   {
+    id: "dat-hang-phu-quy",
+    icon: RefreshCw,
+    tab: "Đặt hàng Phú Quý",
+    title: "Đặt hàng trực tiếp với Phú Quý, tính rõ chiết khấu & tiền lời",
+    text: "Tự đồng bộ mã đơn YD...K, chiết khấu đại lý và tính tiền lời trên từng đơn bán.",
+    url: "vangbac.goplus.vn/vi/purchase-orders",
+    src: "/images/screens/dat-hang-phu-quy.jpg?v=3",
+    alt: "Danh sách đơn đặt hàng kết nối trực tiếp hệ thống Phú Quý kèm chiết khấu và tiền lời",
+    fit: "object-contain object-center",
+  },
+  {
+    id: "ban-lai-phu-quy",
+    icon: Scale,
+    tab: "Mua bán lại",
+    title: "Mua lại hợp đồng bạc & khớp phiên bán lại Phú Quý",
+    text: "Thu mua lại hợp đồng bạc của khách, theo dõi trạng thái và gom đơn vào phiên bán lại Phú Quý.",
+    url: "vangbac.goplus.vn/vi/resell-phu-quy",
+    src: "/images/screens/mua-ban-lai-phu-quy.jpg?v=3",
+    alt: "Quản lý đơn mua lại hợp đồng bạc Phú Quý và trạng thái bán lại BYD...K",
+    fit: "object-contain object-center",
+  },
+  {
     id: "cam-do",
     icon: HandCoins,
-    tab: "Cầm đồ",
+    tab: "Cầm đồ & Két",
     title: "Hợp đồng cầm đồ, nhắc hạn chuộc & quản lý két tài sản",
     text: "Theo dõi tiền cầm, kỳ đóng lãi, hạn chuộc, định giá món cầm và vị trí két lưu giữ theo chi nhánh.",
     url: "vangbac.goplus.vn/vi/pawn",
@@ -116,7 +110,7 @@ const SLIDES = [
     icon: MessageCircle,
     tab: "Zalo & Báo giá",
     title: "Tự động xuất ảnh bảng giá Zalo & gửi tin ZNS qua Zalo OA",
-    text: "Giá nhảy là hệ thống tự dựng ảnh bảng giá gửi nhóm sỉ/lẻ; khách chốt đơn nhận ngay tin Zalo OA chính thức.",
+    text: "Khi giá thay đổi, phần mềm tự tạo ảnh bảng giá gửi nhóm Zalo sỉ/lẻ và nhắn tin Zalo OA xác nhận đơn cho khách.",
     url: "vangbac.goplus.vn/vi/zalo-oa",
     src: "/images/screens/zalo-bot-bao-gia.jpg?v=3",
     alt: "Tự động xuất ảnh bảng giá vàng bạc cập nhật nhóm Zalo và gửi tin chăm sóc khách hàng qua Zalo OA",
@@ -125,10 +119,62 @@ const SLIDES = [
 ] as const
 
 const HERO_POINTS = [
-  "Khoá giá chống trượt ngay khi mở đơn tại quầy",
-  "Hợp đồng bạc tích trữ, đặt đơn & bán lại Phú Quý",
-  "Bán vàng theo tuổi + công + đá, in tem 2 cánh",
-  "Hợp đồng cầm đồ, xuất bảng giá & tin nhắn Zalo OA (ZNS)",
+  "Chống trượt giá đơn mua bán khi thị trường biến động",
+  "Bán vàng theo tuổi + tiền công + đá quý, in tem 2 cánh TT22",
+  "Đặt hàng & khớp phiên bán lại bạc tích trữ Phú Quý, BTMH, Ancarat",
+  "Hợp đồng cầm đồ, két tài sản & xuất bảng giá Zalo tự động",
+] as const
+
+/** 6 màn hình thực tế hiển thị khổ lớn 2 cột (không đè nhãn lên ảnh). */
+const VISUAL_SHOWCASE = [
+  {
+    id: "tem-kim-hoan",
+    title: "In tem trang sức kim hoàn 2 cánh chuẩn Thông tư 22",
+    desc: "In rõ tuổi vàng, khối lượng vàng - đá - tổng, tiền công và nhà sản xuất cho từng món nữ trang.",
+    src: "/images/screens/in-tem-kim-hoan.jpg?v=3",
+    alt: "Màn hình thiết kế và in tem kim hoàn 2 cánh chuẩn Thông tư 22",
+    href: "/chuc-nang#vang-truyen-thong",
+  },
+  {
+    id: "thu-mua-can-lai",
+    title: "Thu mua vàng cũ trừ đá, trừ dơ & thu cũ đổi mới tính chênh lệch",
+    desc: "Tự tính giá trị thu lại theo tuổi vàng thực tế và cấn trừ trực tiếp vào hoá đơn mua món mới.",
+    src: "/images/screens/thu-mua-can.jpg?v=3",
+    alt: "Màn hình thu mua vàng bạc trừ đá trừ dơ và thu cũ đổi mới",
+    href: "/chuc-nang#vang-truyen-thong",
+  },
+  {
+    id: "bang-gia-tu-dong",
+    title: "Đồng bộ bảng giá Phú Quý, BTMH, Ancarat toàn chuỗi",
+    desc: "Giá hãng đổi là toàn bộ quầy bán và màn hình TV tại các chi nhánh cập nhật tức thì.",
+    src: "/images/screens/gia-bac-thi-truong.jpg?v=3",
+    alt: "Bảng giá bạc và vàng thị trường tự động cập nhật theo thời gian thực",
+    href: "/chuc-nang#gia-vang",
+  },
+  {
+    id: "so-do-ket-cam",
+    title: "Quản lý két & khay giữ tài sản cầm đồ theo chi nhánh",
+    desc: "Biết chính xác từng món trang sức, đá quý cầm cố đang cất ở két nào, ngăn nào tại chi nhánh.",
+    src: "/images/screens/o-luu-tai-san.jpg?v=3",
+    alt: "Sơ đồ két lưu giữ tài sản cầm đồ theo từng ngăn và chi nhánh",
+    href: "/chuc-nang#kho-tai-san-cam",
+  },
+  {
+    id: "zalo-bao-gia",
+    title: "Tự động xuất ảnh bảng giá gửi Zalo & nhắn tin chăm sóc khách hàng",
+    desc: "Tự tạo ảnh bảng giá mang thương hiệu tiệm gửi nhóm Zalo và nhắn lịch hẹn giao, nhắc hạn chuộc.",
+    src: "/images/screens/zalo-bot-bao-gia.jpg?v=3",
+    alt: "Tự động xuất ảnh bảng giá vàng bạc gửi nhóm Zalo và tin nhắn ZNS",
+    href: "/chuc-nang#zalo-bot-bao-gia",
+  },
+  {
+    id: "lai-gop-tung-don",
+    title: "Tính lời lỗ từng đơn bán & kiểm quỹ theo mệnh giá tiền",
+    desc: "Chốt ca đếm tờ tiền mặt khớp sổ quỹ, tính ngay tiền lời thực tế trên mỗi giao dịch mua bán.",
+    src: "/images/screens/lai-lo-tung-don.jpg?v=3",
+    alt: "Báo cáo lời lỗ trên từng đơn bán vàng bạc và đối soát dòng tiền",
+    href: "/chuc-nang#bao-cao",
+  },
 ] as const
 
 const TRUST_ITEMS = [
@@ -140,30 +186,16 @@ const TRUST_ITEMS = [
 
 const PLAN_OPTIONS = PLANS.map((p) => p.name)
 
-/** Dòng thời gian trang chủ: một ngày ở tiệm, 6 bước. Vàng truyền thống và
- * kho tài sản cầm chỉ ở trang /chuc-nang cho dòng thời gian khỏi dài. */
-const TIMELINE_IDS = [
-  "gia-vang",
-  "ban-hang",
-  "thu-mua",
-  "cam-do",
-  "kho-quy",
-  "bao-cao",
-] as const
-const TIMELINE = TIMELINE_IDS.map(
-  (id) => FEATURE_MODULES.find((m) => m.id === id)!,
-)
+/* ---------- Phần đầu: chữ gọn bên trái, ảnh sản phẩm to bên phải ---------- */
 
-/* ---------- Phần đầu: chữ một hàng, ảnh sản phẩm to ở giữa ----------
- * Khung ảnh tự co theo chiều cao màn hình để vào trang là thấy trọn ảnh,
- * màn cao thì ảnh to ra tới hết bề ngang. Tab chức năng nằm trên thanh khung. */
-
-function ProductHero() {
+function ProductHero({
+  onOpenLightbox,
+}: {
+  onOpenLightbox: (img: { src: string; alt: string; title: string }) => void
+}) {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const [reduceMotion, setReduceMotion] = useState(false)
-  /** Ảnh đang phóng to (điện thoại: ảnh chụp màn máy tính quá nhỏ để đọc). */
-  const [zoomed, setZoomed] = useState(false)
   const touchX = useRef<number | null>(null)
 
   const count = SLIDES.length
@@ -180,20 +212,7 @@ function ProductHero() {
     return () => mq.removeEventListener("change", onChange)
   }, [])
 
-  const autoplay = !paused && !reduceMotion && !zoomed
-
-  // Khung phóng to: khoá cuộn trang phía sau, Esc để đóng.
-  useEffect(() => {
-    if (!zoomed) return
-    const prev = document.body.style.overflow
-    document.body.style.overflow = "hidden"
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setZoomed(false)
-    window.addEventListener("keydown", onKey)
-    return () => {
-      document.body.style.overflow = prev
-      window.removeEventListener("keydown", onKey)
-    }
-  }, [zoomed])
+  const autoplay = !paused && !reduceMotion
 
   useEffect(() => {
     if (!autoplay) return
@@ -208,10 +227,10 @@ function ProductHero() {
       <style>{`@keyframes vb-slide-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes vb-fade-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}`}</style>
 
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
-        {/* Chữ giới thiệu - cột trái */}
+        {/* Cột trái: tối đa 4 thành phần, không gắn hộp phụ rườm rà */}
         <div className="min-w-0">
           <p className="sysdark:text-[#D9C189] font-mono text-xs font-medium tracking-[0.08em] text-[#E8D49A] uppercase">
-            ERP Vàng Bạc · Bạc tích trữ · Kim hoàn · Cầm đồ
+            Kim hoàn · Đá quý · Bạc tích trữ · Cầm đồ
           </p>
           <h1
             className="mt-3 font-semibold tracking-[-0.025em] [text-wrap:balance] text-white"
@@ -220,7 +239,8 @@ function ProductHero() {
               lineHeight: 1.18,
             }}
           >
-            Phần mềm quản lý tiệm vàng bạc, đại lý bạc tích trữ &amp; cầm đồ
+            Phần mềm quản lý tiệm vàng bạc, kim hoàn đá quý &amp; đại lý bạc
+            tích trữ
           </h1>
           <p className="mt-3 text-base leading-relaxed [text-wrap:pretty] text-[#F2F4F8]">
             Tự cập nhật giá từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat. Quản lý bán
@@ -246,15 +266,12 @@ function ProductHero() {
               href="#bang-gia"
               className="sysdark:hover:bg-white/5 inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-white/10 active:scale-[0.98]"
             >
-              Xem bảng giá
+              Bảng giá · từ 3tr/tháng
             </a>
           </div>
-          <p className="sysdark:text-[#D9C189] mt-3 text-xs text-[#E8D49A]">
-            Demo trên dữ liệu mẫu, theo đúng mô hình tiệm của bạn.
-          </p>
         </div>
 
-        {/* Khung ảnh sản phẩm */}
+        {/* Cột phải: Khung ảnh sản phẩm cỡ lớn (560px - 940px) */}
         <div
           className="w-full lg:w-[clamp(560px,calc((100dvh-220px)*16/10),min(940px,calc(100vw-500px)))]"
           onMouseEnter={() => setPaused(true)}
@@ -263,16 +280,11 @@ function ProductHero() {
           onBlurCapture={() => setPaused(false)}
         >
           <div className="sysdark:bg-[#111317] overflow-hidden rounded-xl border border-white/20 bg-white shadow-[0_40px_80px_-30px_rgba(0,0,0,0.55)]">
-            <div className="sysdark:border-[#1F232A] sysdark:bg-[#16191E] flex items-center gap-2 border-b border-[#E3E7EE] bg-[#F4F6FA] px-2.5 py-2">
-              <div className="hidden shrink-0 gap-1.5 pl-1 sm:flex">
-                <span className="sysdark:bg-[#343A44] h-2.5 w-2.5 rounded-full bg-[#D3D9E2]" />
-                <span className="sysdark:bg-[#343A44] h-2.5 w-2.5 rounded-full bg-[#D3D9E2]" />
-                <span className="sysdark:bg-[#343A44] h-2.5 w-2.5 rounded-full bg-[#D3D9E2]" />
-              </div>
+            <div className="sysdark:border-[#1F232A] sysdark:bg-[#16191E] flex items-center justify-between gap-2 border-b border-[#E3E7EE] bg-[#F4F6FA] px-2.5 py-2">
               <div
                 role="tablist"
                 aria-label="Chức năng sản phẩm"
-                className="relative grid min-w-0 flex-1 grid-cols-3 gap-1 sm:flex sm:justify-center"
+                className="relative grid min-w-0 flex-1 grid-cols-3 gap-1 sm:flex sm:justify-start"
               >
                 {SLIDES.map((s, i) => {
                   const Icon = s.icon
@@ -313,15 +325,21 @@ function ProductHero() {
                   )
                 })}
               </div>
-              <div className="hidden shrink-0 items-center gap-2 pr-1 sm:flex">
-                <span className="sysdark:border-[#262B33] sysdark:bg-[#111317] sysdark:text-[#8B93A3] hidden rounded border border-[#E3E7EE] bg-white px-2 py-0.5 font-mono text-[11px] text-[#5B6475] xl:inline-block">
-                  {active.url}
-                </span>
-                <span className="tnum sysdark:text-[#6B7280] font-mono text-xs font-semibold text-[#8B93A3]">
-                  {String(index + 1).padStart(2, "0")}/
-                  {String(count).padStart(2, "0")}
-                </span>
-              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  onOpenLightbox({
+                    src: active.src,
+                    alt: active.alt,
+                    title: active.title,
+                  })
+                }
+                className="sysdark:border-[#262B33] sysdark:bg-[#111317] sysdark:text-[#C9CED8] hidden shrink-0 items-center gap-1.5 rounded-md border border-[#D6DCE6] bg-white px-2.5 py-1 text-xs font-medium text-[#1F2937] transition-colors hover:border-[#8A6516] sm:inline-flex"
+                aria-label={`Phóng to ảnh: ${active.title}`}
+              >
+                <Maximize2 className="h-3.5 w-3.5 text-[#8A6516]" />
+                <span>Phóng to</span>
+              </button>
             </div>
 
             <div
@@ -329,7 +347,14 @@ function ProductHero() {
               role="tabpanel"
               aria-roledescription="slide"
               aria-label={`${index + 1} / ${count}: ${active.title}`}
-              className="relative overflow-hidden bg-[#F8FAFC]"
+              className="relative cursor-zoom-in overflow-hidden bg-[#F8FAFC]"
+              onClick={() =>
+                onOpenLightbox({
+                  src: active.src,
+                  alt: active.alt,
+                  title: active.title,
+                })
+              }
               onTouchStart={(e) => {
                 touchX.current = e.touches[0]?.clientX ?? null
               }}
@@ -340,9 +365,6 @@ function ProductHero() {
                 touchX.current = null
               }}
             >
-              {/* Các ảnh chồng lên nhau, đổi slide bằng mờ dần thay vì trượt
-               * ngang: không bị tua ngược qua cả dãy khi từ ảnh cuối về ảnh
-               * đầu. Ảnh tải sẵn hết để lúc đổi không bị chớp trắng. */}
               <div className="grid grid-cols-1">
                 {SLIDES.map((s, i) => (
                   <div
@@ -367,10 +389,16 @@ function ProductHero() {
                   </div>
                 ))}
               </div>
-              {/* Điện thoại: chạm để mở ảnh cỡ thật, kéo ngang để xem. */}
               <button
                 type="button"
-                onClick={() => setZoomed(true)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onOpenLightbox({
+                    src: active.src,
+                    alt: active.alt,
+                    title: active.title,
+                  })
+                }}
                 className="absolute inset-0 flex items-end justify-end p-2 sm:hidden"
                 aria-label={`Phóng to ảnh: ${active.title}`}
               >
@@ -390,50 +418,16 @@ function ProductHero() {
               <b className="font-semibold text-white">{active.title}.</b>{" "}
               {active.text}
             </p>
-            <a
+            <Link
               href={FEATURES_HREF}
               className="inline-flex shrink-0 items-center justify-center gap-1.5 text-sm font-semibold text-white hover:underline"
             >
               Xem chi tiết từng chức năng
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
-
-      {zoomed && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={active.title}
-          className="fixed inset-0 z-[100] flex flex-col bg-[#0B1220] sm:hidden"
-        >
-          <div className="flex items-center justify-between gap-3 px-4 py-3 text-white">
-            <p className="min-w-0 text-sm font-semibold">{active.title}</p>
-            <button
-              type="button"
-              onClick={() => setZoomed(false)}
-              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10"
-              aria-label="Đóng"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-          <div className="flex-1 overflow-auto overscroll-contain">
-            <Image
-              src={active.src}
-              alt={active.alt}
-              width={1440}
-              height={900}
-              sizes="1100px"
-              className="block h-auto w-[1100px] max-w-none bg-white"
-            />
-          </div>
-          <p className="px-4 py-3 text-center text-xs text-[#E8D49A]">
-            Kéo ngang để xem hết màn hình
-          </p>
-        </div>
-      )}
     </>
   )
 }
@@ -444,6 +438,11 @@ export function VbLandingPage() {
   const [plan, setPlan] = useState<string>("Professional")
   const [showPhone, setShowPhone] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [lightbox, setLightbox] = useState<{
+    src: string
+    alt: string
+    title: string
+  } | null>(null)
 
   const zaloMessage = `Chào Goplus, mình muốn đặt lịch demo ERP Vàng Bạc (quan tâm gói ${plan}).`
 
@@ -454,6 +453,18 @@ export function VbLandingPage() {
       window.setTimeout(() => setCopied(false), 4000)
     }
   }
+
+  useEffect(() => {
+    if (!lightbox) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setLightbox(null)
+    window.addEventListener("keydown", onKey)
+    return () => {
+      document.body.style.overflow = prev
+      window.removeEventListener("keydown", onKey)
+    }
+  }, [lightbox])
 
   return (
     <div className="bg-vb-bg text-vb-fg selection:bg-vb-gold min-h-dvh antialiased selection:text-white">
@@ -467,11 +478,11 @@ export function VbLandingPage() {
         >
           <CubeBackdrop />
           <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-            <ProductHero />
+            <ProductHero onOpenLightbox={setLightbox} />
           </div>
         </section>
 
-        {/* Phần dưới đầu trang: chung một khung kẻ dọc. */}
+        {/* Phần dưới đầu trang: chung một khung kẻ dọc */}
         <div className="relative overflow-x-clip">
           <GuideRails />
 
@@ -484,8 +495,8 @@ export function VbLandingPage() {
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8">
               <dl className="divide-vb-border-strong grid grid-cols-3 divide-x lg:col-span-5">
                 {[
-                  { v: "3 nguồn", l: "giá Phú Quý · BTMH · Ancarat" },
-                  { v: "100%", l: "đơn chốt khoá giá chống trượt" },
+                  { v: "3 nguồn", l: "giá Phú Quý, BTMH, Ancarat" },
+                  { v: "100%", l: "đơn mua bán giữ nguyên giá lúc chốt" },
                   { v: "Đa kho", l: "điều chuyển & phân quyền chi nhánh" },
                 ].map((s) => (
                   <div key={s.l} className="px-3 first:pl-0">
@@ -514,7 +525,7 @@ export function VbLandingPage() {
             </div>
           </section>
 
-          {/* ---------- 3 mô hình kinh doanh mục tiêu (khung kẻ sọc nối thẳng GuideRails) ---------- */}
+          {/* ---------- 3 mô hình kinh doanh mục tiêu (khung kẻ sọc nối thẳng GuideRails, kèm giá gói) ---------- */}
           <section
             id="mo-hinh"
             aria-labelledby="mo-hinh-title"
@@ -523,27 +534,25 @@ export function VbLandingPage() {
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="max-w-2xl">
-                <Eyebrow index="01">Mô hình áp dụng</Eyebrow>
                 <h2
                   id="mo-hinh-title"
-                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
+                  className="text-vb-fg font-semibold tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
-                  Dùng cho đại lý bạc tích trữ, tiệm vàng truyền thống &amp;
+                  Dùng cho đại lý bạc tích trữ, tiệm vàng kim hoàn đá quý &amp;
                   hiệu cầm đồ
                 </h2>
               </div>
             </div>
 
-            {/* Lưới 3 cột ăn khớp trực tiếp vào hai đường kẻ dọc GuideRails */}
             <div className="border-vb-border mx-auto mt-10 max-w-6xl border-t">
               <div className="divide-vb-border grid grid-cols-1 divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0">
                 {DEALER_MODELS.map((m, idx) => {
-                  const isFeatured = idx === 0
+                  const isFeatured = idx === 1
                   return (
                     <article
                       key={m.id}
-                      className={`relative flex flex-col p-6 sm:p-8 ${
+                      className={`relative flex flex-col justify-between p-6 sm:p-8 ${
                         isFeatured
                           ? "sysdark:bg-[#131009] sysdark:before:bg-[#C99A2E] bg-[#FAF6EC]/70 before:absolute before:inset-x-0 before:-top-px before:h-[2px] before:bg-[#8A6516]"
                           : ""
@@ -557,24 +566,43 @@ export function VbLandingPage() {
                               : "text-vb-subtle"
                           }`}
                         >
-                          {String(idx + 1).padStart(2, "0")} · {m.badge}
+                          {m.badge}
                         </p>
-                        <h3 className="text-vb-fg mt-2.5 text-lg leading-snug font-bold">
+                        <h3 className="text-vb-fg mt-2 text-lg leading-snug font-bold">
                           {m.title}
                         </h3>
                         <p className="text-vb-muted mt-2 text-sm leading-relaxed">
                           {m.desc}
                         </p>
+
+                        <ul className="border-vb-border text-vb-body mt-5 space-y-2 border-t pt-4 text-sm">
+                          {m.highlights.map((h) => (
+                            <li key={h} className="flex items-start gap-2">
+                              <Check className="text-vb-gold-deep sysdark:text-vb-gold-bright mt-0.5 h-4 w-4 shrink-0" />
+                              <span>{h}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
 
-                      <ul className="border-vb-border text-vb-body mt-5 space-y-2 border-t pt-4 text-sm">
-                        {m.highlights.map((h) => (
-                          <li key={h} className="flex items-start gap-2">
-                            <Check className="text-vb-gold-deep sysdark:text-vb-gold-bright mt-0.5 h-4 w-4 shrink-0" />
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="border-vb-border mt-6 flex items-center justify-between gap-2 border-t pt-4">
+                        <div>
+                          <span className="text-vb-subtle block font-mono text-[11px] uppercase">
+                            Gói {m.planName}
+                          </span>
+                          <span className="tnum text-vb-fg text-base font-bold">
+                            {m.priceTag}
+                          </span>
+                        </div>
+                        <a
+                          href="#bang-gia"
+                          onClick={() => setPlan(m.planName)}
+                          className="text-vb-gold-deep sysdark:text-vb-gold-bright inline-flex items-center gap-1 text-xs font-semibold hover:underline"
+                        >
+                          Xem gói
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </a>
+                      </div>
                     </article>
                   )
                 })}
@@ -582,86 +610,79 @@ export function VbLandingPage() {
             </div>
           </section>
 
-          {/* ---------- Chức năng: một ngày ở tiệm theo dòng thời gian ----------
-           * Lưới kiến trúc 3×2 nối trực tiếp vào GuideRails; chi tiết ở /chuc-nang. */}
+          {/* ---------- Giao diện thực tế: Lưới 2 cột hình ảnh cỡ lớn nối thẳng GuideRails ---------- */}
           <section
             id="chuc-nang"
-            className="bg-vb-bg relative scroll-mt-20 pt-16 pb-8 lg:pt-24 lg:pb-10"
+            aria-labelledby="chuc-nang-title"
+            className="bg-vb-bg relative scroll-mt-20 pt-16 pb-10 lg:pt-20 lg:pb-12"
           >
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-2xl">
-                  <Eyebrow index="02">Cách vận hành</Eyebrow>
                   <h2
-                    className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
+                    id="chuc-nang-title"
+                    className="text-vb-fg font-semibold tracking-[-0.02em] [text-wrap:balance]"
                     style={HEADING_STYLE}
                   >
-                    Một ngày ở tiệm, từ lúc mở cửa tới cuối tháng
+                    Giao diện thực tế tại quầy bán, thu mua &amp; két tài sản
                   </h2>
                 </div>
                 <Link
                   href={FEATURES_HREF}
                   className="text-vb-gold-deep sysdark:text-vb-gold-bright sysdark:hover:text-white inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold transition-colors hover:text-[#4A360B]"
                 >
-                  Xem toàn bộ chức năng
+                  Xem đầy đủ 11 nghiệp vụ
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
 
             <div className="border-vb-border mx-auto mt-10 max-w-6xl border-y">
-              <ol className="bg-vb-border grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-3">
-                {TIMELINE.map((m, i) => {
-                  const Icon = m.icon
-                  return (
-                    <li
-                      key={m.id}
-                      className="bg-vb-bg hover:bg-vb-surface/60 relative flex flex-col justify-between p-6 transition-colors duration-150 sm:p-7"
+              <div className="bg-vb-border grid grid-cols-1 gap-px md:grid-cols-2">
+                {VISUAL_SHOWCASE.map((item) => (
+                  <article
+                    key={item.id}
+                    className="bg-vb-bg flex flex-col justify-between p-5 sm:p-7"
+                  >
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setLightbox({
+                          src: item.src,
+                          alt: item.alt,
+                          title: item.title,
+                        })
+                      }
+                      className="border-vb-border-strong group relative block aspect-[16/10] w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white text-left shadow-xs"
+                      aria-label={`Phóng to ảnh: ${item.title}`}
                     >
-                      <div>
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="tnum text-vb-subtle font-mono text-[11px] font-medium tracking-[0.08em] uppercase">
-                            [{String(i + 1).padStart(2, "0")}] · {m.when}
-                          </span>
-                          <span className="border-vb-border bg-vb-surface text-vb-gold-deep sysdark:text-vb-gold-bright inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border">
-                            <Icon className="h-[18px] w-[18px]" />
-                          </span>
-                        </div>
-                        <h3 className="text-vb-fg mt-4 text-base font-bold">
-                          <Link
-                            href={`${FEATURES_HREF}#${m.id}`}
-                            className="group/step hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright inline-flex items-center gap-1.5 transition-colors"
-                          >
-                            <span>{m.name}</span>
-                            <ArrowRight className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-[transform,opacity] duration-150 group-hover/step:translate-x-0 group-hover/step:opacity-100" />
-                          </Link>
-                        </h3>
-                        <p className="text-vb-muted mt-1.5 text-sm leading-relaxed">
-                          {m.brief}
-                        </p>
-                      </div>
-                    </li>
-                  )
-                })}
-              </ol>
-            </div>
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        width={960}
+                        height={600}
+                        sizes="(min-width: 768px) 520px, 100vw"
+                        className="h-full w-full object-contain object-center transition-transform duration-300 group-hover:scale-[1.015]"
+                      />
+                    </button>
 
-            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-              <p className="text-vb-muted mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-sm">
-                <Smartphone className="text-vb-gold-deep sysdark:text-vb-gold-bright h-4 w-4" />
-                <b className="text-vb-fg font-semibold">
-                  Thêm trên trang Chức năng:
-                </b>
-                đặt đơn Phú Quý, phiên bán lại, điều chuyển kiểm kê kho, in tem
-                Thông tư 22, voucher &amp; Zalo OA.
-                <Link
-                  href={FEATURES_HREF}
-                  className="sysdark:bg-[#4A3A14] rounded-full bg-[#0B1220] px-2.5 py-0.5 font-mono text-xs font-semibold text-white transition-opacity hover:opacity-90"
-                >
-                  11 nghiệp vụ →
-                </Link>
-              </p>
+                    <div className="mt-4">
+                      <h3 className="text-vb-fg text-base font-bold">
+                        <Link
+                          href={item.href}
+                          className="hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright transition-colors"
+                        >
+                          {item.title}
+                        </Link>
+                      </h3>
+                      <p className="text-vb-muted mt-1 text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -675,12 +696,11 @@ export function VbLandingPage() {
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="mx-auto max-w-2xl text-center">
-                <Eyebrow index="03">Bảng giá</Eyebrow>
                 <h2
-                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
+                  className="text-vb-fg font-semibold tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
-                  Chọn gói theo mảng bạn kinh doanh
+                  Bảng giá theo mảng kinh doanh
                 </h2>
               </div>
 
@@ -798,7 +818,7 @@ export function VbLandingPage() {
             </div>
           </section>
 
-          {/* ---------- Hỏi đáp (cùng nội dung với FAQPage trong vb-seo) ---------- */}
+          {/* ---------- Hỏi đáp ---------- */}
           <section
             id="hoi-dap"
             aria-labelledby="hoi-dap-title"
@@ -807,10 +827,9 @@ export function VbLandingPage() {
             <RailMarks />
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
               <div className="lg:col-span-4">
-                <Eyebrow index="04">Hỏi đáp</Eyebrow>
                 <h2
                   id="hoi-dap-title"
-                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
+                  className="text-vb-fg font-semibold tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   Câu hỏi thường gặp
@@ -849,7 +868,7 @@ export function VbLandingPage() {
               <div className="border-vb-border-strong bg-vb-card grid grid-cols-1 overflow-hidden rounded-xl border lg:grid-cols-5">
                 <div className="sysdark:bg-[#140E04] bg-[#241906] bg-[radial-gradient(ellipse_90%_90%_at_90%_0%,rgba(218,165,52,0.34),transparent_70%)] p-8 text-white sm:p-10 lg:col-span-2">
                   <h2
-                    className="font-medium tracking-[-0.02em] [text-wrap:balance]"
+                    className="font-semibold tracking-[-0.02em] [text-wrap:balance]"
                     style={{
                       fontSize: "clamp(1.5rem, 2.2vw, 1.9rem)",
                       lineHeight: 1.2,
@@ -913,12 +932,11 @@ export function VbLandingPage() {
                     </a>
                     {copied && (
                       <p className="text-vb-gold-deep sysdark:text-vb-gold-bright text-center text-xs font-medium">
-                        Đã sao chép sẵn câu nhắn gói {plan} — bạn chỉ cần dán
+                        Đã sao chép sẵn câu nhắn gói {plan}, bạn chỉ cần dán
                         vào khung chat Zalo!
                       </p>
                     )}
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-[auto_1fr]">
-                      {/* Số điện thoại chỉ hiện khi khách bấm, bấm lần nữa là gọi. */}
                       {showPhone ? (
                         <a
                           href={`tel:${CONTACT.phone}`}
@@ -948,7 +966,7 @@ export function VbLandingPage() {
                   </div>
                   <p className="text-vb-subtle mt-4 text-xs">
                     Khi nhắn, cho biết tên tiệm, số chi nhánh và mảng đang kinh
-                    doanh (bạc, vàng, cầm đồ) để hẹn lịch nhanh hơn.
+                    doanh (bạc, vàng, đá quý, cầm đồ) để hẹn lịch nhanh hơn.
                   </p>
                 </div>
               </div>
@@ -956,6 +974,46 @@ export function VbLandingPage() {
           </section>
         </div>
       </div>
+
+      {lightbox && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.title}
+          onClick={() => setLightbox(null)}
+          className="fixed inset-0 z-[100] flex flex-col bg-[#0B1220]/92 p-3 backdrop-blur-md sm:p-6"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 pb-3 text-white"
+          >
+            <p className="min-w-0 truncate text-sm font-semibold sm:text-base">
+              {lightbox.title}
+            </p>
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+              aria-label="Đóng"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="mx-auto flex flex-1 items-center justify-center overflow-auto overscroll-contain rounded-xl border border-white/15 bg-white p-1 shadow-2xl"
+          >
+            <Image
+              src={lightbox.src}
+              alt={lightbox.alt}
+              width={1440}
+              height={900}
+              sizes="100vw"
+              className="block max-h-[82dvh] w-auto max-w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       <VbFooter />
     </div>

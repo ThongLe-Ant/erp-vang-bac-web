@@ -43,7 +43,7 @@ export function VbMobileMenu({
         <nav
           id="vb-mobile-menu"
           aria-label="Điều hướng trang giới thiệu"
-          className="border-vb-border bg-vb-card absolute inset-x-0 top-[calc(100%+8px)] rounded-2xl border px-4 pb-2 shadow-[0_12px_24px_-12px_rgba(11,18,32,0.25)]"
+          className="border-vb-border bg-vb-bg absolute inset-x-0 top-full border-b px-4 pb-3 shadow-[0_12px_24px_-12px_rgba(11,18,32,0.18)]"
         >
           <ul className="divide-vb-border divide-y">
             {links.map((l) => (

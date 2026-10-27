@@ -46,7 +46,7 @@ export const GUIDES: ReadonlyArray<GuideArticle> = [
     title:
       "Vận hành đại lý bạc tích trữ Phú Quý, Bảo Tín Mạnh Hải, Ancarat: Chống trượt giá & quản lý hợp đồng hẹn giao",
     description:
-      "Quy trình bán bạc thỏi, bạc miếng 999 cho đại lý uỷ quyền: tự động đồng bộ giá theo nguồn, khoá giá tại quầy POS, quản lý hợp đồng hẹn giao và nối đơn trực tiếp hệ thống Phú Quý.",
+      "Quy trình bán bạc thỏi, bạc miếng 999 cho đại lý uỷ quyền: tự động đồng bộ giá theo nguồn, chống trượt giá đơn mua bán tại quầy, quản lý hợp đồng hẹn giao và nối đơn trực tiếp hệ thống Phú Quý.",
     heroImage: "/images/screens/dat-hang-phu-quy.jpg?v=3",
     heroAlt:
       "Màn hình đặt đơn kết nối trực tiếp hệ thống Phú Quý kèm chiết khấu đại lý và biên lợi nhuận",
@@ -54,10 +54,10 @@ export const GUIDES: ReadonlyArray<GuideArticle> = [
     relatedFeatureName: "Đặt đơn & bán lại Phú Quý",
     recommendedPlan: "Professional",
     keyTakeaways: [
-      "Tự động đồng bộ bảng giá mua vào – bán ra từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới (XAG/USD).",
-      "Khoá cứng đơn giá ngay tại giây bấm tạo đơn ở quầy POS để tránh trượt giá khi khách đang chuyển khoản.",
-      "Quản lý hợp đồng bạc vật chất hẹn ngày nhận hàng, tiền đặt cọc, trả hàng từng phần và mua lại hợp đồng.",
-      "Đẩy đơn đặt hàng (mã YD...K) và gom đơn khớp phiên bán lại chốt lời (mã BYD...K) trực tiếp với Phú Quý.",
+      "Tự động đồng bộ bảng giá mua vào - bán ra từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới (XAG/USD).",
+      "Giữ nguyên đơn giá lúc lập phiếu ở quầy POS để chống trượt giá đơn mua bán khi khách đang chuyển khoản.",
+      "Quản lý hợp đồng bạc hẹn ngày nhận hàng, tiền đặt cọc, trả hàng từng phần và mua lại hợp đồng.",
+      "Đẩy đơn đặt hàng (mã YD...K) và gom đơn khớp phiên bán lại (mã BYD...K) trực tiếp với Phú Quý.",
     ],
     sections: [
       {
@@ -65,18 +65,18 @@ export const GUIDES: ReadonlyArray<GuideArticle> = [
           "1. Bài toán biến động giá từng phút tại các đại lý bạc tích trữ",
         paragraphs: [
           "Khác với trang sức truyền thống có biên độ giá ổn định theo ngày, các sản phẩm bạc tích trữ (bạc miếng, bạc thỏi 999 bản vị 1 lượng, 5 lượng, 10 lượng, 1kg) của Phú Quý, Bảo Tín Mạnh Hải hay Ancarat biến động liên tục theo nhịp giá bạc thế giới (XAG/USD). Trong những phiên thị trường sôi động, bảng giá niêm yết có thể điều chỉnh từ 5 đến hơn 10 lần chỉ trong một buổi sáng.",
-          "Nếu tiệm hoặc đại lý vẫn vận hành thủ công — nhân viên vừa tiếp khách vừa canh điện thoại xem giá hãng để sửa bảng giá và tính tiền bằng máy tính cầm tay — hai rủi ro lớn thường xuyên xảy ra: báo nhầm giá cũ khiến đại lý mất phần chiết khấu, hoặc bảng giá nhảy đúng lúc khách đang mở ứng dụng ngân hàng chuyển khoản dẫn đến lệch tiền tại quầy.",
+          "Nếu tiệm hoặc đại lý vẫn vận hành thủ công, nhân viên vừa tiếp khách vừa canh điện thoại xem giá hãng để sửa bảng giá và tính tiền bằng máy tính cầm tay, hai rủi ro lớn thường xuyên xảy ra: báo nhầm giá cũ khiến đại lý mất phần chiết khấu, hoặc bảng giá nhảy đúng lúc khách đang mở ứng dụng ngân hàng chuyển khoản dẫn đến lệch tiền tại quầy.",
         ],
         bullets: [
           {
             title: "Đồng bộ giá tự động đa nguồn",
             detail:
-              "ERP Vàng Bạc tự động cập nhật giá mua – bán từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và đối chiếu biểu đồ XAG/USD theo thời gian thực cho toàn bộ chi nhánh.",
+              "ERP Vàng Bạc tự động cập nhật giá mua - bán từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và đối chiếu biểu đồ XAG/USD theo thời gian thực cho toàn bộ chi nhánh.",
           },
           {
-            title: "Đồng hồ khoá giá chống trượt tại POS",
+            title: "Chống trượt giá đơn mua bán tại quầy POS",
             detail:
-              "Ngay giây thu ngân mở giỏ hàng tạo đơn, hệ thống khoá cứng đơn giá của phiên giao dịch đó. Dù bảng giá ngoài thị trường có nhảy trong lúc khách quét VietQR, đơn đã chốt vẫn giữ nguyên mức giá thoả thuận.",
+              "Ngay khi thu ngân mở giỏ hàng tạo đơn, phần mềm giữ nguyên đơn giá của giao dịch đó. Dù bảng giá ngoài thị trường có nhảy trong lúc khách quét VietQR, đơn đã lập vẫn giữ đúng mức giá thoả thuận.",
           },
         ],
       },
@@ -348,7 +348,6 @@ export function VbGuidesIndexPage() {
 
       <div>
         <div aria-hidden="true" className="h-[76px]" />
-
         <div className="relative overflow-x-clip">
           <GuideRails />
 
@@ -359,7 +358,7 @@ export function VbGuidesIndexPage() {
               <div className="max-w-2xl">
                 <Eyebrow index="01">Cẩm nang vận hành</Eyebrow>
                 <h1
-                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
+                  className="text-vb-fg mt-2.5 font-semibold tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   Nghiệp vụ đại lý bạc tích trữ, kim hoàn truyền thống &amp; cầm
@@ -372,7 +371,7 @@ export function VbGuidesIndexPage() {
               </div>
               <Link
                 href="/ho-so-giai-phap"
-                className="border-vb-border-strong text-vb-body hover:border-vb-gold-deep hover:text-vb-gold-deep sysdark:hover:border-[#C99A2E] sysdark:hover:text-vb-gold-bright inline-flex shrink-0 items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
+                className="border-vb-border-strong bg-vb-card text-vb-body hover:border-vb-gold hover:text-vb-gold inline-flex shrink-0 items-center gap-1.5 rounded-md border px-4 py-2 font-mono text-xs font-semibold uppercase transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
               >
                 Bản tóm tắt giải pháp (In A4 / PDF)
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -390,8 +389,8 @@ export function VbGuidesIndexPage() {
                   className="group grid grid-cols-1 gap-6 px-4 py-10 sm:px-6 lg:grid-cols-12 lg:items-start lg:gap-10 lg:px-8 lg:py-12"
                 >
                   <div className="lg:col-span-3">
-                    <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-xs font-medium tracking-[0.06em] uppercase">
-                      {String(idx + 1).padStart(2, "0")} · {g.category}
+                    <p className="tnum text-vb-gold font-mono text-xs font-medium tracking-[0.06em] uppercase">
+                      [{String(idx + 1).padStart(2, "0")}] · {g.category}
                     </p>
                     <p className="tnum text-vb-subtle mt-1 font-mono text-xs">
                       {g.readTime} · Gói {g.recommendedPlan}
@@ -400,7 +399,7 @@ export function VbGuidesIndexPage() {
                       Phân hệ liên quan:{" "}
                       <Link
                         href={`${FEATURES_HREF}#${g.relatedFeatureId}`}
-                        className="text-vb-body decoration-vb-border-strong hover:decoration-vb-gold-deep font-medium underline underline-offset-4"
+                        className="text-vb-body decoration-vb-border-strong hover:decoration-vb-gold font-medium underline underline-offset-4"
                       >
                         {g.relatedFeatureName}
                       </Link>
@@ -408,10 +407,10 @@ export function VbGuidesIndexPage() {
                   </div>
 
                   <div className="lg:col-span-5">
-                    <h2 className="text-vb-fg text-lg leading-snug font-bold sm:text-xl">
+                    <h2 className="text-vb-fg text-xl leading-snug font-bold sm:text-2xl">
                       <Link
                         href={`${GUIDES_PATH}/${g.slug}`}
-                        className="hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright transition-colors"
+                        className="hover:text-vb-gold transition-colors"
                       >
                         {g.title}
                       </Link>
@@ -422,10 +421,10 @@ export function VbGuidesIndexPage() {
                     <div className="mt-4">
                       <Link
                         href={`${GUIDES_PATH}/${g.slug}`}
-                        className="text-vb-gold-deep sysdark:text-vb-gold-bright inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
+                        className="text-vb-gold inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase hover:underline"
                       >
                         Đọc bài hướng dẫn
-                        <ArrowRight className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5" />
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
                       </Link>
                     </div>
                   </div>
@@ -433,13 +432,13 @@ export function VbGuidesIndexPage() {
                   <div className="lg:col-span-4">
                     <Link
                       href={`${GUIDES_PATH}/${g.slug}`}
-                      className="border-vb-border-strong bg-vb-card group-hover:border-vb-gold-deep sysdark:group-hover:border-[#C99A2E] block overflow-hidden rounded-lg border transition-colors"
+                      className="border-vb-border-strong bg-vb-card group-hover:border-vb-gold block overflow-hidden rounded-lg border transition-colors"
                     >
-                      <div className="border-vb-border sysdark:bg-[#16191E] flex h-6 items-center justify-between border-b bg-[#F4F6FA] px-2.5">
+                      <div className="border-vb-border bg-vb-surface flex h-6 items-center justify-between border-b px-2.5">
                         <div className="flex items-center gap-1">
-                          <span className="sysdark:bg-[#262B33] h-2 w-2 rounded-full bg-[#D6DCE6]" />
-                          <span className="sysdark:bg-[#262B33] h-2 w-2 rounded-full bg-[#D6DCE6]" />
-                          <span className="sysdark:bg-[#262B33] h-2 w-2 rounded-full bg-[#D6DCE6]" />
+                          <span className="bg-vb-border-strong h-2 w-2 rounded-full" />
+                          <span className="bg-vb-border-strong h-2 w-2 rounded-full" />
+                          <span className="bg-vb-border-strong h-2 w-2 rounded-full" />
                         </div>
                         <span className="tnum text-vb-subtle font-mono text-[10px]">
                           #{g.relatedFeatureId}
@@ -451,7 +450,7 @@ export function VbGuidesIndexPage() {
                         width={1440}
                         height={900}
                         sizes="(min-width: 1024px) 340px, 100vw"
-                        className="block aspect-[16/10] w-full bg-[#F8FAFC] object-contain object-center"
+                        className="block aspect-[16/10] w-full bg-white object-contain object-center"
                       />
                     </Link>
                   </div>
@@ -478,7 +477,6 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
 
       <div>
         <div aria-hidden="true" className="h-[76px]" />
-
         <div className="relative overflow-x-clip">
           <GuideRails />
 
@@ -490,7 +488,7 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                 <p className="tnum text-vb-subtle font-mono text-xs">
                   <Link
                     href={GUIDES_PATH}
-                    className="text-vb-gold-deep sysdark:text-vb-gold-bright font-medium hover:underline"
+                    className="text-vb-gold font-medium hover:underline"
                   >
                     Cẩm nang
                   </Link>
@@ -503,7 +501,7 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                 </p>
 
                 <h1
-                  className="text-vb-fg mt-3 font-medium tracking-[-0.02em] [text-wrap:balance]"
+                  className="text-vb-fg mt-3.5 font-semibold tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   {article.title}
@@ -522,12 +520,12 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:items-start lg:gap-12 lg:px-8">
               {/* Cột đọc chính (8/12) */}
               <div className="lg:col-span-8">
-                <figure className="border-vb-border-strong bg-vb-card overflow-hidden rounded-xl border">
-                  <div className="border-vb-border sysdark:bg-[#16191E] flex h-8 items-center justify-between border-b bg-[#F4F6FA] px-3">
+                <figure className="border-vb-border-strong bg-vb-card overflow-hidden rounded-lg border">
+                  <div className="border-vb-border bg-vb-surface flex h-8 items-center justify-between border-b px-3">
                     <div className="flex items-center gap-1.5">
-                      <span className="sysdark:bg-[#262B33] h-2.5 w-2.5 rounded-full bg-[#D6DCE6]" />
-                      <span className="sysdark:bg-[#262B33] h-2.5 w-2.5 rounded-full bg-[#D6DCE6]" />
-                      <span className="sysdark:bg-[#262B33] h-2.5 w-2.5 rounded-full bg-[#D6DCE6]" />
+                      <span className="bg-vb-border-strong h-2.5 w-2.5 rounded-full" />
+                      <span className="bg-vb-border-strong h-2.5 w-2.5 rounded-full" />
+                      <span className="bg-vb-border-strong h-2.5 w-2.5 rounded-full" />
                     </div>
                     <span className="tnum text-vb-subtle font-mono text-[11px]">
                       erp.vangbac.goplus.vn · #{article.relatedFeatureId}
@@ -540,22 +538,27 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                     height={900}
                     priority
                     sizes="(min-width: 1024px) 768px, 100vw"
-                    className="block aspect-[16/10] w-full bg-[#F8FAFC] object-contain object-center"
+                    className="block aspect-[16/10] w-full bg-white object-contain object-center"
                   />
                   <figcaption className="border-vb-border bg-vb-surface text-vb-subtle border-t px-4 py-2.5 text-xs">
                     {article.heroAlt}
                   </figcaption>
                 </figure>
 
-                {/* Hộp Tóm tắt cốt lõi (Key Takeaways) */}
-                <div className="border-vb-border bg-vb-surface/80 border-l-vb-gold-deep sysdark:border-l-[#C99A2E] mt-8 rounded-r-xl border border-l-2 p-5 sm:p-6">
-                  <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-xs font-semibold tracking-[0.06em] uppercase">
-                    Tóm tắt cốt lõi · {article.keyTakeaways.length} điểm chính
-                  </p>
-                  <ul className="text-vb-body mt-3.5 space-y-2.5 text-sm leading-relaxed">
+                {/* Hộp Tóm tắt cốt lõi phẳng 1px (tránh Sin #5: thẻ bo góc kèm viền trái màu) */}
+                <div className="border-vb-border bg-vb-surface/65 mt-8 border">
+                  <div className="border-vb-border flex items-center justify-between border-b px-5 py-2.5">
+                    <span className="tnum text-vb-gold font-mono text-xs font-semibold tracking-[0.06em] uppercase">
+                      Tóm tắt cốt lõi
+                    </span>
+                    <span className="tnum text-vb-subtle font-mono text-xs">
+                      {article.keyTakeaways.length} điểm chính
+                    </span>
+                  </div>
+                  <ul className="divide-vb-border text-vb-body divide-y px-5 text-sm leading-relaxed">
                     {article.keyTakeaways.map((point, idx) => (
-                      <li key={point} className="flex items-start gap-3">
-                        <span className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright mt-0.5 font-mono text-xs font-semibold">
+                      <li key={point} className="flex items-start gap-3 py-3">
+                        <span className="tnum text-vb-gold mt-0.5 font-mono text-xs font-semibold">
                           {String(idx + 1).padStart(2, "0")}
                         </span>
                         <span>{point}</span>
@@ -569,9 +572,9 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                     <section
                       key={sec.heading}
                       id={`muc-${idx + 1}`}
-                      className="scroll-mt-28 space-y-3.5"
+                      className="scroll-mt-24 space-y-3.5"
                     >
-                      <h2 className="text-vb-fg text-lg leading-snug font-bold sm:text-xl">
+                      <h2 className="text-vb-fg text-xl leading-snug font-bold sm:text-2xl">
                         {sec.heading}
                       </h2>
                       {sec.paragraphs.map((p) => (
@@ -583,7 +586,7 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                         </p>
                       ))}
                       {sec.bullets && (
-                        <dl className="border-vb-border divide-vb-border bg-vb-surface/40 mt-4 divide-y rounded-lg border px-5">
+                        <dl className="border-vb-border divide-vb-border bg-vb-surface/40 mt-4 divide-y border px-5">
                           {sec.bullets.map((b) => (
                             <div key={b.title} className="py-3.5">
                               <dt className="text-vb-fg text-sm font-semibold">
@@ -602,10 +605,10 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
               </div>
 
               {/* Cột bên phải dính (4/12): Mục lục & Thẻ chuyển đổi phân hệ */}
-              <aside className="space-y-5 lg:sticky lg:top-28 lg:col-span-4">
+              <aside className="space-y-5 lg:sticky lg:top-24 lg:col-span-4">
                 <nav
                   aria-label="Mục lục bài viết"
-                  className="border-vb-border bg-vb-surface/60 rounded-xl border p-5"
+                  className="border-vb-border bg-vb-surface/60 rounded-lg border p-5"
                 >
                   <p className="text-vb-subtle font-mono text-[11px] font-semibold tracking-[0.08em] uppercase">
                     Trên trang này
@@ -615,7 +618,7 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                       <li key={sec.heading}>
                         <a
                           href={`#muc-${idx + 1}`}
-                          className="text-vb-muted hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright flex items-start gap-2 leading-snug transition-colors"
+                          className="text-vb-muted hover:text-vb-gold flex items-start gap-2 leading-snug transition-colors"
                         >
                           <span className="tnum text-vb-subtle mt-0.5 font-mono text-xs">
                             0{idx + 1}
@@ -629,8 +632,8 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                   </ol>
                 </nav>
 
-                <div className="border-vb-border-strong bg-vb-card rounded-xl border p-5">
-                  <p className="text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-[11px] font-semibold tracking-[0.08em] uppercase">
+                <div className="border-vb-border-strong bg-vb-card rounded-lg border p-5">
+                  <p className="text-vb-gold font-mono text-[11px] font-semibold tracking-[0.08em] uppercase">
                     Phân hệ áp dụng trực tiếp
                   </p>
                   <h3 className="text-vb-fg mt-1.5 text-base font-bold">
@@ -646,14 +649,14 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                   <div className="mt-4 flex flex-col gap-2">
                     <Link
                       href={`${FEATURES_HREF}#${article.relatedFeatureId}`}
-                      className="sysdark:bg-[#9C7218] sysdark:hover:bg-[#C99A2E] inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-full bg-[#8A6516] px-4 py-2 text-xs font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-[#6F5112] active:scale-[0.98]"
+                      className="bg-vb-fg text-vb-bg inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-md px-4 py-2 text-xs font-semibold transition-[opacity,transform] duration-150 hover:opacity-88 active:scale-[0.98]"
                     >
                       Xem màn hình chức năng
                       <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
                     <Link
                       href="/#dang-ky"
-                      className="border-vb-border-strong text-vb-body hover:border-vb-gold-deep hover:text-vb-gold-deep sysdark:hover:border-[#C99A2E] sysdark:hover:text-vb-gold-bright inline-flex min-h-[40px] items-center justify-center rounded-full border px-4 py-2 text-xs font-semibold transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
+                      className="border-vb-border-strong text-vb-body hover:border-vb-gold inline-flex min-h-[40px] items-center justify-center rounded-md border px-4 py-2 text-xs font-semibold transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
                     >
                       Đặt lịch demo theo quy trình này
                     </Link>
@@ -684,7 +687,7 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                     <p className="tnum text-vb-subtle font-mono text-xs">
                       {g.category} · {g.readTime}
                     </p>
-                    <h3 className="text-vb-fg group-hover:text-vb-gold-deep sysdark:group-hover:text-vb-gold-bright mt-2 text-base leading-snug font-bold transition-colors">
+                    <h3 className="text-vb-fg group-hover:text-vb-gold mt-2 text-base leading-snug font-bold transition-colors">
                       {g.title}
                     </h3>
                   </Link>

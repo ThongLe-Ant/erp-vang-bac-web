@@ -63,6 +63,7 @@
 
 @theme inline {
   --font-sans: var(--font-vb-sans), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-vb-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-vb-mono), ui-monospace, SFMono-Regular, monospace;
   --color-vb-bg: var(--vb-bg);
   --color-vb-surface: var(--vb-surface);
@@ -75,6 +76,8 @@
   --color-vb-border: var(--vb-border);
   --color-vb-border-strong: var(--vb-border-strong);
   --color-vb-gold: var(--vb-gold);
+  --color-vb-gold-deep: var(--vb-gold);
+  --color-vb-gold-bright: var(--vb-gold);
   --color-vb-gold-hover: var(--vb-gold-hover);
   --color-vb-gold-soft: var(--vb-gold-soft);
   --color-vb-gold-border: var(--vb-gold-border);
@@ -95,7 +98,7 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0a1633;
+  background-color: var(--vb-bg);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -111,5 +114,22 @@ html {
 }
 
 .tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.vb-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--vb-border-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background-color: var(--vb-surface);
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--vb-fg);
   font-variant-numeric: tabular-nums;
 }

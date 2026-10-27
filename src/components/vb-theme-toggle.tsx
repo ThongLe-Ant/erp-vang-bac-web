@@ -64,7 +64,7 @@ export function VbThemeToggle({
     <div
       role="radiogroup"
       aria-label="Giao diện"
-      className={`border-vb-border-strong items-center gap-0.5 rounded-full border p-0.5 ${className}`}
+      className={`border-vb-border-strong bg-vb-surface/70 items-center gap-0.5 rounded-md border p-0.5 ${className}`}
     >
       {OPTIONS.map(({ value, label, icon: Icon }) => {
         const on = current === value
@@ -77,10 +77,10 @@ export function VbThemeToggle({
             aria-label={label}
             title={label}
             onClick={() => apply(value)}
-            className={`inline-flex h-7 w-7 items-center justify-center rounded-full transition-[background-color,color,transform] duration-150 active:scale-95 ${
+            className={`inline-flex h-7 w-7 items-center justify-center rounded-[4px] transition-[background-color,color,transform] duration-150 active:scale-95 ${
               on
-                ? "bg-vb-gold-soft text-vb-gold sysdark:bg-vb-border-strong sysdark:text-white"
-                : "text-vb-subtle hover:text-vb-fg sysdark:hover:text-white"
+                ? "bg-vb-card text-vb-gold shadow-[0_1px_2px_rgba(0,0,0,0.06)]"
+                : "text-vb-subtle hover:text-vb-fg"
             }`}
           >
             <Icon className="h-3.5 w-3.5" />

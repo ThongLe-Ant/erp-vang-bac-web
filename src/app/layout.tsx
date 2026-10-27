@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "ERP Vàng Bạc — Phần mềm chuỗi đại lý vàng bạc, bạc tích trữ & cầm đồ",
+      "ERP Vàng Bạc - Phần mềm chuỗi đại lý vàng bạc, bạc tích trữ & cầm đồ",
     template: "%s | ERP Vàng Bạc",
   },
   icons: { icon: "/images/logos/go-mark.png" },
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0F1B2D" },
-    { media: "(prefers-color-scheme: dark)", color: "#08090B" },
+    { media: "(prefers-color-scheme: light)", color: "#241906" },
+    { media: "(prefers-color-scheme: dark)", color: "#0E0A03" },
   ],
 }
 

@@ -46,15 +46,14 @@ export const CONTACT = {
 export const GOPLUS_URL = "https://goplus.vn"
 
 export const HEADING_STYLE = {
-  fontSize: "clamp(1.65rem, 2.6vw, 2.25rem)",
-  lineHeight: 1.15,
+  fontSize: "clamp(1.75rem, 2.8vw, 2.45rem)",
+  lineHeight: 1.12,
 } as const
 
-/* ---------- Nền khối lập phương ----------
- * Cùng hình học với nền trang đăng nhập (AuthBrandPattern trong core), nhưng vẽ
- * theo đơn vị pixel thay vì viewBox 600×900 co giãn: dùng thẳng component của
- * core trên dải ngang toàn màn hình thì khối bị phóng to gấp đôi, lệch hẳn với
- * trang đăng nhập. */
+/* ---------- Nền khối lập phương 3D viền LED ----------
+ * Cùng hình học với nền trang đăng nhập (AuthBrandPattern trong core), vẽ
+ * theo đơn vị pixel kết hợp các tia sáng LED vàng kim chạy dọc cạnh khối,
+ * gợi liên tưởng tới giác cắt kim cương / đá quý & mạch công nghệ cao. */
 
 const CUBE_A = 72
 const CUBE_DX = (CUBE_A * Math.sqrt(3)) / 2
@@ -277,7 +276,7 @@ export function CubeBackdrop({
           ))}
         </pattern>
         <radialGradient id={`${id}-glow`} cx="0.78" cy="0.08" r="0.9">
-          <stop offset="0" stopColor="#FFD978" stopOpacity="0.26" />
+          <stop offset="0" stopColor="#FFD978" stopOpacity="0.28" />
           <stop offset="0.5" stopColor="#C99A2E" stopOpacity="0.1" />
           <stop offset="1" stopColor="#C99A2E" stopOpacity="0" />
         </radialGradient>
@@ -396,9 +395,8 @@ export function RailMarks() {
   )
 }
 
-/** Nhãn nhỏ đầu mục kiểu kỹ thuật: số thứ tự trong ngoặc vuông + chữ mono. */
+/** Nhãn nhỏ đầu mục kiểu kỹ thuật: chữ mono tối giản, không dùng dấu chấm màu hay số thứ tự giả. */
 export function Eyebrow({
-  index,
   children,
   className = "",
 }: {
@@ -408,15 +406,8 @@ export function Eyebrow({
 }) {
   return (
     <p
-      className={`text-vb-gold inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.08em] uppercase ${className}`}
+      className={`text-vb-gold font-mono text-xs font-medium tracking-[0.08em] uppercase ${className}`}
     >
-      {index ? (
-        <span className="tnum sysdark:text-[#5B6475] text-[#8B96AC]">
-          [{index}]
-        </span>
-      ) : (
-        <span className="h-1.5 w-1.5 bg-current" />
-      )}
       {children}
     </p>
   )
@@ -433,41 +424,50 @@ export function SoftGlow({ className = "" }: { className?: string }) {
   )
 }
 
-/** Ba mô hình kinh doanh mục tiêu mà hệ thống phục vụ trực tiếp. */
+/** Ba mô hình kinh doanh mục tiêu mà hệ thống phục vụ trực tiếp (kèm ảnh màn hình và gói giá khuyên dùng). */
 export const DEALER_MODELS = [
   {
     id: "dai-ly-bac-tich-tru",
     badge: "Đại lý thương hiệu",
     title: "Đại lý bạc tích trữ Phú Quý, Bảo Tín Mạnh Hải, Ancarat",
-    desc: "Bán bạc tích trữ theo giá niêm yết thời gian thực và nối đơn trực tiếp với hãng.",
+    desc: "Bán bạc tích trữ theo giá niêm yết thời gian thực và đặt hàng trực tiếp với hãng.",
+    src: "/images/screens/quay-phu-quy.jpg?v=3",
+    alt: "Quầy POS bán bạc tích trữ theo giá thời gian thực và chống trượt giá đơn mua bán",
+    planName: "Standard",
+    priceTag: "3.000.000đ/tháng",
     highlights: [
       "Tự cập nhật giá Phú Quý, BTMH, Ancarat",
-      "Khoá giá chống trượt ngay lúc lên đơn",
-      "Quản lý hợp đồng hẹn giao & mua lại",
-      "Đặt đơn lấy chiết khấu, khớp phiên bán lại",
+      "Chống trượt giá đơn mua bán khi lên đơn",
+      "Đặt hàng lấy chiết khấu & khớp phiên bán lại",
     ],
   },
   {
     id: "chuoi-vang-bac-truyen-thong",
-    badge: "Kim hoàn truyền thống",
-    title: "Chuỗi tiệm vàng bạc trang sức truyền thống",
-    desc: "Bán trang sức theo tuổi vàng, thu mua vàng cũ đổi mới và quản lý kho đa chi nhánh.",
+    badge: "Kim hoàn & Đá quý",
+    title: "Tiệm vàng bạc, kim hoàn & đá quý trang sức cao cấp",
+    desc: "Bán trang sức theo tuổi vàng, tiền công, tiền đá; thu cũ đổi mới và in tem chuẩn.",
+    src: "/images/screens/ban-vang-tuoi.jpg?v=3",
+    alt: "Quầy vàng kim hoàn tính khối lượng nhân giá tuổi cộng tiền công và tiền đá",
+    planName: "Professional",
+    priceTag: "5.000.000đ/tháng",
     highlights: [
-      "Tính tiền theo tuổi vàng + công + đá",
-      "Thu mua cân trừ đá, trừ dơ, đổi bù",
+      "Tính tiền theo tuổi vàng + tiền công + đá quý",
+      "Thu mua trừ đá, trừ dơ & thu cũ đổi mới",
       "In tem kim hoàn 2 cánh chuẩn Thông tư 22",
-      "Điều chuyển, kiểm kê giữa kho và quầy",
     ],
   },
   {
     id: "hieu-cam-do",
-    badge: "Cầm đồ & tài sản",
-    title: "Chuỗi hiệu cầm đồ vàng bạc",
-    desc: "Quản lý hợp đồng cầm, tính lãi phí theo ngày thực tế và kiểm soát két tài sản.",
+    badge: "Cầm đồ & Két tài sản",
+    title: "Hiệu cầm đồ vàng bạc, kim cương & tài sản",
+    desc: "Quản lý hợp đồng cầm, tính lãi phí theo ngày thực tế và kiểm soát két lưu giữ tài sản.",
+    src: "/images/screens/hop-dong-cam.jpg?v=3",
+    alt: "Danh sách hợp đồng cầm đồ vàng bạc với lãi suất và hạn chuộc",
+    planName: "Business",
+    priceTag: "7.000.000đ/tháng",
     highlights: [
-      "Tính lãi phí theo ngày, thu lãi từng kỳ",
-      "Định giá món cầm theo bảng giá tuổi vàng",
-      "Sơ đồ ô két lưu giữ tài sản từng chi nhánh",
+      "Định giá món cầm & tính lãi phí theo ngày",
+      "Quản lý két & ngăn lưu giữ tài sản từng chi nhánh",
       "Tự động nhắn Zalo nhắc khách trước hạn chuộc",
     ],
   },
@@ -487,7 +487,7 @@ export const SCOPES = [
   {
     id: "vang-truyen-thong",
     name: "Vàng truyền thống",
-    desc: "Bảng giá theo tuổi vàng, tính theo cân + công + đá, thu mua trừ đá trừ dơ, đổi bù, in tem.",
+    desc: "Bảng giá theo tuổi vàng, tính theo cân + công + đá, thu mua trừ đá trừ dơ, thu cũ đổi mới, in tem.",
   },
   {
     id: "cam-do",
@@ -574,8 +574,8 @@ export const FEATURE_MODULES = [
     points: [
       { t: "Tự cập nhật theo nguồn", d: "Không phải hô nhau sửa bảng giá." },
       {
-        t: "Chốt giá chống trượt giá",
-        d: "Khóa cứng đơn giá tại thời điểm bấm tạo đơn.",
+        t: "Chống trượt giá đơn mua bán",
+        d: "Giữ nguyên đơn giá lúc lên đơn, không đổi giá giữa chừng.",
       },
       { t: "Lịch sử từng lần đổi", d: "Tra lại giá ở bất kỳ thời điểm nào." },
       {
@@ -596,11 +596,11 @@ export const FEATURE_MODULES = [
     scope: "Bạc & vàng Phú Quý",
     brief: "Bán và thu mua chung một quầy, chống trượt giá.",
     title: "Bán và thu mua trên cùng một màn hình quầy, chống trượt giá",
-    text: "Chọn sản phẩm, giá lấy thẳng từ bảng giá đang chạy và khóa giá ngay khi chốt đơn. Đổi qua lại giữa bán hàng và thu mua ngay trên giỏ hàng, in phiếu tại chỗ.",
+    text: "Chọn sản phẩm, giá lấy thẳng từ bảng giá đang chạy và giữ nguyên đơn giá khi lập đơn. Đổi qua lại giữa bán hàng và thu mua ngay trên giỏ hàng, in phiếu tại chỗ.",
     points: [
       {
         t: "Chống trượt giá lúc biến động",
-        d: "Cảnh báo ngay nếu bảng giá nhảy khi đang thanh toán.",
+        d: "Giữ giá trên đơn và báo ngay nếu bảng giá nhảy lúc đang thanh toán.",
       },
       { t: "Thu mua ngay tại quầy", d: "Bấm sang Thu mua, không mở màn khác." },
       { t: "Khuyến mãi, voucher", d: "Áp chương trình ưu đãi ngay trên đơn." },
@@ -930,12 +930,12 @@ export const FEATURE_MODULES = [
     icon: MessageCircle,
     name: "Ảnh bảng giá Zalo",
     when: "Tự động 24/7",
-    brief: "Tự dựng ảnh bảng giá sắc nét & cập nhật nhóm Zalo.",
-    title: "Giá vừa đổi là hệ thống tự vẽ ảnh bảng giá gửi vào nhóm khách hàng",
-    text: "Kết nối trực tiếp với nguồn giá của tiệm: mỗi khi giá mua bán thay đổi, hệ thống tự động dựng ảnh bảng giá sắc nét kèm hotline đặt hàng và cập nhật đồng thời vào các nhóm Zalo sỉ/lẻ mà không cần nhân viên trực.",
+    brief: "Tự tạo ảnh bảng giá sắc nét & cập nhật nhóm Zalo.",
+    title: "Giá vừa đổi là phần mềm tự tạo ảnh bảng giá gửi vào nhóm khách hàng",
+    text: "Kết nối trực tiếp với nguồn giá của tiệm: mỗi khi giá mua bán thay đổi, hệ thống tự động xuất ảnh bảng giá sắc nét kèm hotline đặt hàng và gửi đồng thời vào các nhóm Zalo sỉ/lẻ mà không cần nhân viên trực.",
     points: [
       {
-        t: "Tự động dựng ảnh bảng giá",
+        t: "Tự động tạo ảnh bảng giá",
         d: "Ảnh PNG chuẩn nhận diện thương hiệu, rõ giá mua, bán và biến động.",
       },
       {
@@ -1007,7 +1007,7 @@ export const FAQ = [
   },
   {
     q: "Phần mềm hỗ trợ chuỗi đại lý bán bạc tích trữ Phú Quý, Bảo Tín Mạnh Hải, Ancarat như thế nào?",
-    a: "Hệ thống tự động cập nhật bảng giá mua vào – bán ra từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới; khoá giá chống trượt giá ngay giây lên đơn; quản lý đơn bán giao ngay và hợp đồng bạc tích trữ hẹn ngày nhận hàng; kết nối đặt đơn trực tiếp lên hệ thống Phú Quý để theo dõi chiết khấu đại lý; quản lý đơn mua lại hợp đồng bạc của khách và gom nhiều đơn vào phiên bán lại chốt lời; đồng thời gửi tin nhắn Zalo OA (ZNS) xác nhận đơn và tự động dựng ảnh bảng giá cập nhật vào các nhóm Zalo sỉ/lẻ mỗi khi giá đổi.",
+    a: "Hệ thống tự động cập nhật bảng giá mua vào - bán ra từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat và giá bạc thế giới; giữ nguyên đơn giá chống trượt giá ngay lúc lên đơn mua bán; quản lý đơn bán giao ngay và hợp đồng bạc tích trữ hẹn ngày nhận hàng; kết nối đặt hàng trực tiếp lên hệ thống Phú Quý để theo dõi chiết khấu đại lý; quản lý đơn mua lại hợp đồng bạc của khách và gom nhiều đơn vào phiên bán lại; đồng thời gửi tin nhắn Zalo OA (ZNS) xác nhận đơn và tự động tạo ảnh bảng giá cập nhật vào các nhóm Zalo sỉ/lẻ mỗi khi giá đổi.",
   },
   {
     q: "Chuỗi tiệm vừa bán bạc tích trữ thương hiệu, vừa bán vàng trang sức truyền thống có dùng chung được không?",
@@ -1015,14 +1015,14 @@ export const FAQ = [
   },
   {
     q: "Giá vàng bạc lấy từ đâu? Đơn đã chốt có bị trượt giá khi thị trường biến động không?",
-    a: "Giá tự cập nhật từ nguồn Phú Quý, Bảo Tín Mạnh Hải, Ancarat và áp xuống mọi quầy, mọi chi nhánh. Khi thu ngân mở giỏ hàng hoặc chốt đơn, hệ thống khoá cứng đơn giá trong phiên giao dịch nên bảng giá có nhảy sau đó đơn đã chốt vẫn giữ nguyên giá. Toàn bộ lịch sử đổi giá đều được lưu lại để đối chiếu.",
+    a: "Giá tự cập nhật từ nguồn Phú Quý, Bảo Tín Mạnh Hải, Ancarat và áp xuống mọi quầy, mọi chi nhánh. Khi thu ngân lập đơn mua bán, phần mềm giữ nguyên đơn giá trên phiếu nên dù bảng giá thị trường thay đổi ngay sau đó, đơn đã lập vẫn không bị trượt giá. Toàn bộ lịch sử đổi giá đều được lưu lại để đối chiếu.",
   },
   {
     q: "Giá thuê phần mềm ERP Vàng Bạc bao nhiêu một tháng?",
     a: "Gói Standard 3.000.000đ/tháng, Professional 5.000.000đ/tháng (đầy đủ Bạc tích trữ, Vàng thương hiệu và Vàng truyền thống), Business 7.000.000đ/tháng (thêm phân hệ Cầm đồ), và Enterprise từ 10.000.000đ/tháng cho chuỗi lớn cần tuỳ chỉnh theo yêu cầu riêng.",
   },
   {
-    q: "Thu mua vàng cũ có cân trừ đá, trừ dơ và đổi bù trên cùng một đơn được không?",
+    q: "Thu mua vàng cũ có cân trừ đá, trừ dơ và thu cũ đổi mới trên cùng một đơn được không?",
     a: "Được. Quầy nhập cân tổng, khối lượng đá và dơ; phần mềm tự trừ để ra khối lượng vàng thuần và nhân với giá thu mua theo tuổi vàng. Nếu khách đổi vàng cũ lấy trang sức mới hoặc bạc tích trữ, phần mềm cấn trừ trực tiếp trên một phiếu và chỉ thu/chi phần tiền chênh lệch.",
   },
   {
@@ -1031,7 +1031,7 @@ export const FAQ = [
   },
   {
     q: "Phần mềm có đồng bộ với kế toán MISA AMIS và bảo mật dữ liệu riêng cho từng chuỗi không?",
-    a: "Có. Phần mềm đồng bộ danh mục và chứng từ bán hàng, thu chi sang MISA AMIS kèm bảng đối soát chống đẩy trùng. Mỗi chuỗi đại lý chạy trên một ứng dụng và một cơ sở dữ liệu độc lập, phân quyền theo vai trò – chi nhánh và ghi nhật ký toàn bộ thao tác.",
+    a: "Có. Phần mềm đồng bộ danh mục và chứng từ bán hàng, thu chi sang MISA AMIS kèm bảng đối soát chống đẩy trùng. Mỗi chuỗi đại lý chạy trên một ứng dụng và một cơ sở dữ liệu độc lập, phân quyền theo vai trò và chi nhánh, ghi nhật ký toàn bộ thao tác.",
   },
 ] as const
 
@@ -1079,21 +1079,21 @@ export function VbHeader({
       <Link
         href="/"
         aria-label="ERP Vàng Bạc , trang chủ"
-        className="sysdark:focus-visible:outline-[#E3C77A] flex shrink-0 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8A6516]"
+        className="focus-visible:outline-vb-gold flex shrink-0 items-center focus-visible:outline-2 focus-visible:outline-offset-4"
       >
         <VbWordmark />
       </Link>
 
       <nav
         aria-label="Điều hướng trang giới thiệu"
-        className="text-vb-body sysdark:text-[#C9CED8] hidden items-center gap-7 text-sm font-medium md:flex"
+        className="text-vb-body hidden items-center gap-7 text-sm font-medium md:flex"
       >
         {NAV_LINKS.map((l) => (
           <Link
             key={l.href}
             href={l.href}
             aria-current={active === l.label ? "page" : undefined}
-            className="hover:text-vb-gold sysdark:hover:text-white aria-[current=page]:text-vb-gold transition-colors duration-150 aria-[current=page]:font-semibold"
+            className="hover:text-vb-gold aria-[current=page]:text-vb-gold transition-colors duration-150 aria-[current=page]:font-semibold"
           >
             {l.label}
           </Link>
@@ -1120,10 +1120,11 @@ const BOOK_DEMO_POINTS = [
   "Cài đặt và đào tạo tận nơi khi triển khai",
 ] as const
 
-/** Dải mời đặt lịch demo , đặt giữa các trang để khách luôn thấy lối vào. */
+/** Dải mời đặt lịch demo , đặt giữa các trang với nền nhung đen ánh vàng + khối lập phương 3D. */
 export function BookDemoBand() {
   return (
     <section className="sysdark:bg-[#110C04] sysdark:bg-[radial-gradient(ellipse_75%_90%_at_82%_0%,rgba(218,165,52,0.38),transparent_70%)] relative overflow-hidden bg-[#241906] bg-[radial-gradient(ellipse_75%_90%_at_82%_0%,rgba(218,165,52,0.45),transparent_70%),linear-gradient(135deg,#241906_0%,#4A350C_52%,#261B07_100%)] py-12 lg:py-14">
+      <CubeBackdrop id="vb-cubes-band" />
       <div className="relative mx-auto flex max-w-6xl flex-col items-start gap-7 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div>
           <p className="font-mono text-xs font-medium tracking-[0.08em] text-[#E3C77A] uppercase">
@@ -1131,7 +1132,7 @@ export function BookDemoBand() {
           </p>
           <h2
             style={HEADING_STYLE}
-            className="mt-3 font-medium tracking-[-0.02em] [text-wrap:balance] text-white"
+            className="mt-3 font-semibold tracking-[-0.02em] [text-wrap:balance] text-white"
           >
             Xem phần mềm chạy đúng theo mô hình tiệm của bạn
           </h2>
