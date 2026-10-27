@@ -343,7 +343,7 @@ export function getGuideBySlug(slug: string): GuideArticle | undefined {
 
 export function VbGuidesIndexPage() {
   return (
-    <div className="sysdark:bg-[#08090B] sysdark:text-[#F5F7FA] sysdark:selection:bg-[#9C7218] min-h-dvh bg-white text-[#0B1220] antialiased selection:bg-[#8A6516] selection:text-white">
+    <div className="bg-vb-bg text-vb-fg selection:bg-vb-gold min-h-dvh antialiased selection:text-white">
       <VbHeader active="Cẩm nang" />
 
       <div>
@@ -353,26 +353,26 @@ export function VbGuidesIndexPage() {
           <GuideRails />
 
           {/* Đầu trang tối giản, cùng ngôn ngữ thiết kế với /chuc-nang */}
-          <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-12 pb-10 lg:pt-16 lg:pb-12">
+          <section className="border-vb-border relative border-b pt-12 pb-10 lg:pt-16 lg:pb-12">
             <RailMarks />
             <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
               <div className="max-w-2xl">
                 <Eyebrow index="01">Cẩm nang vận hành</Eyebrow>
                 <h1
-                  className="sysdark:text-[#F5F7FA] mt-2 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
+                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   Nghiệp vụ đại lý bạc tích trữ, kim hoàn truyền thống &amp; cầm
                   đồ
                 </h1>
-                <p className="sysdark:text-[#A3AAB8] mt-2.5 text-sm leading-relaxed text-[#4B5565]">
+                <p className="text-vb-muted mt-2.5 text-sm leading-relaxed">
                   Tài liệu hướng dẫn quy trình vận hành thực tế tại quầy, chuẩn
                   hoá tem nhãn Thông tư 22 và đồng bộ kế toán MISA AMIS.
                 </p>
               </div>
               <Link
                 href="/ho-so-giai-phap"
-                className="sysdark:border-[#262B33] sysdark:text-[#E6E9EF] sysdark:hover:border-[#C99A2E] inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#D6DCE6] px-4 py-2 text-xs font-semibold text-[#1F2937] transition-colors hover:border-[#8A6516] hover:text-[#8A6516]"
+                className="border-vb-border-strong text-vb-body hover:border-vb-gold-deep hover:text-vb-gold-deep sysdark:hover:border-[#C99A2E] sysdark:hover:text-vb-gold-bright inline-flex shrink-0 items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
               >
                 Bản tóm tắt giải pháp (In A4 / PDF)
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -381,26 +381,26 @@ export function VbGuidesIndexPage() {
           </section>
 
           {/* Danh sách bài viết kẻ khung kiến trúc (ăn khớp GuideRails) */}
-          <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE]">
+          <section className="border-vb-border relative border-b">
             <RailMarks />
-            <div className="sysdark:divide-[#1F232A] mx-auto max-w-6xl divide-y divide-[#E3E7EE]">
+            <div className="divide-vb-border mx-auto max-w-6xl divide-y">
               {GUIDES.map((g, idx) => (
                 <article
                   key={g.slug}
-                  className="grid grid-cols-1 gap-6 px-4 py-10 sm:px-6 lg:grid-cols-12 lg:items-start lg:gap-10 lg:px-8 lg:py-12"
+                  className="group grid grid-cols-1 gap-6 px-4 py-10 sm:px-6 lg:grid-cols-12 lg:items-start lg:gap-10 lg:px-8 lg:py-12"
                 >
                   <div className="lg:col-span-3">
-                    <p className="sysdark:text-[#E3C77A] font-mono text-xs font-medium tracking-[0.06em] text-[#8A6516] uppercase">
+                    <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-xs font-medium tracking-[0.06em] uppercase">
                       {String(idx + 1).padStart(2, "0")} · {g.category}
                     </p>
-                    <p className="sysdark:text-[#6B7280] mt-1 font-mono text-xs text-[#8B93A3]">
-                      {g.readTime}
+                    <p className="tnum text-vb-subtle mt-1 font-mono text-xs">
+                      {g.readTime} · Gói {g.recommendedPlan}
                     </p>
-                    <p className="sysdark:text-[#8B93A3] mt-4 text-xs text-[#5B6475]">
+                    <p className="text-vb-subtle mt-4 text-xs">
                       Phân hệ liên quan:{" "}
                       <Link
                         href={`${FEATURES_HREF}#${g.relatedFeatureId}`}
-                        className="sysdark:text-[#E6E9EF] font-medium text-[#1F2937] underline decoration-[#D6DCE6] underline-offset-4 hover:decoration-[#8A6516]"
+                        className="text-vb-body decoration-vb-border-strong hover:decoration-vb-gold-deep font-medium underline underline-offset-4"
                       >
                         {g.relatedFeatureName}
                       </Link>
@@ -408,24 +408,24 @@ export function VbGuidesIndexPage() {
                   </div>
 
                   <div className="lg:col-span-5">
-                    <h2 className="sysdark:text-[#F5F7FA] text-lg leading-snug font-bold text-[#0B1220] sm:text-xl">
+                    <h2 className="text-vb-fg text-lg leading-snug font-bold sm:text-xl">
                       <Link
                         href={`${GUIDES_PATH}/${g.slug}`}
-                        className="sysdark:hover:text-[#E3C77A] hover:text-[#8A6516]"
+                        className="hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright transition-colors"
                       >
                         {g.title}
                       </Link>
                     </h2>
-                    <p className="sysdark:text-[#A3AAB8] mt-2.5 text-sm leading-relaxed text-[#4B5565]">
+                    <p className="text-vb-muted mt-2.5 text-sm leading-relaxed">
                       {g.description}
                     </p>
                     <div className="mt-4">
                       <Link
                         href={`${GUIDES_PATH}/${g.slug}`}
-                        className="sysdark:text-[#E3C77A] inline-flex items-center gap-1.5 text-sm font-semibold text-[#8A6516] hover:underline"
+                        className="text-vb-gold-deep sysdark:text-vb-gold-bright inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
                       >
-                        Xem chi tiết
-                        <ArrowRight className="h-4 w-4" />
+                        Đọc bài hướng dẫn
+                        <ArrowRight className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5" />
                       </Link>
                     </div>
                   </div>
@@ -433,15 +433,25 @@ export function VbGuidesIndexPage() {
                   <div className="lg:col-span-4">
                     <Link
                       href={`${GUIDES_PATH}/${g.slug}`}
-                      className="sysdark:border-[#262B33] block overflow-hidden rounded-lg border border-[#D6DCE6] bg-[#F8FAFC]"
+                      className="border-vb-border-strong bg-vb-card group-hover:border-vb-gold-deep sysdark:group-hover:border-[#C99A2E] block overflow-hidden rounded-lg border transition-colors"
                     >
+                      <div className="border-vb-border sysdark:bg-[#16191E] flex h-6 items-center justify-between border-b bg-[#F4F6FA] px-2.5">
+                        <div className="flex items-center gap-1">
+                          <span className="sysdark:bg-[#262B33] h-2 w-2 rounded-full bg-[#D6DCE6]" />
+                          <span className="sysdark:bg-[#262B33] h-2 w-2 rounded-full bg-[#D6DCE6]" />
+                          <span className="sysdark:bg-[#262B33] h-2 w-2 rounded-full bg-[#D6DCE6]" />
+                        </div>
+                        <span className="tnum text-vb-subtle font-mono text-[10px]">
+                          #{g.relatedFeatureId}
+                        </span>
+                      </div>
                       <Image
                         src={g.heroImage}
                         alt={g.heroAlt}
                         width={1440}
                         height={900}
                         sizes="(min-width: 1024px) 340px, 100vw"
-                        className="block aspect-[16/10] w-full object-contain object-center"
+                        className="block aspect-[16/10] w-full bg-[#F8FAFC] object-contain object-center"
                       />
                     </Link>
                   </div>
@@ -463,7 +473,7 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
   const otherGuides = GUIDES.filter((g) => g.slug !== article.slug)
 
   return (
-    <div className="sysdark:bg-[#08090B] sysdark:text-[#F5F7FA] sysdark:selection:bg-[#9C7218] min-h-dvh bg-white text-[#0B1220] antialiased selection:bg-[#8A6516] selection:text-white">
+    <div className="bg-vb-bg text-vb-fg selection:bg-vb-gold min-h-dvh antialiased selection:text-white">
       <VbHeader active="Cẩm nang" />
 
       <div>
@@ -472,125 +482,193 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
         <div className="relative overflow-x-clip">
           <GuideRails />
 
-          {/* Đầu bài viết tối giản */}
-          <header className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-10 pb-10 lg:pt-14 lg:pb-12">
+          {/* Đầu bài viết chuẩn Editorial, ăn khớp khung max-w-6xl */}
+          <header className="border-vb-border relative border-b pt-10 pb-10 lg:pt-14 lg:pb-12">
             <RailMarks />
-            <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-              <p className="sysdark:text-[#8B93A3] font-mono text-xs text-[#5B6475]">
-                <Link
-                  href={GUIDES_PATH}
-                  className="sysdark:text-[#E3C77A] font-medium text-[#8A6516] hover:underline"
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl">
+                <p className="tnum text-vb-subtle font-mono text-xs">
+                  <Link
+                    href={GUIDES_PATH}
+                    className="text-vb-gold-deep sysdark:text-vb-gold-bright font-medium hover:underline"
+                  >
+                    Cẩm nang
+                  </Link>
+                  {" / "}
+                  <span>{article.category}</span>
+                  {" · "}
+                  <span>{article.readTime}</span>
+                  {" · "}
+                  <span>Cập nhật {article.publishedAt}</span>
+                </p>
+
+                <h1
+                  className="text-vb-fg mt-3 font-medium tracking-[-0.02em] [text-wrap:balance]"
+                  style={HEADING_STYLE}
                 >
-                  Cẩm nang
-                </Link>
-                {" / "}
-                <span>{article.category}</span>
-                {" · "}
-                <span>{article.readTime}</span>
-              </p>
+                  {article.title}
+                </h1>
 
-              <h1
-                className="sysdark:text-[#F5F7FA] mt-3 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
-                style={HEADING_STYLE}
-              >
-                {article.title}
-              </h1>
-
-              <p className="sysdark:text-[#A3AAB8] mt-3 text-base leading-relaxed text-[#4B5565]">
-                {article.description}
-              </p>
+                <p className="text-vb-muted mt-3 max-w-3xl text-base leading-relaxed">
+                  {article.description}
+                </p>
+              </div>
             </div>
           </header>
 
-          {/* Nội dung bài viết */}
-          <article className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] py-10 lg:py-14">
+          {/* Nội dung bài viết: Bố cục 2 cột Editorial (8 cột nội dung + 4 cột mục lục dính) */}
+          <article className="border-vb-border relative border-b py-10 lg:py-14">
             <RailMarks />
-            <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-              <div className="sysdark:border-[#262B33] overflow-hidden rounded-lg border border-[#D6DCE6] bg-[#F8FAFC]">
-                <Image
-                  src={article.heroImage}
-                  alt={article.heroAlt}
-                  width={1440}
-                  height={900}
-                  priority
-                  sizes="(min-width: 1024px) 768px, 100vw"
-                  className="block aspect-[16/10] w-full object-contain object-center"
-                />
-              </div>
+            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:items-start lg:gap-12 lg:px-8">
+              {/* Cột đọc chính (8/12) */}
+              <div className="lg:col-span-8">
+                <figure className="border-vb-border-strong bg-vb-card overflow-hidden rounded-xl border">
+                  <div className="border-vb-border sysdark:bg-[#16191E] flex h-8 items-center justify-between border-b bg-[#F4F6FA] px-3">
+                    <div className="flex items-center gap-1.5">
+                      <span className="sysdark:bg-[#262B33] h-2.5 w-2.5 rounded-full bg-[#D6DCE6]" />
+                      <span className="sysdark:bg-[#262B33] h-2.5 w-2.5 rounded-full bg-[#D6DCE6]" />
+                      <span className="sysdark:bg-[#262B33] h-2.5 w-2.5 rounded-full bg-[#D6DCE6]" />
+                    </div>
+                    <span className="tnum text-vb-subtle font-mono text-[11px]">
+                      erp.vangbac.goplus.vn · #{article.relatedFeatureId}
+                    </span>
+                  </div>
+                  <Image
+                    src={article.heroImage}
+                    alt={article.heroAlt}
+                    width={1440}
+                    height={900}
+                    priority
+                    sizes="(min-width: 1024px) 768px, 100vw"
+                    className="block aspect-[16/10] w-full bg-[#F8FAFC] object-contain object-center"
+                  />
+                  <figcaption className="border-vb-border bg-vb-surface text-vb-subtle border-t px-4 py-2.5 text-xs">
+                    {article.heroAlt}
+                  </figcaption>
+                </figure>
 
-              {/* Tóm tắt ngắn dạng danh sách phẳng */}
-              <div className="sysdark:border-[#1F232A] mt-8 border-b border-[#E3E7EE] pb-8">
-                <p className="sysdark:text-[#E3C77A] font-mono text-xs font-medium tracking-[0.06em] text-[#8A6516] uppercase">
-                  Nội dung chính
-                </p>
-                <ul className="sysdark:text-[#E6E9EF] mt-3 space-y-2 text-sm leading-relaxed text-[#1F2937]">
-                  {article.keyTakeaways.map((point) => (
-                    <li key={point} className="flex items-start gap-2.5">
-                      <span className="sysdark:text-[#E3C77A] font-mono text-[#8A6516]">
-                        —
-                      </span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-10 space-y-10">
-                {article.sections.map((sec) => (
-                  <section key={sec.heading} className="space-y-3.5">
-                    <h2 className="sysdark:text-[#F5F7FA] text-lg leading-snug font-bold text-[#0B1220] sm:text-xl">
-                      {sec.heading}
-                    </h2>
-                    {sec.paragraphs.map((p) => (
-                      <p
-                        key={p}
-                        className="sysdark:text-[#C9CED8] text-[15px] leading-relaxed text-[#374151]"
-                      >
-                        {p}
-                      </p>
+                {/* Hộp Tóm tắt cốt lõi (Key Takeaways) */}
+                <div className="border-vb-border bg-vb-surface/80 border-l-vb-gold-deep sysdark:border-l-[#C99A2E] mt-8 rounded-r-xl border border-l-2 p-5 sm:p-6">
+                  <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-xs font-semibold tracking-[0.06em] uppercase">
+                    Tóm tắt cốt lõi · {article.keyTakeaways.length} điểm chính
+                  </p>
+                  <ul className="text-vb-body mt-3.5 space-y-2.5 text-sm leading-relaxed">
+                    {article.keyTakeaways.map((point, idx) => (
+                      <li key={point} className="flex items-start gap-3">
+                        <span className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright mt-0.5 font-mono text-xs font-semibold">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <span>{point}</span>
+                      </li>
                     ))}
-                    {sec.bullets && (
-                      <dl className="sysdark:border-[#1F232A] sysdark:divide-[#1F232A] mt-4 divide-y divide-[#E3E7EE] border-y border-[#E3E7EE]">
-                        {sec.bullets.map((b) => (
-                          <div key={b.title} className="py-3.5">
-                            <dt className="sysdark:text-[#F5F7FA] text-sm font-semibold text-[#0B1220]">
-                              {b.title}
-                            </dt>
-                            <dd className="sysdark:text-[#A3AAB8] mt-1 text-sm leading-relaxed text-[#4B5565]">
-                              {b.detail}
-                            </dd>
-                          </div>
-                        ))}
-                      </dl>
-                    )}
-                  </section>
-                ))}
+                  </ul>
+                </div>
+
+                <div className="mt-10 space-y-11">
+                  {article.sections.map((sec, idx) => (
+                    <section
+                      key={sec.heading}
+                      id={`muc-${idx + 1}`}
+                      className="scroll-mt-28 space-y-3.5"
+                    >
+                      <h2 className="text-vb-fg text-lg leading-snug font-bold sm:text-xl">
+                        {sec.heading}
+                      </h2>
+                      {sec.paragraphs.map((p) => (
+                        <p
+                          key={p}
+                          className="text-vb-body max-w-[68ch] text-[15px] leading-relaxed"
+                        >
+                          {p}
+                        </p>
+                      ))}
+                      {sec.bullets && (
+                        <dl className="border-vb-border divide-vb-border bg-vb-surface/40 mt-4 divide-y rounded-lg border px-5">
+                          {sec.bullets.map((b) => (
+                            <div key={b.title} className="py-3.5">
+                              <dt className="text-vb-fg text-sm font-semibold">
+                                {b.title}
+                              </dt>
+                              <dd className="text-vb-muted mt-1 text-sm leading-relaxed">
+                                {b.detail}
+                              </dd>
+                            </div>
+                          ))}
+                        </dl>
+                      )}
+                    </section>
+                  ))}
+                </div>
               </div>
 
-              <div className="sysdark:border-[#1F232A] mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[#E3E7EE] pt-6 text-sm">
-                <span className="sysdark:text-[#A3AAB8] text-[#4B5565]">
-                  Phân hệ trên phần mềm:{" "}
-                  <b className="sysdark:text-[#F5F7FA] font-semibold text-[#0B1220]">
-                    {article.relatedFeatureName}
-                  </b>
-                </span>
-                <Link
-                  href={`${FEATURES_HREF}#${article.relatedFeatureId}`}
-                  className="sysdark:text-[#E3C77A] inline-flex items-center gap-1.5 font-semibold text-[#8A6516] hover:underline"
+              {/* Cột bên phải dính (4/12): Mục lục & Thẻ chuyển đổi phân hệ */}
+              <aside className="space-y-5 lg:sticky lg:top-28 lg:col-span-4">
+                <nav
+                  aria-label="Mục lục bài viết"
+                  className="border-vb-border bg-vb-surface/60 rounded-xl border p-5"
                 >
-                  Xem màn hình chức năng
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
+                  <p className="text-vb-subtle font-mono text-[11px] font-semibold tracking-[0.08em] uppercase">
+                    Trên trang này
+                  </p>
+                  <ol className="mt-3 space-y-2.5 text-sm">
+                    {article.sections.map((sec, idx) => (
+                      <li key={sec.heading}>
+                        <a
+                          href={`#muc-${idx + 1}`}
+                          className="text-vb-muted hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright flex items-start gap-2 leading-snug transition-colors"
+                        >
+                          <span className="tnum text-vb-subtle mt-0.5 font-mono text-xs">
+                            0{idx + 1}
+                          </span>
+                          <span>
+                            {sec.heading.replace(/^\d+\.\s*/, "")}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+
+                <div className="border-vb-border-strong bg-vb-card rounded-xl border p-5">
+                  <p className="text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-[11px] font-semibold tracking-[0.08em] uppercase">
+                    Phân hệ áp dụng trực tiếp
+                  </p>
+                  <h3 className="text-vb-fg mt-1.5 text-base font-bold">
+                    {article.relatedFeatureName}
+                  </h3>
+                  <p className="text-vb-subtle mt-1 text-xs leading-relaxed">
+                    Có sẵn từ gói{" "}
+                    <b className="text-vb-body font-semibold">
+                      {article.recommendedPlan}
+                    </b>{" "}
+                    trên nền tảng ERP Vàng Bạc.
+                  </p>
+                  <div className="mt-4 flex flex-col gap-2">
+                    <Link
+                      href={`${FEATURES_HREF}#${article.relatedFeatureId}`}
+                      className="sysdark:bg-[#9C7218] sysdark:hover:bg-[#C99A2E] inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-full bg-[#8A6516] px-4 py-2 text-xs font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-[#6F5112] active:scale-[0.98]"
+                    >
+                      Xem màn hình chức năng
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                    <Link
+                      href="/#dang-ky"
+                      className="border-vb-border-strong text-vb-body hover:border-vb-gold-deep hover:text-vb-gold-deep sysdark:hover:border-[#C99A2E] sysdark:hover:text-vb-gold-bright inline-flex min-h-[40px] items-center justify-center rounded-full border px-4 py-2 text-xs font-semibold transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
+                    >
+                      Đặt lịch demo theo quy trình này
+                    </Link>
+                  </div>
+                </div>
+              </aside>
             </div>
           </article>
 
           {/* Bài viết khác */}
-          <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] py-12 lg:py-14">
+          <section className="border-vb-border relative border-b py-12 lg:py-14">
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <Eyebrow>Bài viết khác</Eyebrow>
-              <div className="sysdark:border-[#1F232A] sysdark:divide-[#1F232A] mt-6 grid grid-cols-1 divide-y divide-[#E3E7EE] border-t border-[#E3E7EE] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+              <div className="border-vb-border divide-vb-border mt-6 grid grid-cols-1 divide-y border-t lg:grid-cols-3 lg:divide-x lg:divide-y-0">
                 {otherGuides.map((g, i) => (
                   <Link
                     key={g.slug}
@@ -603,10 +681,10 @@ export function VbGuideDetailPage({ article }: { article: GuideArticle }) {
                           : "lg:pl-6"
                     }`}
                   >
-                    <p className="sysdark:text-[#8B93A3] font-mono text-xs text-[#6B7485]">
+                    <p className="tnum text-vb-subtle font-mono text-xs">
                       {g.category} · {g.readTime}
                     </p>
-                    <h3 className="sysdark:text-[#F5F7FA] sysdark:group-hover:text-[#E3C77A] mt-2 text-base leading-snug font-bold text-[#0B1220] group-hover:text-[#8A6516]">
+                    <h3 className="text-vb-fg group-hover:text-vb-gold-deep sysdark:group-hover:text-vb-gold-bright mt-2 text-base leading-snug font-bold transition-colors">
                       {g.title}
                     </h3>
                   </Link>

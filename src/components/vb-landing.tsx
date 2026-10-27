@@ -237,14 +237,14 @@ function ProductHero() {
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Link
               href={BOOK_DEMO_HREF}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-[#C99A2E] px-6 py-2.5 text-sm font-semibold text-[#0B1220] shadow-sm transition-colors hover:bg-[#D9B24E]"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-[#C99A2E] px-6 py-2.5 text-sm font-semibold text-[#0B1220] shadow-sm transition-[background-color,transform] duration-150 hover:bg-[#D9B24E] active:scale-[0.98]"
             >
               Đặt lịch demo
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="#bang-gia"
-              className="sysdark:hover:bg-white/5 inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="sysdark:hover:bg-white/5 inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-white/10 active:scale-[0.98]"
             >
               Xem bảng giá
             </a>
@@ -285,7 +285,7 @@ function ProductHero() {
                       aria-selected={isActive}
                       aria-controls="vb-slide-panel"
                       onClick={() => go(i)}
-                      className={`relative flex min-w-0 shrink-0 items-center justify-center gap-1.5 overflow-hidden rounded-md px-2 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors xl:px-2.5 xl:text-[13px] ${
+                      className={`relative flex min-w-0 shrink-0 items-center justify-center gap-1.5 overflow-hidden rounded-md px-2 py-1.5 text-xs font-semibold whitespace-nowrap transition-[background-color,color,transform] duration-150 active:scale-[0.98] xl:px-2.5 xl:text-[13px] ${
                         isActive
                           ? "sysdark:bg-[#262B33] sysdark:text-white sysdark:shadow-none sysdark:ring-white/10 bg-white text-[#0F1B2D] shadow-sm ring-1 ring-[#D6DCE6]"
                           : "sysdark:text-[#8B93A3] sysdark:hover:bg-[#111317]/5 sysdark:hover:text-white text-[#5B6475] hover:bg-white/70 hover:text-[#0F1B2D]"
@@ -313,9 +313,15 @@ function ProductHero() {
                   )
                 })}
               </div>
-              <span className="tnum sysdark:text-[#6B7280] hidden shrink-0 pr-1 text-xs font-semibold text-[#8B93A3] sm:inline">
-                {index + 1}/{count}
-              </span>
+              <div className="hidden shrink-0 items-center gap-2 pr-1 sm:flex">
+                <span className="sysdark:border-[#262B33] sysdark:bg-[#111317] sysdark:text-[#8B93A3] hidden rounded border border-[#E3E7EE] bg-white px-2 py-0.5 font-mono text-[11px] text-[#5B6475] xl:inline-block">
+                  {active.url}
+                </span>
+                <span className="tnum sysdark:text-[#6B7280] font-mono text-xs font-semibold text-[#8B93A3]">
+                  {String(index + 1).padStart(2, "0")}/
+                  {String(count).padStart(2, "0")}
+                </span>
+              </div>
             </div>
 
             <div
@@ -341,7 +347,7 @@ function ProductHero() {
                 {SLIDES.map((s, i) => (
                   <div
                     key={s.id}
-                    className={`transition-opacity duration-700 ease-in-out [grid-area:1/1] motion-reduce:transition-none ${
+                    className={`transition-opacity duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] [grid-area:1/1] motion-reduce:transition-none ${
                       i === index
                         ? "opacity-100"
                         : "pointer-events-none opacity-0"
@@ -472,11 +478,11 @@ export function VbLandingPage() {
           {/* ---------- Số liệu & dải tin cậy ---------- */}
           <section
             aria-label="Số liệu vận hành và cam kết"
-            className="sysdark:border-[#1F232A] sysdark:bg-[#0E1014] sysdark:bg-[radial-gradient(#1F232A_1px,transparent_1px)] relative border-y border-[#E3E7EE] bg-[#F7F9FC] bg-[radial-gradient(#D6DCE6_1px,transparent_1px)] [background-size:16px_16px]"
+            className="border-vb-border bg-vb-surface sysdark:bg-[radial-gradient(#1F232A_1px,transparent_1px)] relative border-y bg-[radial-gradient(#D6DCE6_1px,transparent_1px)] [background-size:16px_16px]"
           >
             <RailMarks />
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8">
-              <dl className="sysdark:divide-[#262B33] grid grid-cols-3 divide-x divide-[#D6DCE6] lg:col-span-5">
+              <dl className="divide-vb-border-strong grid grid-cols-3 divide-x lg:col-span-5">
                 {[
                   { v: "3 nguồn", l: "giá Phú Quý · BTMH · Ancarat" },
                   { v: "100%", l: "đơn chốt khoá giá chống trượt" },
@@ -484,12 +490,10 @@ export function VbLandingPage() {
                 ].map((s) => (
                   <div key={s.l} className="px-3 first:pl-0">
                     <dt className="sr-only">{s.l}</dt>
-                    <dd className="sysdark:text-[#F5F7FA] font-mono text-2xl font-medium tracking-tight text-[#0B1220]">
+                    <dd className="tnum text-vb-fg font-mono text-2xl font-medium tracking-tight">
                       {s.v}
                     </dd>
-                    <dd className="sysdark:text-[#8B93A3] mt-0.5 text-xs text-[#5B6475]">
-                      {s.l}
-                    </dd>
+                    <dd className="text-vb-subtle mt-0.5 text-xs">{s.l}</dd>
                   </div>
                 ))}
               </dl>
@@ -499,9 +503,9 @@ export function VbLandingPage() {
                   return (
                     <li
                       key={t.label}
-                      className="sysdark:text-[#E6E9EF] flex items-center gap-2.5 text-sm font-semibold text-[#1F2937]"
+                      className="text-vb-body flex items-center gap-2.5 text-sm font-semibold"
                     >
-                      <Icon className="sysdark:text-[#E3C77A] h-5 w-5 shrink-0 text-[#8A6516]" />
+                      <Icon className="text-vb-gold-deep sysdark:text-vb-gold-bright h-5 w-5 shrink-0" />
                       {t.label}
                     </li>
                   )
@@ -514,7 +518,7 @@ export function VbLandingPage() {
           <section
             id="mo-hinh"
             aria-labelledby="mo-hinh-title"
-            className="sysdark:border-[#1F232A] sysdark:bg-[#08090B] relative scroll-mt-20 border-b border-[#E3E7EE] bg-white pt-14 lg:pt-20"
+            className="border-vb-border bg-vb-bg relative scroll-mt-20 border-b pt-14 lg:pt-20"
           >
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -522,7 +526,7 @@ export function VbLandingPage() {
                 <Eyebrow index="01">Mô hình áp dụng</Eyebrow>
                 <h2
                   id="mo-hinh-title"
-                  className="sysdark:text-[#F5F7FA] mt-2 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
+                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   Dùng cho đại lý bạc tích trữ, tiệm vàng truyền thống &amp;
@@ -532,8 +536,8 @@ export function VbLandingPage() {
             </div>
 
             {/* Lưới 3 cột ăn khớp trực tiếp vào hai đường kẻ dọc GuideRails */}
-            <div className="sysdark:border-[#1F232A] mx-auto mt-10 max-w-6xl border-t border-[#E3E7EE]">
-              <div className="sysdark:divide-[#1F232A] grid grid-cols-1 divide-y divide-[#E3E7EE] lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+            <div className="border-vb-border mx-auto mt-10 max-w-6xl border-t">
+              <div className="divide-vb-border grid grid-cols-1 divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0">
                 {DEALER_MODELS.map((m, idx) => {
                   const isFeatured = idx === 0
                   return (
@@ -547,26 +551,26 @@ export function VbLandingPage() {
                     >
                       <div>
                         <p
-                          className={`font-mono text-[11px] font-medium tracking-[0.08em] uppercase ${
+                          className={`tnum font-mono text-[11px] font-medium tracking-[0.08em] uppercase ${
                             isFeatured
-                              ? "sysdark:text-[#E3C77A] font-semibold text-[#8A6516]"
-                              : "sysdark:text-[#7A8292] text-[#6B7485]"
+                              ? "text-vb-gold-deep sysdark:text-vb-gold-bright font-semibold"
+                              : "text-vb-subtle"
                           }`}
                         >
                           {String(idx + 1).padStart(2, "0")} · {m.badge}
                         </p>
-                        <h3 className="sysdark:text-[#F5F7FA] mt-2.5 text-lg leading-snug font-bold text-[#0B1220]">
+                        <h3 className="text-vb-fg mt-2.5 text-lg leading-snug font-bold">
                           {m.title}
                         </h3>
-                        <p className="sysdark:text-[#A3AAB8] mt-2 text-sm leading-relaxed text-[#4B5565]">
+                        <p className="text-vb-muted mt-2 text-sm leading-relaxed">
                           {m.desc}
                         </p>
                       </div>
 
-                      <ul className="sysdark:border-[#1F232A] sysdark:text-[#E6E9EF] mt-5 space-y-2 border-t border-[#E3E7EE] pt-4 text-sm text-[#1F2937]">
+                      <ul className="border-vb-border text-vb-body mt-5 space-y-2 border-t pt-4 text-sm">
                         {m.highlights.map((h) => (
                           <li key={h} className="flex items-start gap-2">
-                            <Check className="sysdark:text-[#E3C77A] mt-0.5 h-4 w-4 shrink-0 text-[#8A6516]" />
+                            <Check className="text-vb-gold-deep sysdark:text-vb-gold-bright mt-0.5 h-4 w-4 shrink-0" />
                             <span>{h}</span>
                           </li>
                         ))}
@@ -579,10 +583,10 @@ export function VbLandingPage() {
           </section>
 
           {/* ---------- Chức năng: một ngày ở tiệm theo dòng thời gian ----------
-           * Chỉ sơ lược; chi tiết từng chức năng ở trang /chuc-nang. */}
+           * Lưới kiến trúc 3×2 nối trực tiếp vào GuideRails; chi tiết ở /chuc-nang. */}
           <section
             id="chuc-nang"
-            className="sysdark:bg-[#08090B] relative scroll-mt-20 bg-white pt-16 pb-8 lg:pt-24 lg:pb-10"
+            className="bg-vb-bg relative scroll-mt-20 pt-16 pb-8 lg:pt-24 lg:pb-10"
           >
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -590,7 +594,7 @@ export function VbLandingPage() {
                 <div className="max-w-2xl">
                   <Eyebrow index="02">Cách vận hành</Eyebrow>
                   <h2
-                    className="sysdark:text-[#F5F7FA] mt-2 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
+                    className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
                     style={HEADING_STYLE}
                   >
                     Một ngày ở tiệm, từ lúc mở cửa tới cuối tháng
@@ -598,41 +602,42 @@ export function VbLandingPage() {
                 </div>
                 <Link
                   href={FEATURES_HREF}
-                  className="sysdark:text-[#E3C77A] sysdark:hover:text-white inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-[#8A6516] hover:text-[#4A360B]"
+                  className="text-vb-gold-deep sysdark:text-vb-gold-bright sysdark:hover:text-white inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold transition-colors hover:text-[#4A360B]"
                 >
                   Xem toàn bộ chức năng
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
+            </div>
 
-              <ol className="relative mt-12 grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-6 lg:gap-5">
-                <span
-                  aria-hidden
-                  className="sysdark:border-[#4A3A14] absolute top-5 right-[8%] left-[8%] hidden border-t border-dashed border-[#D9C59A] lg:block"
-                />
+            <div className="border-vb-border mx-auto mt-10 max-w-6xl border-y">
+              <ol className="bg-vb-border grid grid-cols-1 gap-px md:grid-cols-2 lg:grid-cols-3">
                 {TIMELINE.map((m, i) => {
                   const Icon = m.icon
                   return (
                     <li
                       key={m.id}
-                      className="relative flex gap-4 lg:flex-col lg:items-center lg:gap-0 lg:text-center"
+                      className="bg-vb-bg hover:bg-vb-surface/60 relative flex flex-col justify-between p-6 transition-colors duration-150 sm:p-7"
                     >
-                      <span className="sysdark:border-[#4A3A14] sysdark:bg-[#111317] sysdark:text-[#E3C77A] sysdark:shadow-[0_0_0_6px_#08090B] relative z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#E6D7B0] bg-white text-[#8A6516] shadow-[0_0_0_6px_#fff]">
-                        <Icon className="h-[18px] w-[18px]" />
-                      </span>
-                      <div className="lg:mt-4">
-                        <p className="sysdark:text-[#7A8292] font-mono text-[11px] font-medium tracking-wide text-[#6B7485] uppercase">
-                          {String(i + 1).padStart(2, "0")} · {m.when}
-                        </p>
-                        <h3 className="sysdark:text-[#F5F7FA] mt-1 text-base font-bold text-[#0B1220]">
+                      <div>
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="tnum text-vb-subtle font-mono text-[11px] font-medium tracking-[0.08em] uppercase">
+                            [{String(i + 1).padStart(2, "0")}] · {m.when}
+                          </span>
+                          <span className="border-vb-border bg-vb-surface text-vb-gold-deep sysdark:text-vb-gold-bright inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border">
+                            <Icon className="h-[18px] w-[18px]" />
+                          </span>
+                        </div>
+                        <h3 className="text-vb-fg mt-4 text-base font-bold">
                           <Link
                             href={`${FEATURES_HREF}#${m.id}`}
-                            className="sysdark:hover:text-[#E3C77A] hover:text-[#8A6516]"
+                            className="group/step hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright inline-flex items-center gap-1.5 transition-colors"
                           >
-                            {m.name}
+                            <span>{m.name}</span>
+                            <ArrowRight className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-[transform,opacity] duration-150 group-hover/step:translate-x-0 group-hover/step:opacity-100" />
                           </Link>
                         </h3>
-                        <p className="sysdark:text-[#A3AAB8] mt-1 text-sm leading-relaxed text-[#4B5565]">
+                        <p className="text-vb-muted mt-1.5 text-sm leading-relaxed">
                           {m.brief}
                         </p>
                       </div>
@@ -640,17 +645,22 @@ export function VbLandingPage() {
                   )
                 })}
               </ol>
+            </div>
 
-              <p className="sysdark:border-[#1F232A] sysdark:text-[#A3AAB8] mt-12 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 border-t border-[#E3E7EE] pt-6 text-center text-sm text-[#4B5565]">
-                <Smartphone className="sysdark:text-[#E3C77A] h-4 w-4 text-[#8A6516]" />
-                <b className="sysdark:text-[#F5F7FA] font-semibold text-[#0B1220]">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <p className="text-vb-muted mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-sm">
+                <Smartphone className="text-vb-gold-deep sysdark:text-vb-gold-bright h-4 w-4" />
+                <b className="text-vb-fg font-semibold">
                   Thêm trên trang Chức năng:
                 </b>
                 đặt đơn Phú Quý, phiên bán lại, điều chuyển kiểm kê kho, in tem
                 Thông tư 22, voucher &amp; Zalo OA.
-                <span className="sysdark:bg-[#4A3A14] rounded-full bg-[#0B1220] px-2 py-0.5 text-xs font-semibold text-white">
-                  11 nghiệp vụ
-                </span>
+                <Link
+                  href={FEATURES_HREF}
+                  className="sysdark:bg-[#4A3A14] rounded-full bg-[#0B1220] px-2.5 py-0.5 font-mono text-xs font-semibold text-white transition-opacity hover:opacity-90"
+                >
+                  11 nghiệp vụ →
+                </Link>
               </p>
             </div>
           </section>
@@ -660,14 +670,14 @@ export function VbLandingPage() {
           {/* ---------- Bảng giá ---------- */}
           <section
             id="bang-gia"
-            className="sysdark:border-[#1F232A] relative scroll-mt-24 border-t border-[#E3E7EE] py-12 lg:py-16"
+            className="border-vb-border relative scroll-mt-24 border-t py-12 lg:py-16"
           >
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="mx-auto max-w-2xl text-center">
                 <Eyebrow index="03">Bảng giá</Eyebrow>
                 <h2
-                  className="sysdark:text-[#F5F7FA] mt-2 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
+                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   Chọn gói theo mảng bạn kinh doanh
@@ -687,7 +697,7 @@ export function VbLandingPage() {
                           ? "sysdark:border-[#4A3A14] sysdark:bg-[#141F30] border-[#0F1B2D] bg-[#0F1B2D] text-white"
                           : featured
                             ? "sysdark:border-[#C99A2E] sysdark:bg-[#111317] sysdark:shadow-[0_30px_60px_-36px_rgba(201,154,46,0.45)] sysdark:ring-[#C99A2E] border-[#8A6516] bg-white shadow-[0_30px_60px_-36px_rgba(10,22,51,0.5)] ring-1 ring-[#8A6516]"
-                            : "sysdark:border-[#262B33] sysdark:bg-[#111317] border-[#D6DCE6] bg-white"
+                            : "border-vb-border-strong bg-vb-card"
                       }`}
                     >
                       {featured && (
@@ -695,54 +705,56 @@ export function VbLandingPage() {
                           Đầy đủ vàng &amp; bạc
                         </span>
                       )}
-                      <h3
-                        className={`text-sm font-semibold tracking-wide uppercase ${
-                          dark
-                            ? "sysdark:text-[#D9C189] text-[#E8D49A]"
-                            : "sysdark:text-[#E3C77A] text-[#8A6516]"
-                        }`}
-                      >
-                        {p.name}
-                      </h3>
+                      <div className="lg:min-h-[124px]">
+                        <h3
+                          className={`text-sm font-semibold tracking-wide uppercase ${
+                            dark
+                              ? "sysdark:text-[#D9C189] text-[#E8D49A]"
+                              : "text-vb-gold-deep sysdark:text-vb-gold-bright"
+                          }`}
+                        >
+                          {p.name}
+                        </h3>
 
-                      <div className="mt-4 flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
-                        <span className="tnum text-2xl font-bold tracking-tight lg:text-[22px]">
-                          {p.price.startsWith("Từ ") ? (
-                            <>
-                              <span className="mr-1 text-sm font-semibold tracking-normal">
-                                Từ
-                              </span>
-                              {p.price.slice(3)}
-                            </>
-                          ) : (
-                            p.price
-                          )}
-                        </span>
-                        {p.unit && (
-                          <span
-                            className={`shrink-0 text-sm whitespace-nowrap ${dark ? "sysdark:text-[#D9C189] text-[#E8D49A]" : "sysdark:text-[#8B93A3] text-[#5B6475]"}`}
-                          >
-                            {p.unit}
+                        <div className="mt-4 flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
+                          <span className="tnum text-2xl font-bold tracking-tight lg:text-[22px]">
+                            {p.price.startsWith("Từ ") ? (
+                              <>
+                                <span className="mr-1 text-sm font-semibold tracking-normal">
+                                  Từ
+                                </span>
+                                {p.price.slice(3)}
+                              </>
+                            ) : (
+                              p.price
+                            )}
                           </span>
-                        )}
+                          {p.unit && (
+                            <span
+                              className={`shrink-0 text-sm whitespace-nowrap ${dark ? "sysdark:text-[#D9C189] text-[#E8D49A]" : "text-vb-subtle"}`}
+                            >
+                              {p.unit}
+                            </span>
+                          )}
+                        </div>
+                        <p
+                          className={`mt-2 text-sm ${dark ? "sysdark:text-[#A3AAB8] text-[#C3CAD6]" : "text-vb-subtle"}`}
+                        >
+                          {p.note}
+                        </p>
                       </div>
-                      <p
-                        className={`mt-2 text-sm ${dark ? "sysdark:text-[#A3AAB8] text-[#C3CAD6]" : "sysdark:text-[#8B93A3] text-[#5B6475]"}`}
-                      >
-                        {p.note}
-                      </p>
 
                       <ul
-                        className={`mt-6 flex-1 space-y-2.5 border-t pt-6 text-sm ${
+                        className={`mt-5 flex-1 space-y-2.5 border-t pt-5 text-sm ${
                           dark
                             ? "sysdark:text-[#C9CED8] border-white/10 text-[#E4E7EE]"
-                            : "sysdark:border-[#1F232A] sysdark:text-[#E6E9EF] border-[#E3E7EE] text-[#1F2937]"
+                            : "border-vb-border text-vb-body"
                         }`}
                       >
                         {p.items.map((item) => (
                           <li key={item} className="flex items-start gap-2.5">
                             <Check
-                              className={`mt-0.5 h-4 w-4 shrink-0 ${dark ? "text-[#E3C77A]" : "sysdark:text-[#E3C77A] text-[#8A6516]"}`}
+                              className={`mt-0.5 h-4 w-4 shrink-0 ${dark ? "text-[#E3C77A]" : "text-vb-gold-deep sysdark:text-vb-gold-bright"}`}
                             />
                             <span>{item}</span>
                           </li>
@@ -752,12 +764,12 @@ export function VbLandingPage() {
                       <a
                         href="#dang-ky"
                         onClick={() => setPlan(p.name)}
-                        className={`mt-7 inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
+                        className={`mt-7 inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.98] ${
                           dark
                             ? "sysdark:text-[#08090B] sysdark:hover:bg-[#E6E9EF] bg-white text-[#0F1B2D] hover:bg-[#FBF5E6]"
                             : featured
                               ? "sysdark:bg-[#9C7218] sysdark:hover:bg-[#C99A2E] bg-[#8A6516] text-white hover:bg-[#6F5112]"
-                              : "sysdark:border-[#343A44] sysdark:text-[#E6E9EF] sysdark:hover:border-[#C99A2E] border border-[#C9D0DC] text-[#111827] hover:border-[#8A6516]"
+                              : "sysdark:border-[#343A44] text-vb-body sysdark:hover:border-[#C99A2E] border border-[#C9D0DC] hover:border-[#8A6516]"
                         }`}
                       >
                         {p.cta}
@@ -767,18 +779,18 @@ export function VbLandingPage() {
                 })}
               </div>
 
-              <p className="sysdark:text-[#8B93A3] mt-8 text-center text-sm text-[#5B6475]">
+              <p className="text-vb-subtle mt-8 text-center text-sm">
                 Muốn xem trên số liệu mẫu trước khi chọn?{" "}
                 <Link
                   href={`${FEATURES_HREF}#so-sanh`}
-                  className="sysdark:text-[#E3C77A] font-semibold text-[#8A6516] hover:underline"
+                  className="text-vb-gold-deep sysdark:text-vb-gold-bright font-semibold hover:underline"
                 >
                   So sánh chi tiết các gói
                 </Link>{" "}
                 hoặc{" "}
                 <a
                   href="#dang-ky"
-                  className="sysdark:text-[#E3C77A] font-semibold text-[#8A6516] hover:underline"
+                  className="text-vb-gold-deep sysdark:text-vb-gold-bright font-semibold hover:underline"
                 >
                   nhắn Zalo để được tư vấn
                 </a>
@@ -790,7 +802,7 @@ export function VbLandingPage() {
           <section
             id="hoi-dap"
             aria-labelledby="hoi-dap-title"
-            className="sysdark:border-[#1F232A] relative scroll-mt-24 border-t border-[#E3E7EE] py-12 lg:py-16"
+            className="border-vb-border relative scroll-mt-24 border-t py-12 lg:py-16"
           >
             <RailMarks />
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
@@ -798,25 +810,25 @@ export function VbLandingPage() {
                 <Eyebrow index="04">Hỏi đáp</Eyebrow>
                 <h2
                   id="hoi-dap-title"
-                  className="sysdark:text-[#F5F7FA] mt-2 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
+                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   Câu hỏi thường gặp
                 </h2>
               </div>
-              <div className="sysdark:divide-[#1F232A] sysdark:border-[#1F232A] divide-y divide-[#E3E7EE] border-y border-[#E3E7EE] lg:col-span-8">
+              <div className="divide-vb-border border-vb-border divide-y border-y lg:col-span-8">
                 {FAQ.map((f, i) => (
                   <details key={f.q} open={i === 0} className="group">
-                    <summary className="sysdark:text-[#F5F7FA] flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-semibold text-[#0B1220] [&::-webkit-details-marker]:hidden">
+                    <summary className="text-vb-fg hover:text-vb-gold-deep sysdark:hover:text-vb-gold-bright flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-semibold transition-colors [&::-webkit-details-marker]:hidden">
                       <h3>{f.q}</h3>
                       <span
                         aria-hidden
-                        className="sysdark:text-[#E3C77A] font-mono text-lg leading-none text-[#8A6516] transition-transform group-open:rotate-45"
+                        className="text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-lg leading-none transition-transform duration-150 group-open:rotate-45"
                       >
                         +
                       </span>
                     </summary>
-                    <p className="sysdark:text-[#A3AAB8] pb-5 text-sm leading-relaxed text-[#4B5565]">
+                    <p className="text-vb-muted pb-5 text-sm leading-relaxed">
                       {f.a}
                     </p>
                   </details>
@@ -828,13 +840,13 @@ export function VbLandingPage() {
           {/* ---------- Đăng ký ---------- */}
           <section
             id="dang-ky"
-            className="sysdark:border-[#1F232A] sysdark:bg-[#0E1014] relative scroll-mt-24 overflow-hidden border-t border-[#E3E7EE] bg-[#F7F9FC] py-14 lg:py-20"
+            className="border-vb-border bg-vb-surface relative scroll-mt-24 overflow-hidden border-t py-14 lg:py-20"
           >
             <RailMarks />
             <CubeBackdrop id="vb-cubes-contact" light />
             <div className="relative isolate mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
               <SoftGlow className="inset-x-10 -inset-y-6" />
-              <div className="sysdark:border-[#262B33] sysdark:bg-[#111317] grid grid-cols-1 overflow-hidden rounded-xl border border-[#D6DCE6] bg-white lg:grid-cols-5">
+              <div className="border-vb-border-strong bg-vb-card grid grid-cols-1 overflow-hidden rounded-xl border lg:grid-cols-5">
                 <div className="sysdark:bg-[#140E04] bg-[#241906] bg-[radial-gradient(ellipse_90%_90%_at_90%_0%,rgba(218,165,52,0.34),transparent_70%)] p-8 text-white sm:p-10 lg:col-span-2">
                   <h2
                     className="font-medium tracking-[-0.02em] [text-wrap:balance]"
@@ -864,7 +876,7 @@ export function VbLandingPage() {
                 </div>
 
                 <div className="p-8 sm:p-10 lg:col-span-3">
-                  <p className="sysdark:text-[#E6E9EF] text-xs font-semibold text-[#111827]">
+                  <p className="text-vb-fg text-xs font-semibold">
                     Gói quan tâm
                   </p>
                   <div className="mt-1.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -876,10 +888,10 @@ export function VbLandingPage() {
                           type="button"
                           aria-pressed={checked}
                           onClick={() => setPlan(name)}
-                          className={`rounded-md border px-3 py-2.5 text-center text-sm font-semibold transition-colors ${
+                          className={`rounded-md border px-3 py-2.5 text-center text-sm font-semibold transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.98] ${
                             checked
                               ? "sysdark:border-[#C99A2E] sysdark:bg-[#9C7218] border-[#8A6516] bg-[#8A6516] text-white"
-                              : "sysdark:border-[#343A44] sysdark:text-[#E6E9EF] sysdark:hover:border-[#C99A2E] border-[#C9D0DC] text-[#1F2937] hover:border-[#8A6516]"
+                              : "sysdark:border-[#343A44] text-vb-body sysdark:hover:border-[#C99A2E] border-[#C9D0DC] hover:border-[#8A6516]"
                           }`}
                         >
                           {name}
@@ -894,13 +906,13 @@ export function VbLandingPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={handleCopyZalo}
-                      className="flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-[#0068FF] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0057D6]"
+                      className="flex min-h-[52px] w-full items-center justify-center gap-2.5 rounded-full bg-[#0068FF] px-6 py-3 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-[#0057D6] active:scale-[0.99]"
                     >
                       <MessageCircle className="h-5 w-5" />
                       Nhắn Zalo ngay (Gói {plan})
                     </a>
                     {copied && (
-                      <p className="sysdark:text-[#E3C77A] text-center text-xs font-medium text-[#8A6516]">
+                      <p className="text-vb-gold-deep sysdark:text-vb-gold-bright text-center text-xs font-medium">
                         Đã sao chép sẵn câu nhắn gói {plan} — bạn chỉ cần dán
                         vào khung chat Zalo!
                       </p>
@@ -910,7 +922,7 @@ export function VbLandingPage() {
                       {showPhone ? (
                         <a
                           href={`tel:${CONTACT.phone}`}
-                          className="sysdark:border-[#C99A2E] sysdark:text-[#E3C77A] flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[#8A6516] px-4 py-2.5 text-sm font-semibold text-[#8A6516] transition-colors hover:bg-[#FBF5E6]"
+                          className="sysdark:border-[#C99A2E] text-vb-gold-deep sysdark:text-vb-gold-bright flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[#8A6516] px-4 py-2.5 text-sm font-semibold transition-[background-color,transform] duration-150 hover:bg-[#FBF5E6] active:scale-[0.98]"
                         >
                           <Phone className="h-4 w-4" />
                           <span className="tnum">{CONTACT.phoneLabel}</span>
@@ -919,7 +931,7 @@ export function VbLandingPage() {
                         <button
                           type="button"
                           onClick={() => setShowPhone(true)}
-                          className="sysdark:border-[#343A44] sysdark:text-[#E6E9EF] sysdark:hover:border-[#C99A2E] sysdark:hover:text-[#E3C77A] flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[#C9D0DC] px-4 py-2.5 text-sm font-semibold text-[#111827] transition-colors hover:border-[#8A6516] hover:text-[#8A6516]"
+                          className="sysdark:border-[#343A44] text-vb-fg sysdark:hover:border-[#C99A2E] sysdark:hover:text-[#E3C77A] flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[#C9D0DC] px-4 py-2.5 text-sm font-semibold transition-[border-color,color,transform] duration-150 hover:border-[#8A6516] hover:text-[#8A6516] active:scale-[0.98]"
                         >
                           <Phone className="h-4 w-4" />
                           Hiện số điện thoại
@@ -927,14 +939,14 @@ export function VbLandingPage() {
                       )}
                       <a
                         href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(`Đặt lịch demo ERP Vàng Bạc - gói ${plan}`)}`}
-                        className="sysdark:border-[#343A44] sysdark:text-[#E6E9EF] sysdark:hover:border-[#C99A2E] sysdark:hover:text-[#E3C77A] flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[#C9D0DC] px-4 py-2.5 text-sm font-semibold text-[#111827] transition-colors hover:border-[#8A6516] hover:text-[#8A6516]"
+                        className="sysdark:border-[#343A44] text-vb-fg sysdark:hover:border-[#C99A2E] sysdark:hover:text-[#E3C77A] flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[#C9D0DC] px-4 py-2.5 text-sm font-semibold transition-[border-color,color,transform] duration-150 hover:border-[#8A6516] hover:text-[#8A6516] active:scale-[0.98]"
                       >
                         <Mail className="h-4 w-4 shrink-0" />
                         {CONTACT.email}
                       </a>
                     </div>
                   </div>
-                  <p className="sysdark:text-[#8B93A3] mt-4 text-xs text-[#5B6475]">
+                  <p className="text-vb-subtle mt-4 text-xs">
                     Khi nhắn, cho biết tên tiệm, số chi nhánh và mảng đang kinh
                     doanh (bạc, vàng, cầm đồ) để hẹn lịch nhanh hơn.
                   </p>

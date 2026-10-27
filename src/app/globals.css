@@ -98,6 +98,18 @@ html {
   background-color: #0a1633;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:root[data-theme-switching] *,
+:root[data-theme-switching] *::before,
+:root[data-theme-switching] *::after {
+  transition: none !important;
+}
+
 .tnum {
   font-variant-numeric: tabular-nums;
 }

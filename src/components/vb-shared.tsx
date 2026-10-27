@@ -366,7 +366,7 @@ export function GuideRails() {
       aria-hidden
       className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
     >
-      <div className="sysdark:border-[#1A1D23] mx-auto h-full max-w-6xl border-x border-[#DCE2EC]" />
+      <div className="border-vb-border mx-auto h-full max-w-6xl border-x" />
     </div>
   )
 }
@@ -408,10 +408,12 @@ export function Eyebrow({
 }) {
   return (
     <p
-      className={`sysdark:text-[#E3C77A] inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.08em] text-[#8A6516] uppercase ${className}`}
+      className={`text-vb-gold inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.08em] uppercase ${className}`}
     >
       {index ? (
-        <span className="sysdark:text-[#4B5363] text-[#9AA8C2]">[{index}]</span>
+        <span className="tnum sysdark:text-[#5B6475] text-[#8B96AC]">
+          [{index}]
+        </span>
       ) : (
         <span className="h-1.5 w-1.5 bg-current" />
       )}
@@ -1084,14 +1086,14 @@ export function VbHeader({
 
       <nav
         aria-label="Điều hướng trang giới thiệu"
-        className="sysdark:text-[#C9CED8] hidden items-center gap-7 text-sm font-medium text-[#3B4555] md:flex"
+        className="text-vb-body sysdark:text-[#C9CED8] hidden items-center gap-7 text-sm font-medium md:flex"
       >
         {NAV_LINKS.map((l) => (
           <Link
             key={l.href}
             href={l.href}
             aria-current={active === l.label ? "page" : undefined}
-            className="sysdark:hover:text-white sysdark:aria-[current=page]:text-[#E3C77A] aria-[current=page]:text-vb-gold hover:text-[#4A360B] aria-[current=page]:font-semibold"
+            className="hover:text-vb-gold sysdark:hover:text-white aria-[current=page]:text-vb-gold transition-colors duration-150 aria-[current=page]:font-semibold"
           >
             {l.label}
           </Link>
@@ -1102,7 +1104,7 @@ export function VbHeader({
         <VbThemeToggle className="hidden md:inline-flex" />
         <Link
           href={BOOK_DEMO_HREF}
-          className="sysdark:bg-[#C99A2E] sysdark:text-[#0B1220] sysdark:hover:bg-[#D9B24E] inline-flex items-center rounded-full bg-[#0F1B2D] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1C2B44]"
+          className="bg-vb-navy hover:bg-vb-navy-hover sysdark:bg-[#C99A2E] sysdark:text-[#0B1220] sysdark:hover:bg-[#D9B24E] inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white transition-[background-color,transform] duration-150 active:scale-[0.98]"
         >
           Đặt lịch demo
         </Link>
@@ -1146,7 +1148,7 @@ export function BookDemoBand() {
           href={CONTACT.zalo}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#C99A2E] px-7 py-3 text-[15px] font-semibold text-[#0B1220] shadow-sm transition-colors hover:bg-[#D9B24E]"
+          className="inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#C99A2E] px-7 py-3 text-[15px] font-semibold text-[#0B1220] shadow-sm transition-[background-color,transform] duration-150 hover:bg-[#D9B24E] active:scale-[0.98]"
         >
           Nhắn Zalo đặt lịch
           <ArrowRight className="h-4 w-4" />

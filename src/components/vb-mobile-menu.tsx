@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
@@ -17,6 +17,15 @@ export function VbMobileMenu({
   const [open, setOpen] = useState(false)
   const close = () => setOpen(false)
 
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false)
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [open])
+
   return (
     <div className="md:hidden">
       <button
@@ -25,7 +34,7 @@ export function VbMobileMenu({
         aria-controls="vb-mobile-menu"
         aria-label={open ? "Đóng menu" : "Mở menu"}
         onClick={() => setOpen((v) => !v)}
-        className="text-vb-fg hover:bg-vb-surface inline-flex h-10 w-10 items-center justify-center rounded-md"
+        className="text-vb-fg hover:bg-vb-surface inline-flex h-10 w-10 items-center justify-center rounded-md transition-[background-color,transform] duration-150 active:scale-95"
       >
         {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </button>
@@ -43,7 +52,7 @@ export function VbMobileMenu({
                   href={l.href}
                   onClick={close}
                   aria-current={active === l.label ? "page" : undefined}
-                  className="text-vb-body sysdark:aria-[current=page]:text-[#E3C77A] aria-[current=page]:text-vb-gold block py-3 text-base font-medium aria-[current=page]:font-semibold"
+                  className="text-vb-body aria-[current=page]:text-vb-gold block py-3 text-base font-medium aria-[current=page]:font-semibold"
                 >
                   {l.label}
                 </Link>

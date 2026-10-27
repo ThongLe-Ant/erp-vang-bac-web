@@ -19,7 +19,7 @@ import {
 
 export function VbBrochurePage() {
   return (
-    <div className="sysdark:bg-[#08090B] sysdark:text-[#F5F7FA] sysdark:selection:bg-[#9C7218] min-h-dvh bg-white text-[#0B1220] antialiased selection:bg-[#8A6516] selection:text-white print:bg-white print:text-[#0B1220]">
+    <div className="bg-vb-bg text-vb-fg selection:bg-vb-gold min-h-dvh antialiased selection:text-white print:bg-white print:text-[#0B1220]">
       <style>{`
         @media print {
           @page {
@@ -42,6 +42,10 @@ export function VbBrochurePage() {
             break-before: page;
             page-break-before: always;
           }
+          .vb-avoid-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
         }
       `}</style>
 
@@ -54,20 +58,20 @@ export function VbBrochurePage() {
         <GuideRails />
 
         {/* ---------- Đầu bản tóm tắt ---------- */}
-        <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-10 pb-10 lg:pt-14 lg:pb-12 print:pt-0 print:pb-6">
+        <section className="border-vb-border relative border-b pt-10 lg:pt-14 print:pt-0">
           <RailMarks />
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl px-4 pb-8 sm:px-6 lg:px-8 lg:pb-10 print:pb-5">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
               <div className="max-w-2xl">
                 <Eyebrow>Tóm tắt giải pháp · vangbac.goplus.vn</Eyebrow>
                 <h1
-                  className="sysdark:text-[#F5F7FA] mt-2 font-medium tracking-[-0.02em] [text-wrap:balance] text-[#0B1220]"
+                  className="text-vb-fg mt-2 font-medium tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
                   ERP Vàng Bạc — Quản lý đại lý bạc tích trữ, tiệm vàng truyền
                   thống &amp; cầm đồ
                 </h1>
-                <p className="sysdark:text-[#A3AAB8] mt-2.5 text-sm leading-relaxed text-[#4B5565]">
+                <p className="text-vb-muted mt-2.5 text-sm leading-relaxed">
                   Tự cập nhật giá từ Phú Quý, Bảo Tín Mạnh Hải, Ancarat. Quản lý
                   bán hàng khoá giá chống trượt, thu mua trừ đá trừ dơ, in tem
                   Thông tư 22, hợp đồng cầm đồ, tồn kho nhiều chi nhánh và đồng
@@ -80,7 +84,7 @@ export function VbBrochurePage() {
                   <button
                     type="button"
                     onClick={() => window.print()}
-                    className="sysdark:border-[#343A44] sysdark:text-[#E6E9EF] sysdark:hover:border-[#C99A2E] inline-flex items-center gap-1.5 rounded-full border border-[#C9D0DC] px-4 py-2 text-xs font-semibold text-[#111827] transition-colors hover:border-[#8A6516]"
+                    className="border-vb-border-strong text-vb-fg hover:border-vb-gold-deep hover:text-vb-gold-deep sysdark:hover:border-[#C99A2E] sysdark:hover:text-vb-gold-bright inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
                   >
                     <Printer className="h-3.5 w-3.5" />
                     In / Lưu PDF (A4)
@@ -89,43 +93,72 @@ export function VbBrochurePage() {
                     href={CONTACT.zalo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="sysdark:bg-[#C99A2E] sysdark:text-[#0B1220] inline-flex items-center rounded-full bg-[#0F1B2D] px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#1C2B44]"
+                    className="sysdark:bg-[#C99A2E] sysdark:text-[#0B1220] inline-flex items-center rounded-full bg-[#0F1B2D] px-4 py-2 text-xs font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-[#1C2B44] active:scale-[0.98]"
                   >
                     Nhắn Zalo đặt lịch demo
                   </a>
                 </div>
-                <p className="tnum sysdark:text-[#8B93A3] font-mono text-xs text-[#5B6475]">
+                <p className="tnum text-vb-subtle font-mono text-xs">
                   Zalo / ĐT: {CONTACT.phoneLabel} · {CONTACT.email}
                 </p>
               </div>
             </div>
           </div>
+
+          {/* Dải thông số kỹ thuật tóm tắt 3 ô ăn khớp GuideRails */}
+          <div className="border-vb-border bg-vb-surface/60 mx-auto max-w-6xl border-t">
+            <dl className="divide-vb-border grid grid-cols-1 divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0 print:grid-cols-3 print:divide-x print:divide-y-0">
+              {[
+                {
+                  k: "Kiến trúc triển khai",
+                  v: "1 Ứng dụng & 1 CSDL độc lập / chuỗi",
+                },
+                {
+                  k: "Nguồn giá tự động",
+                  v: "Phú Quý · BTMH · Ancarat · XAG/USD",
+                },
+                {
+                  k: "Pháp lý & kế toán",
+                  v: "Tem 2 cánh TT22 · Đồng bộ MISA AMIS",
+                },
+              ].map((spec) => (
+                <div key={spec.k} className="px-6 py-3.5 print:px-4 print:py-2.5">
+                  <dt className="text-vb-subtle font-mono text-[10px] font-semibold tracking-[0.08em] uppercase">
+                    {spec.k}
+                  </dt>
+                  <dd className="tnum text-vb-fg mt-0.5 text-xs font-semibold">
+                    {spec.v}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </section>
 
         {/* ---------- 01. Ba mô hình áp dụng (cùng lưới kẻ dọc với trang chủ) ---------- */}
-        <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-10 lg:pt-12 print:pt-6">
+        <section className="border-vb-border relative border-b pt-10 lg:pt-12 print:pt-6">
           <RailMarks />
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Eyebrow index="01">Mô hình áp dụng</Eyebrow>
           </div>
 
-          <div className="sysdark:border-[#1F232A] mx-auto mt-4 max-w-6xl border-t border-[#E3E7EE]">
-            <div className="sysdark:divide-[#1F232A] grid grid-cols-1 divide-y divide-[#E3E7EE] lg:grid-cols-3 lg:divide-x lg:divide-y-0 print:grid-cols-3 print:divide-x print:divide-y-0">
+          <div className="border-vb-border mx-auto mt-4 max-w-6xl border-t">
+            <div className="divide-vb-border grid grid-cols-1 divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0 print:grid-cols-3 print:divide-x print:divide-y-0">
               {DEALER_MODELS.map((m, idx) => (
-                <div key={m.id} className="p-6 print:p-4">
-                  <p className="sysdark:text-[#7A8292] font-mono text-[11px] font-medium tracking-[0.08em] text-[#6B7485] uppercase">
+                <div key={m.id} className="vb-avoid-break p-6 print:p-4">
+                  <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-[11px] font-medium tracking-[0.08em] uppercase">
                     {String(idx + 1).padStart(2, "0")} · {m.badge}
                   </p>
-                  <h2 className="sysdark:text-[#F5F7FA] mt-1.5 text-base font-bold text-[#0B1220]">
+                  <h2 className="text-vb-fg mt-1.5 text-base font-bold">
                     {m.title}
                   </h2>
-                  <p className="sysdark:text-[#A3AAB8] mt-1.5 text-xs leading-relaxed text-[#4B5565]">
+                  <p className="text-vb-muted mt-1.5 text-xs leading-relaxed">
                     {m.desc}
                   </p>
-                  <ul className="sysdark:border-[#1F232A] sysdark:text-[#E6E9EF] mt-4 space-y-1.5 border-t border-[#E3E7EE] pt-3 text-xs text-[#1F2937]">
+                  <ul className="border-vb-border text-vb-body mt-4 space-y-1.5 border-t pt-3 text-xs">
                     {m.highlights.map((h) => (
                       <li key={h} className="flex items-start gap-2">
-                        <span className="sysdark:text-[#E3C77A] font-mono text-[#8A6516]">
+                        <span className="text-vb-gold-deep sysdark:text-vb-gold-bright font-mono">
                           —
                         </span>
                         <span>{h}</span>
@@ -138,40 +171,40 @@ export function VbBrochurePage() {
           </div>
         </section>
 
-        {/* ---------- 02. Danh mục 16 phân hệ nghiệp vụ ---------- */}
-        <section className="sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] pt-10 lg:pt-12 print:pt-6">
+        {/* ---------- 02. Danh mục phân hệ nghiệp vụ ---------- */}
+        <section className="border-vb-border relative border-b pt-10 lg:pt-12 print:pt-6">
           <RailMarks />
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between gap-4">
-              <Eyebrow index="02">Danh mục 16 phân hệ nghiệp vụ</Eyebrow>
+              <Eyebrow index="02">Danh mục phân hệ nghiệp vụ trọng tâm</Eyebrow>
               <Link
                 href="/chuc-nang"
-                className="vb-no-print sysdark:text-[#E3C77A] text-xs font-semibold text-[#8A6516] hover:underline"
+                className="vb-no-print text-vb-gold-deep sysdark:text-vb-gold-bright text-xs font-semibold hover:underline"
               >
                 Xem ảnh màn hình từng phân hệ →
               </Link>
             </div>
           </div>
 
-          <div className="sysdark:border-[#1F232A] mx-auto mt-4 max-w-6xl border-t border-[#E3E7EE]">
-            <div className="sysdark:divide-[#1F232A] grid grid-cols-1 divide-y divide-[#E3E7EE] md:grid-cols-2 md:[&>*:nth-child(odd)]:border-r md:[&>*:nth-child(odd)]:border-[#E3E7EE] sysdark:md:[&>*:nth-child(odd)]:border-[#1F232A] print:grid-cols-2">
+          <div className="border-vb-border mx-auto mt-4 max-w-6xl border-t">
+            <div className="bg-vb-border grid grid-cols-1 gap-px md:grid-cols-2 print:grid-cols-2">
               {FEATURE_MODULES.map((m, i) => (
                 <div
                   key={m.id}
-                  className="flex items-start justify-between gap-4 px-6 py-3.5 print:px-4 print:py-2.5"
+                  className="vb-avoid-break bg-vb-bg flex items-start justify-between gap-4 px-6 py-3.5 print:bg-white print:px-4 print:py-2.5"
                 >
                   <div className="min-w-0">
-                    <p className="sysdark:text-[#F5F7FA] text-sm font-semibold text-[#0B1220]">
-                      <span className="tnum sysdark:text-[#E3C77A] mr-2 font-mono text-xs text-[#8A6516]">
+                    <p className="text-vb-fg text-sm font-semibold">
+                      <span className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright mr-2 font-mono text-xs">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       {m.name}
                     </p>
-                    <p className="sysdark:text-[#A3AAB8] mt-0.5 text-xs leading-relaxed text-[#4B5565]">
+                    <p className="text-vb-muted mt-0.5 text-xs leading-relaxed">
                       {m.brief}
                     </p>
                   </div>
-                  <span className="sysdark:text-[#7A8292] shrink-0 font-mono text-[11px] text-[#6B7485]">
+                  <span className="text-vb-subtle shrink-0 font-mono text-[11px]">
                     {"scope" in m ? m.scope : m.when}
                   </span>
                 </div>
@@ -181,18 +214,18 @@ export function VbBrochurePage() {
         </section>
 
         {/* ---------- 03. Bảng giá & phạm vi theo gói ---------- */}
-        <section className="vb-print-break sysdark:border-[#1F232A] relative border-b border-[#E3E7EE] py-10 lg:py-12 print:py-6">
+        <section className="vb-print-break border-vb-border relative border-b py-10 lg:py-12 print:py-6">
           <RailMarks />
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <Eyebrow index="03">Bảng giá &amp; phạm vi theo gói</Eyebrow>
 
-            <div className="sysdark:border-[#1F232A] mt-4 overflow-x-auto rounded-lg border border-[#E3E7EE]">
+            <div className="border-vb-border mt-4 overflow-x-auto rounded-lg border">
               <table className="w-full min-w-[600px] text-left text-sm">
                 <thead>
-                  <tr className="sysdark:bg-[#0E1014] bg-[#F7F9FC]">
+                  <tr className="bg-vb-surface">
                     <th
                       scope="col"
-                      className="sysdark:text-[#8B93A3] px-5 py-3.5 font-semibold text-[#5B6475]"
+                      className="bg-vb-surface text-vb-subtle border-vb-border sticky left-0 z-10 border-r px-5 py-3.5 font-semibold sm:border-r-0"
                     >
                       Phạm vi nghiệp vụ
                     </th>
@@ -200,12 +233,16 @@ export function VbBrochurePage() {
                       <th
                         key={p.id}
                         scope="col"
-                        className="w-[18%] px-3 py-3.5 text-center"
+                        className={`w-[18%] px-3 py-3.5 text-center ${
+                          p.tone === "featured"
+                            ? "sysdark:bg-[#9C7218] bg-[#8A6516] [&>span]:!text-white"
+                            : ""
+                        }`}
                       >
-                        <span className="sysdark:text-[#F5F7FA] block font-bold text-[#0B1220]">
+                        <span className="text-vb-fg block font-bold">
                           {p.name}
                         </span>
-                        <span className="tnum sysdark:text-[#E3C77A] mt-0.5 block font-mono text-xs font-semibold text-[#8A6516]">
+                        <span className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright mt-0.5 block font-mono text-xs font-semibold">
                           {p.price}
                           {p.unit}
                         </span>
@@ -217,48 +254,55 @@ export function VbBrochurePage() {
                   {PLAN_MATRIX.map((r) => (
                     <tr
                       key={r.label}
-                      className="sysdark:border-[#1F232A] border-t border-[#E3E7EE]"
+                      className="vb-avoid-break border-vb-border border-t"
                     >
                       <th
                         scope="row"
-                        className="sysdark:text-[#E6E9EF] px-5 py-3 font-medium text-[#1F2937]"
+                        className="bg-vb-bg text-vb-body border-vb-border sticky left-0 z-10 border-r px-5 py-3 font-medium sm:border-r-0 print:bg-white"
                       >
                         {r.label}
                       </th>
-                      {r.cells.map((c, i) => (
-                        <td
-                          key={PLANS[i].id}
-                          className="px-3 py-3 text-center"
-                        >
-                          {c === true ? (
-                            <Check
-                              aria-label="Có"
-                              className="sysdark:text-[#E3C77A] mx-auto h-4 w-4 text-[#8A6516]"
-                            />
-                          ) : c === false ? (
-                            <Minus
-                              aria-label="Không"
-                              className="sysdark:text-[#3A404A] mx-auto h-4 w-4 text-[#C4CBD6]"
-                            />
-                          ) : (
-                            <span className="sysdark:text-[#8B93A3] text-xs font-medium text-[#5B6475]">
-                              {c}
-                            </span>
-                          )}
-                        </td>
-                      ))}
+                      {r.cells.map((c, i) => {
+                        const isFeaturedCol = PLANS[i].tone === "featured"
+                        return (
+                          <td
+                            key={PLANS[i].id}
+                            className={`px-3 py-3 text-center ${
+                              isFeaturedCol
+                                ? "sysdark:bg-[#161209]/60 bg-[#FAF6EC]/50"
+                                : ""
+                            }`}
+                          >
+                            {c === true ? (
+                              <Check
+                                aria-label="Có"
+                                className="text-vb-gold-deep sysdark:text-vb-gold-bright mx-auto h-4 w-4"
+                              />
+                            ) : c === false ? (
+                              <Minus
+                                aria-label="Không"
+                                className="sysdark:text-[#3A404A] mx-auto h-4 w-4 text-[#C4CBD6]"
+                              />
+                            ) : (
+                              <span className="tnum text-vb-subtle text-xs font-medium">
+                                {c}
+                              </span>
+                            )}
+                          </td>
+                        )
+                      })}
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
 
-            <div className="sysdark:border-[#1F232A] sysdark:text-[#A3AAB8] mt-6 flex flex-col justify-between gap-2 border-t border-[#E3E7EE] pt-4 text-xs text-[#4B5565] sm:flex-row sm:items-center">
+            <div className="border-vb-border text-vb-muted mt-6 flex flex-col justify-between gap-2 border-t pt-4 text-xs sm:flex-row sm:items-center">
               <span>
                 Mỗi chuỗi đại lý vận hành trên một ứng dụng và một cơ sở dữ liệu
                 riêng biệt. Cài đặt và đào tạo tận nơi khi triển khai.
               </span>
-              <span className="tnum sysdark:text-[#F5F7FA] shrink-0 font-mono font-semibold text-[#0B1220]">
+              <span className="tnum text-vb-fg shrink-0 font-mono font-semibold">
                 vangbac.goplus.vn · {CONTACT.phoneLabel}
               </span>
             </div>

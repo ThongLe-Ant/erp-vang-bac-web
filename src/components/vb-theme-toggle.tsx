@@ -36,6 +36,7 @@ function subscribe(onChange: () => void) {
 
 function apply(choice: ThemeChoice) {
   const root = document.documentElement
+  root.dataset.themeSwitching = ""
   try {
     if (choice === "system") localStorage.removeItem(STORAGE_KEY)
     else localStorage.setItem(STORAGE_KEY, choice)
@@ -44,6 +45,10 @@ function apply(choice: ThemeChoice) {
   }
   if (choice === "system") delete root.dataset.vangbacTheme
   else root.dataset.vangbacTheme = choice
+  void root.offsetHeight
+  requestAnimationFrame(() => {
+    delete root.dataset.themeSwitching
+  })
 }
 
 /** `className` quyết định cả cách hiển thị (mặc định `inline-flex`): để
@@ -72,10 +77,10 @@ export function VbThemeToggle({
             aria-label={label}
             title={label}
             onClick={() => apply(value)}
-            className={`inline-flex h-7 w-7 items-center justify-center rounded-full transition-colors ${
+            className={`inline-flex h-7 w-7 items-center justify-center rounded-full transition-[background-color,color,transform] duration-150 active:scale-95 ${
               on
-                ? "sysdark:bg-[#1F232A] sysdark:text-white text-vb-gold bg-[#FBF5E6]"
-                : "text-vb-subtle sysdark:hover:text-white hover:text-vb-fg"
+                ? "bg-vb-gold-soft text-vb-gold sysdark:bg-vb-border-strong sysdark:text-white"
+                : "text-vb-subtle hover:text-vb-fg sysdark:hover:text-white"
             }`}
           >
             <Icon className="h-3.5 w-3.5" />
