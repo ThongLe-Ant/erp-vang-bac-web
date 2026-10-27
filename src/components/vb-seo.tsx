@@ -184,13 +184,13 @@ const software = {
         "Tự động cập nhật bảng giá bạc tích trữ và vàng bạc theo nguồn Ancarat",
     },
     {
-      "@type": "Product",
+      "@type": "Thing",
       name: "Bạc tích trữ (Bạc thỏi, Bạc miếng 999)",
       description:
         "Quản lý mua bán giao ngay, hợp đồng hẹn ngày giao và mua bán lại bạc tích trữ 1 lượng, 5 lượng, 10 lượng, 1kg",
     },
     {
-      "@type": "Product",
+      "@type": "Thing",
       name: "Vàng trang sức truyền thống",
       description:
         "Bán vàng theo tuổi vàng (9999, 999, 24K, 18K, 14K, 10K) × khối lượng + tiền công + tiền đá; thu mua cân trừ đá, trừ dơ; in tem kim hoàn 2 cánh chuẩn Thông tư 22/2013/TT-BKHCN",
