@@ -5,3 +5,8 @@ next-env.d.ts
 *.tsbuildinfo
 .env*.local
 .DS_Store
+.playwright-mcp/
+*.log
+__pycache__/
+marketing/out/
+marketing/ref/

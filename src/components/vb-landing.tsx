@@ -702,6 +702,10 @@ export function VbLandingPage() {
                 >
                   Bảng giá theo mảng kinh doanh
                 </h2>
+                <p className="text-vb-muted mt-2.5 text-sm sm:text-base">
+                  Dùng thử miễn phí 14 ngày tại quầy · Chọn đúng phân hệ nhà mình
+                  đang bán, không ép mua kèm mảng không dùng.
+                </p>
               </div>
 
               <div className="relative isolate mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
