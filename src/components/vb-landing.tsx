@@ -133,7 +133,7 @@ const VISUAL_SHOWCASE = [
     desc: "In rõ tuổi vàng, khối lượng vàng - đá - tổng, tiền công và nhà sản xuất cho từng món nữ trang.",
     src: "/images/screens/in-tem-kim-hoan.jpg?v=3",
     alt: "Màn hình thiết kế và in tem kim hoàn 2 cánh chuẩn Thông tư 22",
-    href: "/chuc-nang#vang-truyen-thong",
+    href: "/chuc-nang#in-tem-kim-hoan",
   },
   {
     id: "thu-mua-can-lai",
@@ -141,7 +141,7 @@ const VISUAL_SHOWCASE = [
     desc: "Tự tính giá trị thu lại theo tuổi vàng thực tế và cấn trừ trực tiếp vào hoá đơn mua món mới.",
     src: "/images/screens/thu-mua-can.jpg?v=3",
     alt: "Màn hình thu mua vàng bạc trừ đá trừ dơ và thu cũ đổi mới",
-    href: "/chuc-nang#vang-truyen-thong",
+    href: "/chuc-nang#thu-mua",
   },
   {
     id: "bang-gia-tu-dong",
@@ -259,14 +259,14 @@ function ProductHero({
               href={BOOK_DEMO_HREF}
               className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-[#C99A2E] px-6 py-2.5 text-sm font-semibold text-[#0B1220] shadow-sm transition-[background-color,transform] duration-150 hover:bg-[#D9B24E] active:scale-[0.98]"
             >
-              Đặt lịch demo
+              Dùng thử 14 ngày
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="#bang-gia"
               className="sysdark:hover:bg-white/5 inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition-[background-color,transform] duration-150 hover:bg-white/10 active:scale-[0.98]"
             >
-              Bảng giá · từ 3tr/tháng
+              Bảng giá · từ 790k/tháng
             </a>
           </div>
         </div>
@@ -444,7 +444,7 @@ export function VbLandingPage() {
     title: string
   } | null>(null)
 
-  const zaloMessage = `Chào Goplus, mình muốn đặt lịch demo ERP Vàng Bạc (quan tâm gói ${plan}).`
+  const zaloMessage = `Chào Goplus, mình muốn mở dùng thử 14 ngày ERP Vàng Bạc (quan tâm gói ${plan}).`
 
   const handleCopyZalo = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -632,7 +632,7 @@ export function VbLandingPage() {
                   href={FEATURES_HREF}
                   className="text-vb-gold-deep sysdark:text-vb-gold-bright sysdark:hover:text-white inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold transition-colors hover:text-[#4A360B]"
                 >
-                  Xem đầy đủ 11 nghiệp vụ
+                  Xem đầy đủ 16 nghiệp vụ
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -703,8 +703,8 @@ export function VbLandingPage() {
                   Bảng giá theo mảng kinh doanh
                 </h2>
                 <p className="text-vb-muted mt-2.5 text-sm sm:text-base">
-                  Dùng thử miễn phí 14 ngày tại quầy · Chọn đúng phân hệ nhà mình
-                  đang bán, không ép mua kèm mảng không dùng.
+                  Dùng thử miễn phí 14 ngày tại quầy · Chọn đúng phân hệ nhà
+                  mình đang bán, không ép mua kèm mảng không dùng.
                 </p>
               </div>
 
@@ -878,17 +878,18 @@ export function VbLandingPage() {
                       lineHeight: 1.2,
                     }}
                   >
-                    Đặt lịch <span className="whitespace-nowrap">demo</span>{" "}
-                    &amp; <span className="whitespace-nowrap">báo giá</span>
+                    Dùng thử <span className="whitespace-nowrap">14 ngày</span>{" "}
+                    &amp; <span className="whitespace-nowrap">xem demo</span>
                   </h2>
                   <p className="mt-3 text-sm leading-relaxed text-[#C3CAD6]">
-                    Nhắn Zalo hoặc gọi trực tiếp, trả lời trong giờ làm việc.
+                    Nhắn Zalo hoặc gọi trực tiếp, mở tài khoản chạy thử miễn phí
+                    theo đúng quầy.
                   </p>
                   <ul className="sysdark:text-[#C9CED8] mt-6 space-y-2.5 text-sm text-[#E4E7EE]">
                     {[
-                      "Demo theo đúng mô hình tiệm của bạn",
-                      "Tư vấn chọn gói phù hợp",
-                      "Cài đặt và đào tạo tận nơi khi triển khai",
+                      "Dùng thử miễn phí 14 ngày theo mô hình tiệm",
+                      "Tư vấn chọn đúng phân hệ, không ép mua thừa",
+                      "Cài đặt và hướng dẫn nhân viên quen việc trong 1 buổi",
                     ].map((line) => (
                       <li key={line} className="flex items-start gap-2.5">
                         <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#E3C77A]" />
@@ -936,8 +937,8 @@ export function VbLandingPage() {
                     </a>
                     {copied && (
                       <p className="text-vb-gold-deep sysdark:text-vb-gold-bright text-center text-xs font-medium">
-                        Đã sao chép sẵn câu nhắn gói {plan}, bạn chỉ cần dán
-                        vào khung chat Zalo!
+                        Đã sao chép sẵn câu nhắn gói {plan}, bạn chỉ cần dán vào
+                        khung chat Zalo!
                       </p>
                     )}
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-[auto_1fr]">
@@ -961,6 +962,7 @@ export function VbLandingPage() {
                       )}
                       <a
                         href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(`Đặt lịch demo ERP Vàng Bạc - gói ${plan}`)}`}
+                        rel="nofollow"
                         className="sysdark:border-[#343A44] text-vb-fg sysdark:hover:border-[#C99A2E] sysdark:hover:text-[#E3C77A] flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-[#C9D0DC] px-4 py-2.5 text-sm font-semibold transition-[border-color,color,transform] duration-150 hover:border-[#8A6516] hover:text-[#8A6516] active:scale-[0.98]"
                       >
                         <Mail className="h-4 w-4 shrink-0" />

@@ -963,7 +963,8 @@ export const FEATURE_MODULES = [
     name: "Ảnh bảng giá Zalo",
     when: "Tự động 24/7",
     brief: "Tự tạo ảnh bảng giá sắc nét & cập nhật nhóm Zalo.",
-    title: "Giá vừa đổi là phần mềm tự tạo ảnh bảng giá gửi vào nhóm khách hàng",
+    title:
+      "Giá vừa đổi là phần mềm tự tạo ảnh bảng giá gửi vào nhóm khách hàng",
     text: "Kết nối trực tiếp với nguồn giá của tiệm: mỗi khi giá mua bán thay đổi, hệ thống tự động xuất ảnh bảng giá sắc nét kèm hotline đặt hàng và gửi đồng thời vào các nhóm Zalo sỉ/lẻ mà không cần nhân viên trực.",
     points: [
       {
@@ -1138,7 +1139,7 @@ export function VbHeader({
           href={BOOK_DEMO_HREF}
           className="bg-vb-navy hover:bg-vb-navy-hover sysdark:bg-[#C99A2E] sysdark:text-[#0B1220] sysdark:hover:bg-[#D9B24E] inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white transition-[background-color,transform] duration-150 active:scale-[0.98]"
         >
-          Đặt lịch demo
+          Dùng thử 14 ngày
         </Link>
         <VbMobileMenu links={NAV_LINKS} active={active} />
       </div>
@@ -1147,9 +1148,9 @@ export function VbHeader({
 }
 
 const BOOK_DEMO_POINTS = [
-  "Demo trên dữ liệu mẫu: giá, bán, thu mua, cầm đồ",
-  "Tư vấn chọn gói theo mô hình tiệm",
-  "Cài đặt và đào tạo tận nơi khi triển khai",
+  "Mở tài khoản chạy thử 14 ngày: giá, bán, thu mua, cầm đồ",
+  "Chọn đúng phân hệ tiệm cần (từ 790k/tháng)",
+  "Cài đặt và hướng dẫn nhân viên trong 1 buổi",
 ] as const
 
 /** Dải mời đặt lịch demo , đặt giữa các trang với nền nhung đen ánh vàng + khối lập phương 3D. */
@@ -1160,7 +1161,7 @@ export function BookDemoBand() {
       <div className="relative mx-auto flex max-w-6xl flex-col items-start gap-7 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div>
           <p className="font-mono text-xs font-medium tracking-[0.08em] text-[#E3C77A] uppercase">
-            Đặt lịch demo miễn phí
+            Dùng thử miễn phí 14 ngày
           </p>
           <h2
             style={HEADING_STYLE}
@@ -1183,7 +1184,7 @@ export function BookDemoBand() {
           rel="noopener noreferrer"
           className="inline-flex min-h-[48px] shrink-0 items-center gap-2 rounded-full bg-[#C99A2E] px-7 py-3 text-[15px] font-semibold text-[#0B1220] shadow-sm transition-[background-color,transform] duration-150 hover:bg-[#D9B24E] active:scale-[0.98]"
         >
-          Nhắn Zalo đặt lịch
+          Nhắn Zalo dùng thử
           <ArrowRight className="h-4 w-4" />
         </a>
       </div>
@@ -1208,7 +1209,11 @@ export function VbFooter() {
           <a href={CONTACT.zalo} className="hover:text-white">
             Nhắn Zalo
           </a>
-          <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
+          <a
+            href={`mailto:${CONTACT.email}`}
+            rel="nofollow"
+            className="hover:text-white"
+          >
             {CONTACT.email}
           </a>
           <Link href={FEATURES_HREF} className="hover:text-white">

@@ -1,8 +1,7 @@
-"use client"
-
 import Link from "next/link"
-import { Check, Minus, Printer } from "lucide-react"
+import { Check, Minus } from "lucide-react"
 
+import { VbPrintButton } from "./vb-print-button"
 import {
   CONTACT,
   DEALER_MODELS,
@@ -81,14 +80,7 @@ export function VbBrochurePage() {
 
               <div className="flex flex-col items-start gap-3 lg:items-end">
                 <div className="vb-no-print flex flex-wrap items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => window.print()}
-                    className="border-vb-border-strong bg-vb-card text-vb-fg hover:border-vb-gold hover:text-vb-gold inline-flex items-center gap-1.5 rounded-md border px-4 py-2 text-xs font-semibold transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
-                  >
-                    <Printer className="h-3.5 w-3.5" />
-                    In / Lưu PDF (A4)
-                  </button>
+                  <VbPrintButton />
                   <a
                     href={CONTACT.zalo}
                     target="_blank"
@@ -99,7 +91,21 @@ export function VbBrochurePage() {
                   </a>
                 </div>
                 <p className="tnum text-vb-subtle font-mono text-xs">
-                  Zalo / ĐT: {CONTACT.phoneLabel} · {CONTACT.email}
+                  Zalo / ĐT:{" "}
+                  <a
+                    href={`tel:${CONTACT.phone}`}
+                    className="hover:text-vb-fg transition-colors"
+                  >
+                    {CONTACT.phoneLabel}
+                  </a>{" "}
+                  ·{" "}
+                  <a
+                    href={`mailto:${CONTACT.email}`}
+                    rel="nofollow"
+                    className="hover:text-vb-fg transition-colors"
+                  >
+                    {CONTACT.email}
+                  </a>
                 </p>
               </div>
             </div>
@@ -122,7 +128,10 @@ export function VbBrochurePage() {
                   v: "Tem 2 cánh TT22 · Đồng bộ MISA AMIS",
                 },
               ].map((spec) => (
-                <div key={spec.k} className="px-6 py-3.5 print:px-4 print:py-2.5">
+                <div
+                  key={spec.k}
+                  className="px-6 py-3.5 print:px-4 print:py-2.5"
+                >
                   <dt className="text-vb-subtle font-mono text-[10px] font-semibold tracking-[0.08em] uppercase">
                     {spec.k}
                   </dt>

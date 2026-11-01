@@ -57,6 +57,7 @@ export function vbMetadata({
   title: string
   description: string
 }): Metadata {
+  const canonicalUrl = abs(path)
   return {
     metadataBase: new URL(SITE_URL),
     title: { absolute: title },
@@ -64,17 +65,24 @@ export function vbMetadata({
     keywords: KEYWORDS,
     applicationName: "ERP Vàng Bạc",
     alternates: {
-      canonical: path,
-      types: {
-        "text/markdown": "/llms.txt",
+      canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
       },
     },
-    robots: { index: true, follow: true },
     openGraph: {
       type: "website",
       locale: "vi_VN",
       siteName: "ERP Vàng Bạc",
-      url: path,
+      url: canonicalUrl,
       title,
       description,
       images: [OG_IMAGE],
@@ -110,31 +118,30 @@ const organization = {
   sameAs: [CONTACT.zalo],
 }
 
-const offers = PLANS.map((plan) => {
+const offers = PLANS.flatMap((plan) => {
   const amount = Number(plan.price.replace(/\D/g, ""))
-  return {
-    "@type": "Offer",
-    name: `Gói ${plan.name}`,
-    description: `${plan.price}${plan.unit}. ${plan.items.join(", ")}.`,
-    url: `${SITE_URL}/#bang-gia`,
-    ...(amount
-      ? {
-          price: amount,
-          priceCurrency: "VND",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: amount,
-            priceCurrency: "VND",
-            unitText: "tháng",
-            referenceQuantity: {
-              "@type": "QuantitativeValue",
-              value: 1,
-              unitCode: "MON",
-            },
-          },
-        }
-      : {}),
-  }
+  if (!amount) return []
+  return [
+    {
+      "@type": "Offer",
+      name: `Gói ${plan.name}`,
+      description: `${plan.price}${plan.unit}. ${plan.items.join(", ")}.`,
+      url: `${SITE_URL}/#bang-gia`,
+      price: amount,
+      priceCurrency: "VND",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: amount,
+        priceCurrency: "VND",
+        unitText: "tháng",
+        referenceQuantity: {
+          "@type": "QuantitativeValue",
+          value: 1,
+          unitCode: "MON",
+        },
+      },
+    },
+  ]
 })
 
 const software = {
@@ -296,6 +303,23 @@ export function guidesIndexJsonLd(
         inLanguage: "vi",
         about: { "@id": APP_ID },
         publisher: { "@id": ORG_ID },
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "ERP Vàng Bạc",
+              item: abs(LANDING_PATH),
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Cẩm nang",
+              item: abs(GUIDES_PATH),
+            },
+          ],
+        },
         mainEntity: {
           "@type": "ItemList",
           itemListElement: guides.map((g, i) => ({
@@ -305,6 +329,42 @@ export function guidesIndexJsonLd(
             name: g.title,
             description: g.description,
           })),
+        },
+      },
+    ],
+  }
+}
+
+export function brochureJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization,
+      software,
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}${BROCHURE_PATH}#webpage`,
+        url: abs(BROCHURE_PATH),
+        name: "Hồ sơ giải pháp ERP Vàng Bạc (Brochure PDF) — Đại lý bạc tích trữ, tiệm vàng & cầm đồ",
+        inLanguage: "vi",
+        about: { "@id": APP_ID },
+        publisher: { "@id": ORG_ID },
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "ERP Vàng Bạc",
+              item: abs(LANDING_PATH),
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Hồ sơ giải pháp",
+              item: abs(BROCHURE_PATH),
+            },
+          ],
         },
       },
     ],

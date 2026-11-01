@@ -1,0 +1,4 @@
+# Ép Nixpacks/Dokploy dùng Node 24 (LTS).
+# Next.js 16 yêu cầu Node >= 20.9.0; mặc định cũ của Nixpacks là Node 18 → build/runtime lỗi.
+[variables]
+NIXPACKS_NODE_VERSION = "24"

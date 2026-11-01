@@ -13,6 +13,8 @@ import {
   vbMetadata,
 } from "@/components/vb-seo"
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }))
 }

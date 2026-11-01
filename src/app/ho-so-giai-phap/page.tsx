@@ -1,5 +1,10 @@
 import { VbBrochurePage } from "@/components/vb-brochure"
-import { BROCHURE_PATH, vbMetadata } from "@/components/vb-seo"
+import {
+  BROCHURE_PATH,
+  JsonLd,
+  brochureJsonLd,
+  vbMetadata,
+} from "@/components/vb-seo"
 
 export const metadata = vbMetadata({
   path: BROCHURE_PATH,
@@ -10,5 +15,10 @@ export const metadata = vbMetadata({
 })
 
 export default function BrochureRoutePage() {
-  return <VbBrochurePage />
+  return (
+    <>
+      <JsonLd data={brochureJsonLd()} />
+      <VbBrochurePage />
+    </>
+  )
 }

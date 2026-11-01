@@ -1,16 +1,8 @@
-"use client"
-
-import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  ArrowRight,
-  Check,
-  ImageIcon,
-  MessageCircle,
-  Minus,
-} from "lucide-react"
+import { ArrowRight, Check, ImageIcon, Minus } from "lucide-react"
 
+import { VbFeaturesNav } from "./vb-features-nav"
 import {
   BookDemoBand,
   Eyebrow,
@@ -26,121 +18,63 @@ import {
 } from "./vb-shared"
 
 /* ============================================================================
- * Trang chức năng ERP Vàng Bạc: mỗi chức năng một mục (chữ và ảnh so le), cuối
- * trang là bảng so sánh theo gói, đọc từ PLAN_MATRIX (cùng nguồn với PLANS).
+ * Trang chức năng ERP Vàng Bạc: đầu trang kiến trúc hiển thị H1 rõ ràng cho
+ * người đọc & bộ máy tìm kiếm, mỗi chức năng một mục (chữ và ảnh so le), cuối
+ * trang là bảng so sánh theo gói đọc từ PLAN_MATRIX (cùng nguồn với PLANS).
  * ========================================================================== */
 
 export function VbFeaturesPage() {
-  const [activeId, setActiveId] = useState<string>(FEATURE_MODULES[0].id)
-  const navListRef = useRef<HTMLUListElement | null>(null)
-
-  useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return
-    const sectionIds = [...FEATURE_MODULES.map((m) => m.id), "so-sanh"]
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el))
-
-    if (elements.length === 0) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-        if (visible[0]?.target?.id) {
-          setActiveId(visible[0].target.id)
-        }
-      },
-      {
-        rootMargin: "-140px 0px -55% 0px",
-        threshold: 0,
-      }
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const container = navListRef.current
-    if (!container) return
-    const activePill = container.querySelector<HTMLElement>(
-      `[data-nav-id="${activeId}"]`
-    )
-    if (!activePill) return
-    const targetLeft =
-      activePill.offsetLeft -
-      container.clientWidth / 2 +
-      activePill.clientWidth / 2
-    container.scrollTo({
-      left: Math.max(0, targetLeft),
-      behavior: "smooth",
-    })
-  }, [activeId])
-
   return (
     <div className="bg-vb-bg text-vb-fg selection:bg-vb-gold min-h-dvh antialiased selection:text-white">
       <VbHeader active="Chức năng" />
 
       <div>
-        <h1 className="sr-only">
-          Chức năng phần mềm quản lý chuỗi đại lý bạc tích trữ Phú Quý, Bảo Tín
-          Mạnh Hải, Ancarat, tiệm vàng truyền thống &amp; cầm đồ
-        </h1>
         <div aria-hidden="true" className="h-[76px]" />
 
+        {/* ---------- Đầu trang hiển thị H1 rõ ràng, đồng bộ /cam-nang & /ho-so-giai-phap ---------- */}
+        <div className="relative overflow-x-clip">
+          <GuideRails />
+          <section className="border-vb-border relative border-b pt-12 pb-10 lg:pt-16 lg:pb-12">
+            <RailMarks />
+            <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+              <div className="max-w-2xl">
+                <Eyebrow index="01">
+                  {FEATURE_MODULES.length} phân hệ nghiệp vụ
+                </Eyebrow>
+                <h1
+                  className="text-vb-fg mt-2.5 font-semibold tracking-[-0.02em] [text-wrap:balance]"
+                  style={HEADING_STYLE}
+                >
+                  Chức năng quản lý đại lý bạc tích trữ, tiệm vàng truyền thống
+                  &amp; cầm đồ
+                </h1>
+                <p className="text-vb-muted mt-2.5 text-sm leading-relaxed">
+                  Từ bảng giá tự động Phú Quý, Bảo Tín Mạnh Hải, Ancarat, quầy
+                  POS giữ giá chống trượt, in tem Thông tư 22, sơ đồ két cầm đồ
+                  đến đối soát sổ quỹ và đồng bộ MISA AMIS.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Link
+                  href="/cam-nang"
+                  className="border-vb-border-strong bg-vb-card text-vb-body hover:border-vb-gold hover:text-vb-gold inline-flex shrink-0 items-center gap-1.5 rounded-md border px-4 py-2 font-mono text-xs font-semibold uppercase transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
+                >
+                  Cẩm nang vận hành
+                </Link>
+                <Link
+                  href="/ho-so-giai-phap"
+                  className="border-vb-border-strong bg-vb-card text-vb-body hover:border-vb-gold hover:text-vb-gold inline-flex shrink-0 items-center gap-1.5 rounded-md border px-4 py-2 font-mono text-xs font-semibold uppercase transition-[border-color,color,transform] duration-150 active:scale-[0.98]"
+                >
+                  Hồ sơ giải pháp (A4 / PDF)
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        </div>
+
         {/* ---------- Thanh chọn nhanh, dính dưới đầu trang ---------- */}
-        <nav
-          aria-label="Các chức năng"
-          className="border-vb-border bg-vb-bg/95 sysdark:bg-vb-surface/90 sticky top-[76px] z-20 border-b backdrop-blur-md"
-        >
-          <ul
-            ref={navListRef}
-            className="mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8 [&::-webkit-scrollbar]:hidden"
-          >
-            {FEATURE_MODULES.map((m, idx) => {
-              const Icon = m.icon
-              const isActive = activeId === m.id
-              return (
-                <li key={m.id} className="shrink-0">
-                  <a
-                    href={`#${m.id}`}
-                    data-nav-id={m.id}
-                    aria-current={isActive ? "location" : undefined}
-                    onClick={() => setActiveId(m.id)}
-                    className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.98] ${
-                      isActive
-                        ? "border-vb-gold-deep text-vb-gold-deep sysdark:border-[#C99A2E] sysdark:bg-[#231B0B] sysdark:text-vb-gold-bright bg-[#FAF6EC] font-semibold"
-                        : "border-vb-border-strong text-vb-body hover:border-vb-gold-deep hover:text-vb-gold-deep sysdark:hover:border-[#C99A2E] sysdark:hover:text-vb-gold-bright font-medium"
-                    }`}
-                  >
-                    <Icon className="text-vb-gold-deep sysdark:text-vb-gold-bright h-4 w-4 shrink-0" />
-                    <span className="tnum text-vb-subtle font-mono text-[11px]">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    <span>{m.name}</span>
-                  </a>
-                </li>
-              )
-            })}
-            <li className="shrink-0">
-              <a
-                href="#so-sanh"
-                data-nav-id="so-sanh"
-                aria-current={activeId === "so-sanh" ? "location" : undefined}
-                onClick={() => setActiveId("so-sanh")}
-                className={`inline-flex items-center rounded-full border px-3.5 py-2 text-sm font-semibold transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.98] ${
-                  activeId === "so-sanh"
-                    ? "border-vb-gold-deep text-vb-gold-deep sysdark:border-[#C99A2E] sysdark:bg-[#231B0B] sysdark:text-vb-gold-bright bg-[#FAF6EC]"
-                    : "text-vb-gold-deep sysdark:text-vb-gold-bright border-transparent hover:underline"
-                }`}
-              >
-                So sánh gói
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <VbFeaturesNav />
 
         {/* ---------- Từng chức năng & so sánh gói, chung một khung kẻ dọc ---------- */}
         <div className="relative overflow-x-clip">
@@ -207,7 +141,8 @@ export function VbFeaturesPage() {
                       }`}
                     >
                       <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-[11px] font-semibold tracking-[0.08em] uppercase">
-                        Ví dụ thực tế tại quầy · #{String(i + 1).padStart(2, "0")}
+                        Ví dụ thực tế tại quầy · #
+                        {String(i + 1).padStart(2, "0")}
                       </p>
                       <p className="tnum text-vb-muted mt-1 text-[13px] leading-relaxed">
                         {m.example}
