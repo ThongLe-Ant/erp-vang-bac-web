@@ -1225,6 +1225,9 @@ export function VbFooter() {
           <Link href="/ho-so-giai-phap" className="hover:text-white">
             Tóm tắt giải pháp
           </Link>
+          <Link href="/chinh-sach-bao-mat" className="hover:text-white">
+            Chính sách bảo mật
+          </Link>
           <a href={GOPLUS_URL} className="hover:text-white">
             Hệ sinh thái Goplus
           </a>

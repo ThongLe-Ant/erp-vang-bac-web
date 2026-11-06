@@ -6,6 +6,7 @@ import {
   FEATURES_PATH,
   GUIDES_PATH,
   LANDING_PATH,
+  PRIVACY_PATH,
   SITE_URL,
 } from "@/components/vb-seo"
 
@@ -42,6 +43,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.75,
+    },
+    {
+      url: `${SITE_URL}${PRIVACY_PATH}`,
+      lastModified: SITE_LAST_MODIFIED,
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
   ]
 }

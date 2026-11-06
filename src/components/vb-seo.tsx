@@ -20,6 +20,7 @@ export const LANDING_PATH = "/"
 export const FEATURES_PATH = "/chuc-nang"
 export const GUIDES_PATH = "/cam-nang"
 export const BROCHURE_PATH = "/ho-so-giai-phap"
+export const PRIVACY_PATH = "/chinh-sach-bao-mat"
 
 const abs = (path: string) => `${SITE_URL}${path}`
 
