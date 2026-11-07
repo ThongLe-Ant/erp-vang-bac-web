@@ -219,6 +219,73 @@ const faqPage = {
   })),
 }
 
+const productVideo = {
+  "@type": "VideoObject",
+  "@id": `${SITE_URL}/#video-gioi-thieu`,
+  name: "Giới thiệu thực tế ERP Vàng Bạc — Phần mềm quản lý đại lý bạc tích trữ Phú Quý, BTMH & tiệm vàng bạc",
+  description:
+    "Video thuyết minh thực tế 81 giây quy trình vận hành GoERP Vàng Bạc: khóa giá POS chống trượt giá lúc quét mã QR, tự động xuất bảng giá gửi nhóm Zalo, đẩy đơn đặt hàng sang cổng Phú Quý nhận mã chính hãng, in tem 2 cánh Thông tư 22, quản lý két cầm đồ, đồng bộ MISA AMIS và kiểm quỹ cuối ca.",
+  thumbnailUrl: [`${SITE_URL}/images/screens/video-gioi-thieu-poster.jpg`],
+  uploadDate: "2026-11-07T08:00:00+07:00",
+  duration: "PT1M21S",
+  contentUrl: `${SITE_URL}/videos/goerp-vang-bac-gioi-thieu.mp4`,
+  embedUrl: `${SITE_URL}/#video-gioi-thieu`,
+  inLanguage: "vi",
+  publisher: { "@id": ORG_ID },
+  about: { "@id": APP_ID },
+  hasPart: [
+    {
+      "@type": "Clip",
+      name: "Khóa giá POS chống trượt giá khi chờ quét QR",
+      startOffset: 0,
+      endOffset: 10,
+      url: `${SITE_URL}/#video-gioi-thieu`,
+    },
+    {
+      "@type": "Clip",
+      name: "Tự động canh giá & xuất ảnh bảng giá gửi nhóm Zalo",
+      startOffset: 10,
+      endOffset: 23,
+      url: `${SITE_URL}/#video-gioi-thieu`,
+    },
+    {
+      "@type": "Clip",
+      name: "Đẩy đơn cổng Phú Quý & gom phiên bán lại",
+      startOffset: 23,
+      endOffset: 37,
+      url: `${SITE_URL}/#video-gioi-thieu`,
+    },
+    {
+      "@type": "Clip",
+      name: "In tem kim hoàn 2 cánh Thông tư 22 & thu mua vàng tuổi",
+      startOffset: 37,
+      endOffset: 50,
+      url: `${SITE_URL}/#video-gioi-thieu`,
+    },
+    {
+      "@type": "Clip",
+      name: "Quản lý sơ đồ két cầm đồ & đồng bộ hóa đơn MISA AMIS",
+      startOffset: 50,
+      endOffset: 62,
+      url: `${SITE_URL}/#video-gioi-thieu`,
+    },
+    {
+      "@type": "Clip",
+      name: "Báo cáo lãi gộp từng đơn & kiểm quỹ tiền mặt cuối ca",
+      startOffset: 62,
+      endOffset: 70,
+      url: `${SITE_URL}/#video-gioi-thieu`,
+    },
+    {
+      "@type": "Clip",
+      name: "Chi phí từ 790k/tháng & dùng thử miễn phí 14 ngày",
+      startOffset: 70,
+      endOffset: 81,
+      url: `${SITE_URL}/#video-gioi-thieu`,
+    },
+  ],
+}
+
 export function landingJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -233,7 +300,9 @@ export function landingJsonLd() {
         inLanguage: "vi",
         about: { "@id": APP_ID },
         publisher: { "@id": ORG_ID },
+        video: { "@id": `${SITE_URL}/#video-gioi-thieu` },
       },
+      productVideo,
       faqPage,
     ],
   }
