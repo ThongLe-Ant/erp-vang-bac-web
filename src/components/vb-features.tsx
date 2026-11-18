@@ -231,7 +231,12 @@ export function VbFeaturesPage() {
                           <span className="text-vb-fg block font-bold">
                             {p.name}
                           </span>
-                          <span className="tnum text-vb-subtle mt-0.5 block font-mono text-xs font-medium">
+                          {p.listPrice && (
+                            <span className="tnum text-vb-subtle mt-0.5 block font-mono text-[11px] line-through opacity-75">
+                              {p.listPrice}
+                            </span>
+                          )}
+                          <span className="tnum text-vb-subtle mt-0.5 block font-mono text-xs font-semibold">
                             {p.price}
                             {p.unit}
                           </span>

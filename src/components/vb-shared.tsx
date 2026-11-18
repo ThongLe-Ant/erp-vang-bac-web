@@ -434,6 +434,7 @@ export const DEALER_MODELS = [
     src: "/images/screens/quay-phu-quy.jpg?v=3",
     alt: "Quầy POS bán bạc tích trữ theo giá thời gian thực và chống trượt giá đơn mua bán",
     planName: "Professional",
+    listPriceTag: "2.990.000đ",
     priceTag: "1.990.000đ/tháng",
     highlights: [
       "Tự cập nhật giá Phú Quý, BTMH, Ancarat",
@@ -449,7 +450,8 @@ export const DEALER_MODELS = [
     src: "/images/screens/ban-vang-tuoi.jpg?v=3",
     alt: "Quầy vàng kim hoàn tính khối lượng nhân giá tuổi cộng tiền công và tiền đá",
     planName: "Standard",
-    priceTag: "Từ 790.000đ/tháng",
+    listPriceTag: "1.290.000đ",
+    priceTag: "790.000đ/tháng",
     highlights: [
       "Tính tiền theo tuổi vàng + tiền công + đá quý",
       "Thu mua trừ đá, trừ dơ & thu cũ đổi mới",
@@ -464,7 +466,8 @@ export const DEALER_MODELS = [
     src: "/images/screens/hop-dong-cam.jpg?v=3",
     alt: "Danh sách hợp đồng cầm đồ vàng bạc với lãi suất và hạn chuộc",
     planName: "Standard",
-    priceTag: "Từ 790.000đ/tháng",
+    listPriceTag: "1.290.000đ",
+    priceTag: "790.000đ/tháng",
     highlights: [
       "Định giá món cầm & tính lãi phí theo ngày",
       "Quản lý két & ngăn lưu giữ tài sản từng chi nhánh",
@@ -500,57 +503,65 @@ export const PLANS = [
   {
     id: "standard",
     name: "Standard",
+    listPrice: "1.290.000đ",
     price: "790.000đ",
     unit: "/tháng",
+    setupBonus: "Miễn phí khởi tạo & kết nối máy in tem TT22 (2.000.000đ)",
     note: "Dành cho tiệm vàng 1 quầy hoặc hiệu cầm đồ độc lập.",
     items: [
       "Chọn 1 mảng: Vàng truyền thống hoặc Cầm đồ",
       "In tem 2 cánh TT22 / Sơ đồ két & nhắc hạn Zalo",
       "Sổ quỹ, kiểm quỹ mệnh giá & lãi lỗ từng đơn",
     ],
-    cta: "Dùng thử 14 ngày",
+    cta: "Nhận suất Tiên phong",
     tone: "plain",
   },
   {
     id: "professional",
     name: "Professional",
+    listPrice: "2.990.000đ",
     price: "1.990.000đ",
     unit: "/tháng",
+    setupBonus: "Miễn phí thiết lập canh giá, bảng giá riêng & Bot Zalo (3.500.000đ)",
     note: "Trọn bộ Đại lý Bạc tích trữ, Vàng thương hiệu & Vàng kim hoàn.",
     items: [
       "Bạc tích trữ (Phú Quý, BTMH, Ancarat) & Vàng Phú Quý",
       "Vàng truyền thống: cân trừ đá dơ, in tem TT22",
       "Giữ giá chống trượt đơn, sổ hẹn giao & Bot báo giá Zalo",
     ],
-    cta: "Dùng thử 14 ngày",
+    cta: "Nhận suất Tiên phong",
     tone: "featured",
   },
   {
     id: "business",
     name: "Business",
+    listPrice: "4.490.000đ",
     price: "2.990.000đ",
     unit: "/tháng",
+    setupBonus: "Miễn phí chuẩn hóa sơ đồ Két, ZNS Zalo OA & đào tạo quầy (5.000.000đ)",
     note: "Gộp trọn bộ Vàng kim hoàn, Đại lý bạc & Hiệu cầm đồ.",
     items: [
       "Đầy đủ Bạc tích trữ, Vàng Phú Quý & Vàng truyền thống",
       "Phân hệ Cầm đồ: định giá tuổi vàng, lãi ngày, sơ đồ két",
       "Tự gửi bảng giá nhóm Zalo & nhắc lịch đóng lãi ZNS",
     ],
-    cta: "Dùng thử 14 ngày",
+    cta: "Nhận suất Tiên phong",
     tone: "plain",
   },
   {
     id: "enterprise",
     name: "Enterprise",
-    price: "Liên hệ báo giá",
-    unit: "",
+    listPrice: "",
+    price: "Từ 5.900.000đ",
+    unit: "/tháng",
+    setupBonus: "Cụm máy chủ & cơ sở dữ liệu độc lập · Đồng bộ MISA AMIS 2 chiều",
     note: "Chuỗi nhiều chi nhánh, đồng bộ kế toán & may đo riêng.",
     items: [
       "Toàn bộ phân hệ cho chuỗi đa chi nhánh",
       "Điều chuyển kho liên chi nhánh & đồng bộ MISA AMIS",
       "Máy chủ độc lập & tuỳ chỉnh quy trình theo yêu cầu",
     ],
-    cta: "Liên hệ tư vấn",
+    cta: "Liên hệ khảo sát",
     tone: "dark",
   },
 ] as const
@@ -1052,7 +1063,7 @@ export const FAQ = [
   },
   {
     q: "Giá thuê phần mềm ERP Vàng Bạc bao nhiêu một tháng? Có được dùng thử trước không?",
-    a: "Tất cả cửa hàng đều được mở tài khoản dùng thử miễn phí 14 ngày theo đúng mô hình quầy trước khi đăng ký. Chi phí thuê gồm: Gói Standard 790.000đ/tháng (chọn 1 mảng Vàng truyền thống hoặc Cầm đồ cho tiệm 1 quầy), Gói Professional 1.990.000đ/tháng (trọn bộ Đại lý Bạc tích trữ Phú Quý/BTMH/Ancarat, Vàng thương hiệu, Vàng truyền thống và Bot tự xuất ảnh bảng giá gửi nhóm Zalo), Gói Business 2.990.000đ/tháng (gộp đầy đủ Vàng bạc thương hiệu, Vàng kim hoàn và Hiệu cầm đồ), và Gói Enterprise báo giá riêng theo quy mô chuỗi đa chi nhánh cần đồng bộ MISA AMIS hoặc tuỳ chỉnh riêng.",
+    a: "Tất cả cửa hàng đều được mở tài khoản chạy thử miễn phí 14 ngày trên dữ liệu riêng theo đúng mô hình quầy trước khi thanh toán. Trong khuôn khổ Chương trình Đối tác Tiên phong (giới hạn 30 cửa hàng trong Quý, cam kết giữ nguyên mức phí ưu đãi 12–24 tháng và miễn phí 100% chi phí khởi tạo 2–5 triệu đồng): Gói Standard ưu đãi 790.000đ/tháng (giá niêm yết 1.290.000đ/tháng — chọn 1 mảng Vàng truyền thống hoặc Cầm đồ cho tiệm 1 quầy), Gói Professional ưu đãi 1.990.000đ/tháng (giá niêm yết 2.990.000đ/tháng — trọn bộ Đại lý Bạc tích trữ Phú Quý/BTMH/Ancarat, Vàng thương hiệu, Vàng truyền thống và Bot tự xuất ảnh bảng giá gửi nhóm Zalo), Gói Business ưu đãi 2.990.000đ/tháng (giá niêm yết 4.490.000đ/tháng — gộp đầy đủ Vàng bạc thương hiệu, Vàng kim hoàn và Hiệu cầm đồ), và Gói Enterprise từ 5.900.000đ/tháng theo quy mô chuỗi đa chi nhánh cần cụm máy chủ độc lập và đồng bộ MISA AMIS.",
   },
   {
     q: "Thu mua vàng cũ có cân trừ đá, trừ dơ và thu cũ đổi mới trên cùng một đơn được không?",
@@ -1148,9 +1159,9 @@ export function VbHeader({
 }
 
 const BOOK_DEMO_POINTS = [
-  "Mở tài khoản chạy thử 14 ngày: giá, bán, thu mua, cầm đồ",
-  "Chọn đúng phân hệ tiệm cần (từ 790k/tháng)",
-  "Cài đặt và hướng dẫn nhân viên trong 1 buổi",
+  "Mở tài khoản chạy thử 14 ngày trên cơ sở dữ liệu riêng",
+  "Suất Đối tác Tiên phong: khóa phí ưu đãi & miễn phí khởi tạo (2–5 triệu)",
+  "Kỹ thuật cài đặt máy in tem TT22 & hướng dẫn nhân sự trong 1 buổi",
 ] as const
 
 /** Dải mời đặt lịch demo , đặt giữa các trang với nền nhung đen ánh vàng + khối lập phương 3D. */

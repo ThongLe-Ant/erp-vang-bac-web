@@ -195,7 +195,7 @@ const VIDEO_CHAPTERS = [
   { sec: 37.1, time: "00:37", label: "Tem TT22 & Vàng tuổi" },
   { sec: 50.4, time: "00:50", label: "Cầm đồ & MISA AMIS" },
   { sec: 61.9, time: "01:02", label: "Lãi gộp & Kiểm quỹ" },
-  { sec: 70.1, time: "01:10", label: "Từ 790k · Dùng thử 14 ngày" },
+  { sec: 70.1, time: "01:10", label: "Chính sách Đối tác Tiên phong" },
 ] as const
 
 /* ---------- Phần đầu: chữ gọn bên trái, ảnh sản phẩm to bên phải ---------- */
@@ -293,7 +293,7 @@ function ProductHero({
               href="#bang-gia"
               className="inline-flex items-center gap-1.5 text-xs font-medium text-[#E8D49A] hover:text-white hover:underline"
             >
-              Xem bảng giá theo phân hệ · chỉ từ 790.000đ/tháng
+              Chính sách Đối tác Tiên phong (Giới hạn 30 cửa hàng) · Xem đặc quyền
               <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>
@@ -822,11 +822,18 @@ export function VbLandingPage() {
                       <div className="border-vb-border mt-6 flex items-center justify-between gap-2 border-t pt-4">
                         <div>
                           <span className="text-vb-subtle block font-mono text-[11px] uppercase">
-                            Gói {m.planName}
+                            Gói {m.planName} · Ưu đãi Tiên phong
                           </span>
-                          <span className="tnum text-vb-fg text-base font-bold">
-                            {m.priceTag}
-                          </span>
+                          <div className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
+                            {m.listPriceTag && (
+                              <span className="tnum text-vb-subtle text-xs line-through">
+                                {m.listPriceTag}
+                              </span>
+                            )}
+                            <span className="tnum text-vb-fg text-base font-bold">
+                              {m.priceTag}
+                            </span>
+                          </div>
                         </div>
                         <a
                           href="#bang-gia"
@@ -929,16 +936,21 @@ export function VbLandingPage() {
           >
             <RailMarks />
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-              <div className="mx-auto max-w-2xl text-center">
+              <div className="mx-auto max-w-3xl text-center">
+                <p className="text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-xs font-semibold tracking-[0.08em] uppercase">
+                  Chương trình Đối tác Tiên phong · Giới hạn 30 cửa hàng trong Quý
+                </p>
                 <h2
-                  className="text-vb-fg font-semibold tracking-[-0.02em] [text-wrap:balance]"
+                  className="text-vb-fg mt-2.5 font-semibold tracking-[-0.02em] [text-wrap:balance]"
                   style={HEADING_STYLE}
                 >
-                  Bảng giá theo mảng kinh doanh
+                  Biểu phí theo phân hệ &amp; đặc quyền đồng hành tiên phong
                 </h2>
-                <p className="text-vb-muted mt-2.5 text-sm sm:text-base">
-                  Dùng thử miễn phí 14 ngày tại quầy · Chọn đúng phân hệ nhà
-                  mình đang bán, không ép mua kèm mảng không dùng.
+                <p className="text-vb-muted mt-2.5 text-sm leading-relaxed sm:text-base">
+                  Mỗi cửa hàng vận hành trên cơ sở dữ liệu độc lập · Cam kết giữ
+                  nguyên mức phí ưu đãi suốt 12–24 tháng đầu, miễn phí 100% chi
+                  phí khởi tạo tại quầy (2–5 triệu đồng) và chạy thử 14 ngày
+                  trước khi thanh toán.
                 </p>
               </div>
 
@@ -960,21 +972,43 @@ export function VbLandingPage() {
                     >
                       {featured && (
                         <span className="sysdark:bg-[#9C7218] absolute -top-3 left-6 rounded-full bg-[#8A6516] px-3 py-1 text-[11px] font-semibold text-white lg:left-5">
-                          Đầy đủ vàng &amp; bạc
+                          Chủ lực · Đại lý Bạc &amp; Vàng
                         </span>
                       )}
-                      <div className="lg:min-h-[124px]">
-                        <h3
-                          className={`text-sm font-semibold tracking-wide uppercase ${
-                            dark
-                              ? "sysdark:text-[#D9C189] text-[#E8D49A]"
-                              : "text-vb-gold-deep sysdark:text-vb-gold-bright"
-                          }`}
-                        >
-                          {p.name}
-                        </h3>
+                      <div className="lg:min-h-[156px]">
+                        <div className="flex items-center justify-between gap-2">
+                          <h3
+                            className={`text-sm font-semibold tracking-wide uppercase ${
+                              dark
+                                ? "sysdark:text-[#D9C189] text-[#E8D49A]"
+                                : "text-vb-gold-deep sysdark:text-vb-gold-bright"
+                            }`}
+                          >
+                            {p.name}
+                          </h3>
+                          {p.listPrice && (
+                            <span className="sysdark:border-[#4A3A14] sysdark:bg-[#1C1608] sysdark:text-[#E8D49A] rounded border border-[#E6D5AA] bg-[#FBF6E8] px-2 py-0.5 font-mono text-[10px] font-semibold text-[#7A5912]">
+                              Suất Tiên phong
+                            </span>
+                          )}
+                        </div>
 
-                        <div className="mt-4 flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
+                        <div className="mt-3 min-h-[20px]">
+                          {p.listPrice ? (
+                            <span className="tnum text-vb-subtle font-mono text-xs">
+                              Niêm yết{" "}
+                              <span className="line-through">{p.listPrice}</span>
+                            </span>
+                          ) : (
+                            <span
+                              className={`font-mono text-xs ${dark ? "sysdark:text-[#D9C189]/80 text-[#E8D49A]/85" : "text-vb-subtle"}`}
+                            >
+                              Hạ tầng &amp; quy trình riêng
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="mt-0.5 flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
                           <span className="tnum text-2xl font-bold tracking-tight lg:text-[22px]">
                             {p.price.startsWith("Từ ") ? (
                               <>
@@ -1002,8 +1036,20 @@ export function VbLandingPage() {
                         </p>
                       </div>
 
+                      <div
+                        className={`mt-4 rounded-lg border px-3 py-2 text-xs leading-snug font-medium ${
+                          dark
+                            ? "border-white/15 bg-white/5 text-[#E8D49A]"
+                            : featured
+                              ? "sysdark:border-[#4A3A14] sysdark:bg-[#191408] sysdark:text-[#E8D49A] border-[#E6D5AA] bg-[#FBF7EC] text-[#6E4F0F]"
+                              : "border-vb-border bg-vb-surface/70 text-vb-body"
+                        }`}
+                      >
+                        {p.setupBonus}
+                      </div>
+
                       <ul
-                        className={`mt-5 flex-1 space-y-2.5 border-t pt-5 text-sm ${
+                        className={`mt-4 flex-1 space-y-2.5 border-t pt-4 text-sm ${
                           dark
                             ? "sysdark:text-[#C9CED8] border-white/10 text-[#E4E7EE]"
                             : "border-vb-border text-vb-body"

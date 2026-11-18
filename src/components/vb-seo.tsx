@@ -126,7 +126,7 @@ const offers = PLANS.flatMap((plan) => {
     {
       "@type": "Offer",
       name: `Gói ${plan.name}`,
-      description: `${plan.price}${plan.unit}. ${plan.items.join(", ")}.`,
+      description: `${plan.listPrice ? `Ưu đãi Tiên phong ${plan.price}${plan.unit} (giá niêm yết ${plan.listPrice}${plan.unit})` : `${plan.price}${plan.unit}`}. ${plan.setupBonus}. ${plan.items.join(", ")}.`,
       url: `${SITE_URL}/#bang-gia`,
       price: amount,
       priceCurrency: "VND",
