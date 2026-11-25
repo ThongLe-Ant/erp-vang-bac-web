@@ -20,6 +20,7 @@ export const LANDING_PATH = "/"
 export const FEATURES_PATH = "/chuc-nang"
 export const GUIDES_PATH = "/cam-nang"
 export const BROCHURE_PATH = "/ho-so-giai-phap"
+export const DEPOSIT_TOOL_PATH = "/cong-cu/kiem-tra-so-coc"
 export const PRIVACY_PATH = "/chinh-sach-bao-mat"
 
 const abs = (path: string) => `${SITE_URL}${path}`
@@ -53,12 +54,19 @@ export function vbMetadata({
   path,
   title,
   description,
+  ogImage,
+  ogType = "website",
 }: {
   path: string
   title: string
   description: string
+  ogImage?: { url: string; alt: string }
+  ogType?: "website" | "article"
 }): Metadata {
   const canonicalUrl = abs(path)
+  const image = ogImage
+    ? { url: ogImage.url.replace(/\?.*$/, ""), alt: ogImage.alt }
+    : OG_IMAGE
   return {
     metadataBase: new URL(SITE_URL),
     title: { absolute: title },
@@ -80,19 +88,19 @@ export function vbMetadata({
       },
     },
     openGraph: {
-      type: "website",
+      type: ogType,
       locale: "vi_VN",
       siteName: "ERP Vàng Bạc",
       url: canonicalUrl,
       title,
       description,
-      images: [OG_IMAGE],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [OG_IMAGE.url],
+      images: [image.url],
     },
   }
 }
@@ -446,6 +454,7 @@ export function guideArticleJsonLd(article: {
   title: string
   description: string
   publishedAt: string
+  updatedAt?: string
   heroImage: string
 }) {
   const url = abs(`${GUIDES_PATH}/${article.slug}`)
@@ -460,7 +469,7 @@ export function guideArticleJsonLd(article: {
         headline: article.title,
         description: article.description,
         datePublished: article.publishedAt,
-        dateModified: article.publishedAt,
+        dateModified: article.updatedAt || article.publishedAt,
         inLanguage: "vi",
         url,
         image: `${SITE_URL}${article.heroImage.replace(/\?.*$/, "")}`,

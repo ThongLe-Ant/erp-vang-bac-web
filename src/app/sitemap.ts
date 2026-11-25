@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next"
 import { GUIDES } from "@/components/vb-guides"
 import {
   BROCHURE_PATH,
+  DEPOSIT_TOOL_PATH,
   FEATURES_PATH,
   GUIDES_PATH,
   LANDING_PATH,
@@ -10,7 +11,7 @@ import {
   SITE_URL,
 } from "@/components/vb-seo"
 
-const SITE_LAST_MODIFIED = new Date("2026-11-01")
+const SITE_LAST_MODIFIED = new Date("2026-11-25")
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -25,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}${DEPOSIT_TOOL_PATH}`,
+      lastModified: SITE_LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.85,
     },
     {
       url: `${SITE_URL}${GUIDES_PATH}`,

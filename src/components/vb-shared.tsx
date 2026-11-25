@@ -1233,6 +1233,9 @@ export function VbFooter() {
           <Link href="/cam-nang" className="hover:text-white">
             Cẩm nang
           </Link>
+          <Link href="/cong-cu/kiem-tra-so-coc" className="hover:text-white">
+            Kiểm tra sổ cọc
+          </Link>
           <Link href="/ho-so-giai-phap" className="hover:text-white">
             Tóm tắt giải pháp
           </Link>

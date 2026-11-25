@@ -18,11 +18,24 @@ declare global {
 }
 
 function getContentCategory(pathname: string): string | null {
+  if (pathname.startsWith("/cong-cu/")) return "interactive_tool"
   if (pathname.startsWith("/cam-nang/")) return "guide_article"
   if (pathname === "/cam-nang") return "guide_hub"
   if (pathname.startsWith("/ho-so-giai-phap")) return "solution_brochure"
   if (pathname.startsWith("/chuc-nang")) return "features_detail"
   return null
+}
+
+/** Ghi nhận tương tác hoàn thành công cụ kiểm tra nghiệp vụ (không đính kèm dữ liệu sổ thật). */
+export function trackVbToolEvent(toolName: string, action: string) {
+  if (typeof window === "undefined") return
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "vb_tool_interaction", {
+      event_category: "interactive_tool",
+      tool_name: toolName,
+      tool_action: action,
+    })
+  }
 }
 
 export function VbAnalytics() {

@@ -31,6 +31,8 @@ export async function generateMetadata({
     path: `${GUIDES_PATH}/${article.slug}`,
     title: `${article.title} — ERP Vàng Bạc`,
     description: article.description,
+    ogImage: { url: article.heroImage, alt: article.heroAlt },
+    ogType: "article",
   })
 }
 
