@@ -10,6 +10,7 @@ import {
   GuideRails,
   HEADING_STYLE,
   PLANS,
+  PLAN_ADDONS,
   PLAN_MATRIX,
   RailMarks,
   VbFooter,
@@ -117,7 +118,7 @@ export function VbBrochurePage() {
               {[
                 {
                   k: "Kiến trúc triển khai",
-                  v: "1 Ứng dụng & 1 CSDL độc lập / chuỗi",
+                  v: "CSDL riêng / doanh nghiệp · Máy chủ riêng (Enterprise)",
                 },
                 {
                   k: "Nguồn giá tự động",
@@ -311,10 +312,27 @@ export function VbBrochurePage() {
               </table>
             </div>
 
-            <div className="border-vb-border text-vb-muted mt-6 flex flex-col justify-between gap-2 border-t pt-4 text-xs sm:flex-row sm:items-center">
+            <div className="border-vb-border bg-vb-surface/60 mt-4 grid grid-cols-1 gap-3 rounded-lg border p-4 md:grid-cols-3 print:grid-cols-3 print:p-3">
+              {PLAN_ADDONS.map((addon) => (
+                <div key={addon.name} className="vb-avoid-break">
+                  <p className="text-vb-fg text-xs font-semibold">
+                    {addon.name}
+                  </p>
+                  <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright mt-0.5 font-mono text-xs font-bold">
+                    {addon.price}
+                  </p>
+                  <p className="text-vb-muted mt-1 text-[11px] leading-snug">
+                    {addon.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-vb-border text-vb-muted mt-5 flex flex-col justify-between gap-2 border-t pt-4 text-xs sm:flex-row sm:items-center">
               <span>
-                Mỗi chuỗi đại lý vận hành trên một ứng dụng và một cơ sở dữ liệu
-                riêng biệt. Cài đặt và đào tạo tận nơi khi triển khai.
+                Thanh toán kỳ 6 hoặc 12 tháng · Giữ cố định phí Tiên phong 24
+                tháng đầu · CSDL tách biệt theo doanh nghiệp (Enterprise cấp máy
+                chủ riêng) · Khởi tạo từ xa miễn phí (đi tỉnh thoả thuận riêng).
               </span>
               <span className="tnum text-vb-fg shrink-0 font-mono font-semibold">
                 vangbac.goplus.vn · {CONTACT.phoneLabel}

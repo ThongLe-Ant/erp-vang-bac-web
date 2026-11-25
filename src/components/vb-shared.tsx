@@ -506,7 +506,8 @@ export const PLANS = [
     listPrice: "1.290.000đ",
     price: "790.000đ",
     unit: "/tháng",
-    setupBonus: "Miễn phí khởi tạo & kết nối máy in tem TT22 (2.000.000đ)",
+    setupBonus:
+      "Miễn phí khởi tạo từ xa, kết nối máy in tem TT22 & 1 buổi hướng dẫn online (2.000.000đ)",
     note: "Dành cho tiệm vàng 1 quầy hoặc hiệu cầm đồ độc lập.",
     items: [
       "Chọn 1 mảng: Vàng truyền thống hoặc Cầm đồ",
@@ -522,7 +523,8 @@ export const PLANS = [
     listPrice: "2.990.000đ",
     price: "1.990.000đ",
     unit: "/tháng",
-    setupBonus: "Miễn phí thiết lập canh giá, bảng giá riêng & Bot Zalo (3.500.000đ)",
+    setupBonus:
+      "Miễn phí thiết lập canh giá, bảng giá riêng & Bot Zalo (3.500.000đ)",
     note: "Trọn bộ Đại lý Bạc tích trữ, Vàng thương hiệu & Vàng kim hoàn.",
     items: [
       "Bạc tích trữ (Phú Quý, BTMH, Ancarat) & Vàng Phú Quý",
@@ -538,7 +540,8 @@ export const PLANS = [
     listPrice: "4.490.000đ",
     price: "2.990.000đ",
     unit: "/tháng",
-    setupBonus: "Miễn phí chuẩn hóa sơ đồ Két, ZNS Zalo OA & đào tạo quầy (5.000.000đ)",
+    setupBonus:
+      "Miễn phí chuẩn hóa sơ đồ Két, ZNS Zalo OA & đào tạo quầy (5.000.000đ)",
     note: "Gộp trọn bộ Vàng kim hoàn, Đại lý bạc & Hiệu cầm đồ.",
     items: [
       "Đầy đủ Bạc tích trữ, Vàng Phú Quý & Vàng truyền thống",
@@ -554,7 +557,8 @@ export const PLANS = [
     listPrice: "",
     price: "Từ 5.900.000đ",
     unit: "/tháng",
-    setupBonus: "Cụm máy chủ & cơ sở dữ liệu độc lập · Đồng bộ MISA AMIS 2 chiều",
+    setupBonus:
+      "Cụm máy chủ & ứng dụng độc lập · Đồng bộ MISA AMIS 2 chiều",
     note: "Chuỗi nhiều chi nhánh, đồng bộ kế toán & may đo riêng.",
     items: [
       "Toàn bộ phân hệ cho chuỗi đa chi nhánh",
@@ -563,6 +567,27 @@ export const PLANS = [
     ],
     cta: "Liên hệ khảo sát",
     tone: "dark",
+  },
+] as const
+
+export const PLAN_ADDONS = [
+  {
+    name: "Thêm phân hệ Cầm đồ (cho tiệm Vàng truyền thống)",
+    price: "+500.000đ/tháng",
+    detail:
+      "Tiệm bán vàng trang sức + cầm đồ (không bán bạc tích trữ) dùng gọn với tổng 1.290.000đ/tháng, không phải nâng lên Business.",
+  },
+  {
+    name: "Thêm đồng bộ kế toán MISA AMIS (tiệm 1 chi nhánh)",
+    price: "+600.000đ/tháng",
+    detail:
+      "Đẩy chứng từ bán hàng, thu chi sang MISA AMIS kèm bảng đối soát chống đẩy trùng ngay từ gói Standard / Pro / Business.",
+  },
+  {
+    name: "Mở thêm chi nhánh phụ (cùng chuỗi)",
+    price: "+500.000đ – 900.000đ/tháng",
+    detail:
+      "Tính theo tổ hợp phân hệ đang bật tại chi nhánh; dùng chung cơ sở dữ liệu chuỗi và phân quyền riêng từng quầy.",
   },
 ] as const
 
@@ -578,7 +603,7 @@ export const PLAN_MATRIX: ReadonlyArray<{
   },
   {
     label: "Cầm đồ (hợp đồng cầm, sơ đồ két, nhắc hạn Zalo)",
-    cells: ["Chọn 1 trong 2", false, true, true],
+    cells: ["Chọn 1 / +500k", "Add-on +500k", true, true],
   },
   {
     label: "Bạc tích trữ & Vàng thương hiệu (Phú Quý, BTMH, Ancarat)",
@@ -589,12 +614,21 @@ export const PLAN_MATRIX: ReadonlyArray<{
     cells: [false, true, true, true],
   },
   {
-    label: "Đa chi nhánh, đồng bộ MISA AMIS & tuỳ chỉnh riêng",
-    cells: [false, false, false, true],
+    label: "Đồng bộ chứng từ kế toán MISA AMIS 2 chiều",
+    cells: ["Add-on +600k", "Add-on +600k", "Add-on +600k", true],
   },
   {
-    label: "Dùng thử miễn phí 14 ngày trước khi thanh toán",
-    cells: [true, true, true, true],
+    label: "Đa chi nhánh, điều chuyển kho & tuỳ chỉnh quy trình",
+    cells: [false, false, "Thêm CN lẻ", true],
+  },
+  {
+    label: "Hạ tầng dữ liệu & dùng thử 14 ngày theo mô hình quầy",
+    cells: [
+      "CSDL riêng / DN",
+      "CSDL riêng / DN",
+      "CSDL riêng / DN",
+      "Máy chủ riêng",
+    ],
   },
 ]
 
@@ -1063,7 +1097,7 @@ export const FAQ = [
   },
   {
     q: "Giá thuê phần mềm ERP Vàng Bạc bao nhiêu một tháng? Có được dùng thử trước không?",
-    a: "Tất cả cửa hàng đều được mở tài khoản chạy thử miễn phí 14 ngày trên dữ liệu riêng theo đúng mô hình quầy trước khi thanh toán. Trong khuôn khổ Chương trình Đối tác Tiên phong (giới hạn 30 cửa hàng trong Quý, cam kết giữ nguyên mức phí ưu đãi 12–24 tháng và miễn phí 100% chi phí khởi tạo 2–5 triệu đồng): Gói Standard ưu đãi 790.000đ/tháng (giá niêm yết 1.290.000đ/tháng — chọn 1 mảng Vàng truyền thống hoặc Cầm đồ cho tiệm 1 quầy), Gói Professional ưu đãi 1.990.000đ/tháng (giá niêm yết 2.990.000đ/tháng — trọn bộ Đại lý Bạc tích trữ Phú Quý/BTMH/Ancarat, Vàng thương hiệu, Vàng truyền thống và Bot tự xuất ảnh bảng giá gửi nhóm Zalo), Gói Business ưu đãi 2.990.000đ/tháng (giá niêm yết 4.490.000đ/tháng — gộp đầy đủ Vàng bạc thương hiệu, Vàng kim hoàn và Hiệu cầm đồ), và Gói Enterprise từ 5.900.000đ/tháng theo quy mô chuỗi đa chi nhánh cần cụm máy chủ độc lập và đồng bộ MISA AMIS.",
+    a: "Tất cả cửa hàng đều được đặt lịch demo và mở tài khoản chạy thử miễn phí 14 ngày theo đúng mô hình quầy trước khi ký hợp đồng. Thanh toán theo kỳ 6 hoặc 12 tháng. Trong Chương trình Đối tác Tiên phong (giới hạn 30 cửa hàng trong Quý, cam kết giữ nguyên phí ưu đãi cố định suốt 24 tháng đầu): Standard 790.000đ/tháng (niêm yết 1.290.000đ — chọn 1 mảng Vàng truyền thống hoặc Cầm đồ, miễn phí khởi tạo từ xa trị giá 2 triệu), Professional 1.990.000đ/tháng (niêm yết 2.990.000đ — Đại lý Bạc tích trữ, Vàng thương hiệu, Vàng truyền thống & Bot Zalo), Business 2.990.000đ/tháng (niêm yết 4.490.000đ — gộp đầy đủ Vàng bạc & Cầm đồ) và Enterprise từ 5.900.000đ/tháng cho chuỗi đa chi nhánh cần cụm máy chủ riêng. Ngoài ra có thể cộng thêm phân hệ lẻ: +500.000đ/tháng cho Cầm đồ (nếu tiệm vàng không bán bạc) và +600.000đ/tháng để bật đồng bộ MISA AMIS cho tiệm 1 chi nhánh.",
   },
   {
     q: "Thu mua vàng cũ có cân trừ đá, trừ dơ và thu cũ đổi mới trên cùng một đơn được không?",
@@ -1075,7 +1109,7 @@ export const FAQ = [
   },
   {
     q: "Phần mềm có đồng bộ với kế toán MISA AMIS và bảo mật dữ liệu riêng cho từng chuỗi không?",
-    a: "Có. Phần mềm đồng bộ danh mục và chứng từ bán hàng, thu chi sang MISA AMIS kèm bảng đối soát chống đẩy trùng. Mỗi chuỗi đại lý chạy trên một ứng dụng và một cơ sở dữ liệu độc lập, phân quyền theo vai trò và chi nhánh, ghi nhật ký toàn bộ thao tác.",
+    a: "Có. Phần mềm đồng bộ danh mục và chứng từ bán hàng, thu chi sang MISA AMIS kèm bảng đối soát chống đẩy trùng (có sẵn trong Enterprise hoặc bật lẻ +600.000đ/tháng cho tiệm đơn). Các gói Standard–Business chạy trên cơ sở dữ liệu tách biệt theo từng doanh nghiệp/chuỗi; gói Enterprise cấp cụm máy chủ và ứng dụng riêng hoàn toàn, phân quyền chặt theo vai trò và lưu nhật ký toàn bộ thao tác.",
   },
 ] as const
 

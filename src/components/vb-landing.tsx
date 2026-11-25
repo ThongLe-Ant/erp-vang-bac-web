@@ -35,6 +35,7 @@ import {
   GuideRails,
   HEADING_STYLE,
   PLANS,
+  PLAN_ADDONS,
   RailMarks,
   SoftGlow,
   VbFooter,
@@ -947,10 +948,10 @@ export function VbLandingPage() {
                   Biểu phí theo phân hệ &amp; đặc quyền đồng hành tiên phong
                 </h2>
                 <p className="text-vb-muted mt-2.5 text-sm leading-relaxed sm:text-base">
-                  Mỗi cửa hàng vận hành trên cơ sở dữ liệu độc lập · Cam kết giữ
-                  nguyên mức phí ưu đãi suốt 12–24 tháng đầu, miễn phí 100% chi
-                  phí khởi tạo tại quầy (2–5 triệu đồng) và chạy thử 14 ngày
-                  trước khi thanh toán.
+                  Cơ sở dữ liệu độc lập theo từng doanh nghiệp/chuỗi · Giữ cố
+                  định phí ưu đãi suốt 24 tháng đầu · Thanh toán theo kỳ 6 hoặc
+                  12 tháng · Đặt lịch demo và mở chạy thử 14 ngày theo đúng mô
+                  hình quầy trước khi ký.
                 </p>
               </div>
 
@@ -1083,7 +1084,43 @@ export function VbLandingPage() {
                 })}
               </div>
 
-              <p className="text-vb-subtle mt-8 text-center text-sm">
+              {/* Phân hệ cộng thêm linh hoạt (Add-on) & Điều kiện triển khai */}
+              <div className="border-vb-border bg-vb-surface/70 mt-8 rounded-xl border p-5 sm:p-6">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <p className="text-vb-gold-deep sysdark:text-vb-gold-bright font-mono text-xs font-semibold tracking-[0.06em] uppercase">
+                    Phân hệ cộng thêm linh hoạt (chỉ trả phần đang dùng)
+                  </p>
+                  <span className="text-vb-subtle font-mono text-xs">
+                    Thanh toán kỳ 6 / 12 tháng · Khởi tạo từ xa miễn phí
+                  </span>
+                </div>
+                <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+                  {PLAN_ADDONS.map((addon) => (
+                    <div
+                      key={addon.name}
+                      className="border-vb-border bg-vb-card rounded-lg border p-4"
+                    >
+                      <p className="text-vb-fg text-sm font-semibold">
+                        {addon.name}
+                      </p>
+                      <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright mt-1 font-mono text-sm font-bold">
+                        {addon.price}
+                      </p>
+                      <p className="text-vb-muted mt-1.5 text-xs leading-relaxed">
+                        {addon.detail}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-vb-subtle mt-4 text-xs leading-relaxed">
+                  Phạm vi miễn phí khởi tạo gồm thiết lập danh mục, mẫu tem TT22
+                  và 1 buổi hướng dẫn trực tuyến (triển khai trực tiếp tận quầy
+                  ngoại tỉnh báo chi phí đi lại riêng). Sau 24 tháng giữ giá
+                  Tiên phong, gia hạn theo biểu phí công bố hoặc thoả thuận.
+                </p>
+              </div>
+
+              <p className="text-vb-subtle mt-7 text-center text-sm">
                 Muốn xem trên số liệu mẫu trước khi chọn?{" "}
                 <Link
                   href={`${FEATURES_HREF}#so-sanh`}
