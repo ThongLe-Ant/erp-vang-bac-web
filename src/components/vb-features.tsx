@@ -10,6 +10,7 @@ import {
   GuideRails,
   HEADING_STYLE,
   PLANS,
+  PLAN_ADDONS,
   PLAN_MATRIX,
   RailMarks,
   SoftGlow,
@@ -22,6 +23,45 @@ import {
  * người đọc & bộ máy tìm kiếm, mỗi chức năng một mục (chữ và ảnh so le), cuối
  * trang là bảng so sánh theo gói đọc từ PLAN_MATRIX (cùng nguồn với PLANS).
  * ========================================================================== */
+
+const GENERATION_COMPARE = [
+  {
+    criteria: "Nền tảng & truy cập từ xa",
+    legacy: "Cài cục bộ 1 máy Windows tại quầy; hỏng ổ cứng dễ mất sổ, khó xem lãi lỗ từ xa",
+    genericPos: "Web / App đa nền tảng nhưng dùng chung hạ tầng đa ngành",
+    goerp: "Web Cloud thời gian thực trên điện thoại/PC; CSDL độc lập từng doanh nghiệp/chuỗi",
+  },
+  {
+    criteria: "Vàng truyền thống & tem Thông tư 22",
+    legacy: "Có tính theo tuổi & in tem, nhưng giao diện cũ, phụ thuộc cài driver thủ công",
+    genericPos: "Thường chỉ bán theo mã sẵn, thiếu công thức tuổi vàng & cân trừ đá trừ dơ",
+    goerp: "Đủ công thức tuổi vàng + tiền công + đá, cân thu đổi trừ đá dơ & in tem 2 cánh TT22",
+  },
+  {
+    criteria: "Đại lý Bạc tích trữ (Phú Quý, BTMH, Ancarat)",
+    legacy: "Không có đồng bộ giá hãng, không nối đơn cổng hãng & không có khóa giá đơn",
+    genericPos: "Không hỗ trợ bảng giá nhảy nhiều nhịp/ngày & hợp đồng hẹn giao từng phần",
+    goerp: "Đồng bộ giá đa nguồn, khóa giá POS chống trượt, sổ cọc hẹn giao & đẩy đơn Phú Quý",
+  },
+  {
+    criteria: "Báo giá nhóm Zalo & chăm sóc khách",
+    legacy: "Nhân viên tự sửa ảnh/gõ tay gửi từng nhóm mỗi lần giá đổi",
+    genericPos: "Không có công cụ xuất ảnh bảng giá tự động theo nhịp thị trường",
+    goerp: "Tự xuất ảnh bảng giá mang tên tiệm gửi nhóm Zalo & gửi tin ZNS qua Zalo OA",
+  },
+  {
+    criteria: "Nghiệp vụ Cầm đồ & sơ đồ két",
+    legacy: "Thường bán rời thành phần mềm riêng, tách dữ liệu sổ quỹ",
+    genericPos: "Không hỗ trợ định giá tuổi vàng, tính lãi ngày & sơ đồ két – ngăn – khay",
+    goerp: "Tích hợp liền mạch trên cùng sổ quỹ (chọn trong Business hoặc bật Add-on +500k)",
+  },
+  {
+    criteria: "Kết nối kế toán MISA AMIS & đa chi nhánh",
+    legacy: "Xuất Excel thủ công, khó gom chứng từ nhiều chi nhánh",
+    genericPos: "Xuất hóa đơn cơ bản, thiếu đối soát đặc thù thu mua vàng cũ & điều chuyển kho vàng",
+    goerp: "Đồng bộ 2 chiều MISA AMIS chống đẩy trùng (Add-on +600k / có sẵn Enterprise) & điều chuyển liên chi nhánh",
+  },
+] as const
 
 export function VbFeaturesPage() {
   return (
@@ -191,6 +231,84 @@ export function VbFeaturesPage() {
             )
           })}
 
+          {/* ---------- So sánh 3 thế hệ phần mềm ---------- */}
+          <section
+            id="so-sanh-giai-phap"
+            className="border-vb-border bg-vb-surface/40 relative scroll-mt-32 border-b py-14 lg:py-20"
+          >
+            <RailMarks />
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-3xl text-center">
+                <Eyebrow>Góc nhìn chọn hệ thống</Eyebrow>
+                <h2
+                  className="text-vb-fg mt-2.5 font-semibold tracking-[-0.02em] [text-wrap:balance]"
+                  style={HEADING_STYLE}
+                >
+                  So sánh 3 thế hệ phần mềm cho tiệm vàng &amp; đại lý bạc
+                </h2>
+                <p className="text-vb-muted mt-2.5 text-sm leading-relaxed sm:text-base">
+                  Nhiều tiệm chọn phần mềm đời cũ vì quen tay hoặc POS đa ngành
+                  vì giá rẻ, nhưng lại bị đứt gãy ngay khi mở thêm mảng bạc tích
+                  trữ, cầm đồ hoặc đa chi nhánh.
+                </p>
+              </div>
+
+              <div className="border-vb-border bg-vb-bg mt-10 overflow-x-auto rounded-lg border">
+                <table className="w-full min-w-[760px] text-left text-sm">
+                  <thead>
+                    <tr className="bg-vb-surface border-vb-border border-b">
+                      <th
+                        scope="col"
+                        className="text-vb-subtle w-[22%] px-5 py-4 font-mono text-xs font-semibold uppercase"
+                      >
+                        Tiêu chí vận hành
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-vb-body w-[25%] px-4 py-4 font-semibold"
+                      >
+                        Phần mềm cài máy tính đời cũ
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-vb-body w-[25%] px-4 py-4 font-semibold"
+                      >
+                        POS bán lẻ đa ngành
+                      </th>
+                      <th
+                        scope="col"
+                        className="sysdark:bg-[#9C7218] w-[28%] bg-[#8A6516] px-4 py-4 font-semibold text-white"
+                      >
+                        ERP Vàng Bạc (Goplus)
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-vb-border divide-y">
+                    {GENERATION_COMPARE.map((row) => (
+                      <tr key={row.criteria} className="align-top">
+                        <th
+                          scope="row"
+                          className="text-vb-fg px-5 py-4 font-semibold"
+                        >
+                          {row.criteria}
+                        </th>
+                        <td className="text-vb-muted px-4 py-4 text-xs leading-relaxed">
+                          {row.legacy}
+                        </td>
+                        <td className="text-vb-muted px-4 py-4 text-xs leading-relaxed">
+                          {row.genericPos}
+                        </td>
+                        <td className="bg-vb-gold-soft/35 text-vb-fg px-4 py-4 text-xs leading-relaxed font-medium">
+                          {row.goerp}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
           {/* ---------- So sánh theo gói ---------- */}
           <section
             id="so-sanh"
@@ -287,6 +405,25 @@ export function VbFeaturesPage() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              <div className="border-vb-border bg-vb-surface/70 mt-6 grid grid-cols-1 gap-4 rounded-xl border p-5 md:grid-cols-3">
+                {PLAN_ADDONS.map((addon) => (
+                  <div
+                    key={addon.name}
+                    className="border-vb-border bg-vb-card rounded-lg border p-4"
+                  >
+                    <p className="text-vb-fg text-sm font-semibold">
+                      {addon.name}
+                    </p>
+                    <p className="tnum text-vb-gold-deep sysdark:text-vb-gold-bright mt-1 font-mono text-sm font-bold">
+                      {addon.price}
+                    </p>
+                    <p className="text-vb-muted mt-1.5 text-xs leading-relaxed">
+                      {addon.detail}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
